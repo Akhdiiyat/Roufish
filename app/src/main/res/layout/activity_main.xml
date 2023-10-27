@@ -50,7 +50,7 @@
         app:strokeWidth="5px" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/lupaPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lupa Password?"
