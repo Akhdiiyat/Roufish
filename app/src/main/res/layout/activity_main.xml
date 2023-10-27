@@ -40,10 +40,14 @@
         android:backgroundTint="#FFFFFF"
         android:text="Login"
         android:textColor="#048BB5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.837"
         app:strokeColor="#C1DCF6"
-        app:strokeWidth="5px"
-        tools:layout_editor_absoluteY="590dp" />
+        app:strokeWidth="5px" />
 
     <TextView
         android:id="@+id/textView2"
@@ -51,7 +55,10 @@
         android:layout_height="wrap_content"
         android:text="Lupa Password?"
         android:textColor="#048BB5"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="661dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.883" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonRegister = findViewById(R.id.buttonRegister);
+        buttonLogin =findViewById(R.id.buttonLogin);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -20,6 +21,15 @@ public class MainActivity extends Activity {
                 Intent registerIntent = new Intent(MainActivity.this, register.class);
 
                 startActivity(registerIntent);
+            }
+        });
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(MainActivity.this, login.class);
+
+                startActivity(loginIntent);
             }
         });
     }
