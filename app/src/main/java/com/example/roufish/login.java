@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ public class login extends AppCompatActivity {
 
         EditText password = (EditText) findViewById(R.id.input_Password);
         CheckBox checkPassword  = (CheckBox) findViewById(R.id.tampilkanPassword);
+        Button login = findViewById(R.id.btn_login);
 
         checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -43,6 +45,15 @@ public class login extends AppCompatActivity {
 
                 startActivity(registerIntent);
 
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(login.this, product.class);
+
+                startActivity(registerIntent);
             }
         });
     }
