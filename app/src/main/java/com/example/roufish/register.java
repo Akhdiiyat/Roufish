@@ -1,6 +1,8 @@
 package com.example.roufish;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -18,6 +20,10 @@ public class register extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
         EditText inputPassword = findViewById(R.id.input_Password);
+
+        Button btnDaftar = findViewById(R.id.btn_daftar) ;
+
+
 
         FloatingActionButton backToMain = findViewById(R.id.backToMainREG);
 
@@ -41,6 +47,8 @@ public class register extends Activity {
             }
         });
 
+
+        //hide password yang diinputkan
         inputPassword.setOnTouchListener(new View.OnTouchListener() {
             boolean passwordView = false;
             @Override
@@ -67,6 +75,29 @@ public class register extends Activity {
                 return false;
             }
         });
-        // Tambahkan kode lain yang diperlukan untuk halaman pendaftaran di sini
+
+        //pop up akun berhasil di daftarkan
+
+        btnDaftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
+                builder.setTitle("Pendaftaran Berhasil");
+                builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        Intent registerIntent = new Intent(register.this, login.class);
+
+                        startActivity(registerIntent);
+                    }
+                }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                }).create().show();
+            }
+        });
     }
 }
