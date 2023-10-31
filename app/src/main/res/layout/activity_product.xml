@@ -64,19 +64,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <EditText
                     android:id="@+id/textView3"
-                    android:layout_width="133dp"
-                    android:layout_height="26dp"
-                    android:text="New Product"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:layout_width="221dp"
+                    android:layout_height="29dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableRight="@drawable/icn_search"
+                    android:hint="Search Produk"
+                    android:padding="4dp"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.143"
+                    app:layout_constraintHorizontal_bias="0.289"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.041" />
+                    app:layout_constraintVertical_bias="0.031" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/info_produk"
@@ -84,10 +86,10 @@
                     android:layout_height="300dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.36"
+                    app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.191">
+                    app:layout_constraintVertical_bias="0.108">
 
                     <TextView
                         android:id="@+id/nama_ikan"
@@ -115,11 +117,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/info_produk2"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.36"
+                    app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/info_produk">
 
@@ -149,29 +152,87 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/info_produk3"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/info_produk2">
+
+                    <TextView
+                        android:id="@+id/nama_ikan3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ikan Mujair"
+                        android:textStyle="bold"
+                        tools:ignore="MissingConstraints" />
+
+                    <ImageView
+                        android:id="@+id/Gambar_ikan3"
+                        android:layout_width="229dp"
+                        android:layout_height="117dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="20dp"
+                        tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/harga_ikan3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="180dp"
+                        android:text="Rp50.000" />
+
+
+                </androidx.cardview.widget.CardView>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
         <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_width="443dp"
+            android:layout_height="61dp"
             android:layout_gravity="bottom"
-            app:backgroundTint="@color/app_theme"
-            tools:layout_editor_absoluteY="679dp">
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="1dp"
+            app:fabCradleVerticalOffset="10dp"
+            android:backgroundTint="@color/app_theme">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/butttom_nav_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="67dp"
+                android:layout_marginRight="40dp"
+                android:layout_gravity="bottom"
                 android:background="@color/app_theme"
-                app:menu="@menu/bottom_nav_menu" />
+                app:menu="@menu/bottom_nav_menu">
 
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="179dp"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            app:backgroundTint="#DCD6D6"
+            app:srcCompat="@drawable/icn_mata_pancing"/>
+
+
+
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
