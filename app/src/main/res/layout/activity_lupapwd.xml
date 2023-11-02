@@ -12,7 +12,7 @@
         android:id="@+id/text_verifikasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Verif"
+        android:text="Lupa Password"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
@@ -53,75 +53,75 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/Text_Username"
+                android:id="@+id/alamat_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="Masukkan Code"
+                android:text="Masukkan alamat email"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                android:outlineAmbientShadowColor="@color/sec"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
-
-            <TextView
-                android:id="@+id/text_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:text="Masukkan Code"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
-
-            <EditText
-                android:id="@+id/editTextText6"
-                android:layout_width="279dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="48dp"
-                android:background="@drawable/custom_input"
-                android:ems="10"
-                android:inputType="number"
+                app:layout_constraintBottom_toTopOf="@+id/example_Gmail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.77" />
+
+            <EditText
+                android:id="@+id/example_Gmail"
+                android:layout_width="279dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="92dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="example@gmail.com"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btn_verifikasi"
+                android:id="@+id/btn_send_code"
                 android:layout_width="279dp"
                 android:layout_height="44dp"
-                android:layout_marginBottom="508dp"
                 android:background="@color/app_theme"
-                android:text="Verifikasi"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Send Bottom"
+                app:layout_constraintBottom_toTopOf="@+id/sudah_punya_akun"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.515"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText6"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/example_Gmail"
+                app:layout_constraintVertical_bias="0.079" />
 
             <TextView
-                android:id="@+id/text_code"
+                android:id="@+id/sudah_punya_akun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="164dp"
-                android:text="Resend Code"
+                android:layout_marginTop="468dp"
+                android:text="Sudah punya akun ?"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                android:textColor="@color/third_blue"
-                app:layout_constraintBottom_toTopOf="@+id/"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_send_code"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintVertical_bias="0.148" />
+
+            <Button
+                android:id="@+id/btn_register_pwd"
+                android:layout_width="279dp"
+                android:layout_height="44dp"
+                android:layout_marginBottom="108dp"
+                android:background="@color/app_theme"
+                android:text="Register"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sudah_punya_akun"
+                app:layout_constraintVertical_bias="0.456" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
