@@ -19,9 +19,9 @@ public class halamanProduct extends AppCompatActivity {
         lelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lelang = new Intent(halamanProduct.this, pelelangan.class);
+                Intent pelelangan = new Intent(halamanProduct.this, pelelangan.class);
 
-                startActivity(lelang);
+                startActivity(pelelangan);
             }
         });
     }
