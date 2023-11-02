@@ -16,18 +16,18 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.14" />
 
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="93dp"
         android:layout_height="78dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.666"
         app:srcCompat="@drawable/logo" />
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
@@ -192,7 +192,21 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-        <com.google.android.material.bottomappbar.BottomAppBar
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/botttom_nav_bar"
+            android:layout_width="414dp"
+            android:layout_height="67dp"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="40dp"
+            android:background="@color/app_theme"
+            app:itemRippleColor="@color/white"
+            app:menu="@menu/bottom_nav_menu"
+            android:paddingStart="10dp"
+            android:paddingEnd="15dp">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+         <!--   <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="443dp"
             android:layout_height="61dp"
             android:layout_gravity="bottom"
@@ -201,34 +215,46 @@
             app:fabCradleVerticalOffset="10dp"
             android:backgroundTint="@color/app_theme">
 
+            &lt;!&ndash;<ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/app_theme"
+                android:src="@drawable/ic_home"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="100dp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="568dp" />&ndash;&gt;
+
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/butttom_nav_bar"
+                android:id="@+id/botttom_nav_bar"
                 android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="40dp"
                 android:layout_gravity="bottom"
                 android:background="@color/app_theme"
-                app:menu="@menu/bottom_nav_menu">
+                app:menu="@menu/bottom_nav_menu"
+                app:itemRippleColor="@color/white">
 
 
             </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-
+        </com.google.android.material.bottomappbar.BottomAppBar>-->
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
+            android:layout_width="69dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="179dp"
             android:layout_marginBottom="30dp"
             android:clickable="true"
             app:backgroundTint="#DCD6D6"
-            app:srcCompat="@drawable/icn_mata_pancing"/>
+            app:layout_anchor="@id/botttom_nav_bar"
+            app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+            app:srcCompat="@drawable/icn_mata_pancing" />
 
 
 
