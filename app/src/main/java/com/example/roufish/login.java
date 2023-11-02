@@ -1,6 +1,7 @@
 package com.example.roufish;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class login extends AppCompatActivity {
 
         EditText password = (EditText) findViewById(R.id.input_Password);
         CheckBox checkPassword  = (CheckBox) findViewById(R.id.tampilkanPassword);
-        Button login = findViewById(R.id.btn_login);
+        AppCompatButton login = findViewById(R.id.btn_login);
 
         checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
