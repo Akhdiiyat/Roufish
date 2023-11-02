@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.appcompat.widget.AppCompatButton;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class register extends Activity {
@@ -23,7 +21,7 @@ public class register extends Activity {
         setContentView(R.layout.register_activity);
         EditText inputPassword = findViewById(R.id.input_Password);
 
-        AppCompatButton btnDaftar = findViewById(R.id.btn_daftar) ;
+        Button btnDaftar = findViewById(R.id.btn_daftar) ;
 
 
 
