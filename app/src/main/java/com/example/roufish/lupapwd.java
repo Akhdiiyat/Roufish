@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class lupapwd extends AppCompatActivity {
 
     Button buttonRegister, buttonSend;
@@ -17,7 +19,14 @@ public class lupapwd extends AppCompatActivity {
 
         buttonRegister = findViewById(R.id.btn_register_pwd);
         buttonSend = findViewById(R.id.btn_send_code);
-
+        FloatingActionButton backToMain = findViewById(R.id.backToMainREG);
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ToMainIntent = new Intent(lupapwd.this, MainActivity.class);
+                startActivity(ToMainIntent);
+            }
+        });
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
