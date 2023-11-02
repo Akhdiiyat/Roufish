@@ -3,43 +3,42 @@ package com.example.roufish;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class lupapwd extends AppCompatActivity {
 
-    Button buttonRegister, buttonSend;
+    Button buttonSend;
+    TextInputLayout emailInputLayout;
+    TextInputEditText emailTextInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lupapwd);
 
-        buttonRegister = findViewById(R.id.btn_register_pwd);
+        emailInputLayout = findViewById(R.id.emailInputLayout);
+        emailTextInput = findViewById(R.id.emailTextInput);
         buttonSend = findViewById(R.id.btn_send_code);
-        FloatingActionButton backToMain = findViewById(R.id.backToMainREG);
-        backToMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ToMainIntent = new Intent(lupapwd.this, MainActivity.class);
-                startActivity(ToMainIntent);
-            }
-        });
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(lupapwd.this, register.class); // Adjust to your Register activity class name
-                startActivity(registerIntent);
-            }
-        });
 
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent(lupapwd.this, lupapwd_code.class);
-                startActivity(sendIntent);
+                String email = emailTextInput.getText().toString().trim();
+                if (TextUtils.isEmpty(email)) {
+                    // Email field is empty, show an error message
+                    emailInputLayout.setError("Email is required");
+                } else {
+                    // Email field is not empty, remove any previous error message
+                    emailInputLayout.setError(null);
+
+                    // Proceed with sending the code
+                    Intent sendIntent = new Intent(lupapwd.this, lupapwd_code.class);
+                    startActivity(sendIntent);
+                }
             }
         });
     }

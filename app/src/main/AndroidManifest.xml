@@ -19,7 +19,7 @@
             android:name=".lupapwd_code"
             android:exported="false" />
         <activity
-            android:name=".newProduct"
+            android:name=".halamanProduct"
             android:exported="false" />
         <activity
             android:name=".product"
