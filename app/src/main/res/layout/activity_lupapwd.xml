@@ -8,6 +8,12 @@
     tools:context=".MainActivity">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    </LinearLayout>
+
     <TextView
         android:id="@+id/text_verifikasi"
         android:layout_width="wrap_content"
@@ -75,18 +81,22 @@
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:hint="example@gmail.com"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_send_code"
                 android:layout_width="279dp"
                 android:layout_height="44dp"
-                android:background="@color/app_theme"
-                android:text="Send Bottom"
+                android:background="@color/primary_blue"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:text="Send Code"
                 app:layout_constraintBottom_toTopOf="@+id/sudah_punya_akun"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.515"
@@ -109,12 +119,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.148" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_register_pwd"
                 android:layout_width="279dp"
                 android:layout_height="44dp"
                 android:layout_marginBottom="108dp"
-                android:background="@color/app_theme"
+                android:background="@color/primary_blue"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
                 android:text="Register"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +135,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/sudah_punya_akun"
                 app:layout_constraintVertical_bias="0.456" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/border"
+                android:gravity="center_horizontal"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/border"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
