@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
     Button buttonLogin, buttonRegister;
@@ -14,6 +15,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         buttonRegister = findViewById(R.id.buttonRegister);
         buttonLogin =findViewById(R.id.buttonLogin);
+
+        TextView lupaPassword = findViewById(R.id.lupaPassword);
+
+
+        lupaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent lupaassIntent = new Intent(MainActivity.this, lupapwd.class);
+
+                startActivity(lupaassIntent);
+            }
+        });
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
