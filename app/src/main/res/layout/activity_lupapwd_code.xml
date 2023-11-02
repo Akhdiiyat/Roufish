@@ -12,7 +12,7 @@
         android:id="@+id/text_verifikasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Verifikasi"
+        android:text="Verif"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
