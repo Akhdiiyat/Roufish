@@ -171,7 +171,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/Text_NoHP" />
 
             <Button
-                android:id="@+id/btn_daftar"
+                android:id="@+id/btn_verifikasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/app_theme"

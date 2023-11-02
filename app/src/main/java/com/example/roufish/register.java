@@ -21,13 +21,13 @@ public class register extends Activity {
         setContentView(R.layout.register_activity);
         EditText inputPassword = findViewById(R.id.input_Password);
 
-        Button btnDaftar = findViewById(R.id.btn_daftar) ;
+        Button btnDaftar = findViewById(R.id.btn_verifikasi) ;
 
 
 
         FloatingActionButton backToMain = findViewById(R.id.backToMainREG);
 
-        Button daftar = findViewById(R.id.btn_daftar);
+        Button daftar = findViewById(R.id.btn_verifikasi);
 
         daftar.setOnClickListener(new View.OnClickListener() {
             @Override
