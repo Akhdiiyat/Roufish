@@ -12,16 +12,14 @@ import com.google.android.material.textfield.TextInputLayout;
 public class lupapwd extends AppCompatActivity {
 
     Button buttonSend;
-    TextInputLayout emailInputLayout;
-    TextInputEditText emailTextInput;
+    TextInputLayout emailInputLayout = findViewById(R.id.emailInputLayout);;
+    TextInputEditText emailTextInput = findViewById(R.id.emailTextInput);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lupapwd);
 
-        emailInputLayout = findViewById(R.id.emailInputLayout);
-        emailTextInput = findViewById(R.id.emailTextInput);
         buttonSend = findViewById(R.id.btn_send_code);
 
         buttonSend.setOnClickListener(new View.OnClickListener() {

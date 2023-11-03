@@ -21,7 +21,6 @@ public class product extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent product = new Intent(product.this, halamanProduct.class);
-
                 startActivity(product);
 
             }
