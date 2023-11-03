@@ -19,13 +19,13 @@
             android:name=".lupapwd_code"
             android:exported="false" />
         <activity
-            android:name=".newProduct"
+            android:name=".halamanProduct"
             android:exported="false" />
         <activity
             android:name=".product"
             android:exported="false" />
         <activity
-            android:name=".cobaScrollview"
+            android:name=".pelelangan"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -133,14 +133,16 @@
                     android:layout_height="59dp"
                     android:layout_marginTop="4dp"
                     android:backgroundTint="@color/card_view"
-                    app:layout_constraintTop_toBottomOf="@+id/Text_penawaran"
-                    tools:layout_editor_absoluteX="49dp">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.628"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Text_penawaran">
 
                     <TextView
 
+                        android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="520dp"
                         android:text="Bapak Sunaryo Harga Rp 620.000"
                         android:textSize="15sp"
                         tools:layout_editor_absoluteX="3dp" />
@@ -149,10 +151,13 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:text="Ibu Ngajimah Harga Rp 620.0000"
                         android:textSize="15sp"
-                        tools:layout_editor_absoluteX="3dp"
-                        tools:layout_editor_absoluteY="23dp" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="2dp" />
 
                     <TextView
 
