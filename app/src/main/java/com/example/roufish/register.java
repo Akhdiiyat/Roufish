@@ -23,8 +23,6 @@ public class register extends Activity {
 
         Button btnDaftar = findViewById(R.id.btn_daftar) ;
 
-
-
         FloatingActionButton backToMain = findViewById(R.id.backToMainREG);
 
         Button daftar = findViewById(R.id.btn_daftar);
