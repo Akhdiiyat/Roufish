@@ -23,9 +23,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent lupaassIntent = new Intent(MainActivity.this, lupapwd.class);
+                Intent lupaPassIntent = new Intent(MainActivity.this, lupapwd.class);
 
-                startActivity(lupaassIntent);
+                startActivity(lupaPassIntent);
             }
         });
 

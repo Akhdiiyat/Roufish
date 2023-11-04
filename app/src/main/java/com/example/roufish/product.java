@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class product extends AppCompatActivity {
 
     @Override
@@ -14,7 +16,7 @@ public class product extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-
+        FloatingActionButton profile = findViewById(R.id.info_profile);
         CardView product = findViewById(R.id.info_produk);
 
         product.setOnClickListener(new View.OnClickListener() {
@@ -24,6 +26,19 @@ public class product extends AppCompatActivity {
                 startActivity(product);
 
             }
+
         });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileintent = new Intent(product.this, profile.class);
+                startActivity(profileintent);
+            }
+        });
+
+
     }
+
+
 }

@@ -19,7 +19,8 @@ public class lupapwd extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lupapwd);
-
+        emailInputLayout = findViewById(R.id.emailInputLayout);
+        emailTextInput = findViewById(R.id.emailTextInput);
         buttonSend = findViewById(R.id.btn_send_code);
 
         buttonSend.setOnClickListener(new View.OnClickListener() {
