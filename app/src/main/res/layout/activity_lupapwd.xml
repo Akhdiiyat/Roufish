@@ -74,14 +74,14 @@
                 android:text="Masukkan alamat email"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/emailInputLayout"
+                app:layout_constraintBottom_toTopOf="@+id/emailInput"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.036" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailInputLayout"
                 android:layout_width="402dp"
                 android:layout_height="50dp"
@@ -103,7 +103,23 @@
                     tools:layout_editor_absoluteY="76dp" />
 
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <EditText
+                android:id="@+id/emailInput"
+                android:layout_width="300dp"
+                android:layout_height="39dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.113" />
 
             <Button
                 android:id="@+id/btn_send_code"
