@@ -58,8 +58,8 @@
 
             <RatingBar
                 android:id="@+id/ratingBar"
-                android:layout_width="236dp"
-                android:layout_height="46dp"
+                android:layout_width="242dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="136dp"
                 android:isIndicator="false"
                 android:numStars="5"
@@ -121,6 +121,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="107dp"
+                android:layout_height="42dp"
+                android:backgroundTint="@color/red"
+                android:text="Logout"
+                tools:layout_editor_absoluteX="152dp"
+                tools:layout_editor_absoluteY="350dp" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,10 +165,10 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
+        android:layout_width="51dp"
+        android:layout_height="50dp"
         android:layout_gravity="end|bottom"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="104dp"
         android:clickable="true"
         android:isScrollContainer="false"
         android:src="@drawable/ic_person"
@@ -167,10 +176,10 @@
         app:backgroundTint="#C6C6C6"
         app:fabCustomSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.557"
+        app:maxImageSize="30dp"
         app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

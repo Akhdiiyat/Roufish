@@ -148,6 +148,7 @@
                 android:layout_height="21dp"
                 android:background="@color/white"
                 android:backgroundTint="@color/black"
+                android:textAlignment="center"
                 android:text="0"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

@@ -12,15 +12,20 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Beli_Langsung extends AppCompatActivity {
 
-    private TextView textzero;
+    TextView textzero;
     private int nilaipesanan = 0;
 
+    public void tambahpesanan(int i) {
+        nilaipesanan += i;
+        nilaipesanan = Math.max(0,nilaipesanan);
+        textzero.setText(String.valueOf(nilaipesanan));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beli_langsung);
 
-        TextView textzero = findViewById(R.id.btn_zero);
+        textzero = findViewById(R.id.btn_zero);
         Button plus = findViewById(R.id.btn_plus);
         Button minus = findViewById(R.id.btn_minus);
 
@@ -37,6 +42,7 @@ public class Beli_Langsung extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 tambahpesanan(1);
             }
         });
@@ -44,17 +50,14 @@ public class Beli_Langsung extends AppCompatActivity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 tambahpesanan(-1);
             }
         });
 
 
     }
-    private void tambahpesanan(int i) {
-        nilaipesanan += i;
-        nilaipesanan = Math.max(0,nilaipesanan);
-        textzero.setText(String.valueOf(nilaipesanan));
-    }
+
 
 
 }
