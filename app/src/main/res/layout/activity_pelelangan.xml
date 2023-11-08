@@ -98,18 +98,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="09.05.41"
+                    android:textColor="@color/red"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.676"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:textColor="@color/red"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/Gambar_ikan"
-                    android:layout_width="332dp"
-                    android:layout_height="187dp"
+                    android:layout_width="326dp"
+                    android:layout_height="160dp"
                     tools:layout_editor_absoluteX="50dp"
                     tools:layout_editor_absoluteY="59dp"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -118,49 +118,30 @@
                     android:id="@+id/Text_penawaran"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="256dp"
+                    android:layout_marginTop="228dp"
                     android:text="Penawaran"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.148"
+                    app:layout_constraintHorizontal_bias="0.145"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/constraintLayout"
                     android:layout_width="333dp"
-                    android:layout_height="59dp"
+                    android:layout_height="85dp"
                     android:layout_marginTop="4dp"
                     android:backgroundTint="@color/card_view"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.628"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Text_penawaran">
+                    app:layout_constraintTop_toBottomOf="@+id/Text_penawaran"
+                    app:layout_constraintVertical_bias="0.0">
 
-                    <TextView
 
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bapak Sunaryo Harga Rp 620.000"
-                        android:textSize="15sp"
-                        tools:layout_editor_absoluteX="3dp" />
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Ibu Ngajimah Harga Rp 620.0000"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6"
-                        app:layout_constraintVertical_bias="0.0"
-                        tools:layout_editor_absoluteX="2dp" />
-
-                    <TextView
-
+                    <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Bapak Sunaryo Harga Rp 500.0000"
@@ -169,18 +150,18 @@
                         tools:layout_editor_absoluteY="43dp" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/Text_pasang_penawaran"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="356dp"
+                    android:layout_marginTop="348dp"
                     android:text="Pasang Penawaran"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.176"
+                    app:layout_constraintHorizontal_bias="0.173"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -202,15 +183,16 @@
                     android:id="@+id/Text_selesai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="448dp"
+                    android:layout_marginTop="23dp"
                     android:text="selesai Pukul 09.00"
                     android:textColor="@color/red"
                     android:textSize="24dp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.487"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_masukkan_harga" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>
