@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
-    tools:context=".login">
+    tools:context=".profile">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -69,13 +69,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/nama"
+                android:id="@+id/profilNama"
                 android:layout_width="300dp"
                 android:layout_height="39dp"
                 android:background="@drawable/custom_input"
                 android:drawableLeft="@drawable/ic_person"
                 android:ems="10"
                 android:inputType="text"
+                android:text="name"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -85,14 +86,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.273" />
 
-            <EditText
-                android:id="@+id/input_email"
+            <TextView
+                android:id="@+id/profilEmail"
                 android:layout_width="300dp"
                 android:layout_height="39dp"
                 android:background="@drawable/custom_input"
                 android:drawableLeft="@drawable/ic_email"
                 android:ems="10"
-                android:hint="Email"
                 android:inputType="text"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -103,14 +103,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.392" />
 
-            <EditText
-                android:id="@+id/input_NoHP"
+            <TextView
+                android:id="@+id/profilNoHP"
                 android:layout_width="300dp"
                 android:layout_height="39dp"
                 android:background="@drawable/custom_input"
                 android:drawableLeft="@drawable/ic_phone"
                 android:ems="10"
-                android:hint="No Hp"
+
                 android:inputType="text"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"

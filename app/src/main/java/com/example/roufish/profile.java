@@ -10,42 +10,36 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.DataCollectionDefaultChange;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class profile extends AppCompatActivity {
 
-    FirebaseAuth auth;
+    //FirebaseAuth auth;
     Button logout;
 
-    FirebaseUser user;
+    //FirebaseUser user;
 
-    TextView nama;
+    TextView profilUsername,profilEmail,profilNoHP;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        auth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.btn_logout);
-        user = auth.getCurrentUser();
-        nama = findViewById(R.id.nama);
-        //EditText editTextNama = findViewById(R.id.input_nama);
+        profilEmail = findViewById(R.id.profilEmail);
+        profilUsername = findViewById(R.id.profilNama);
+        profilNoHP = findViewById(R.id.profilNoHP);
+        showUserData();
         FloatingActionButton roufish = findViewById(R.id.roufish);
 
-        if (user == null){
-            Intent intent = new Intent(getApplicationContext(),login.class);
-            startActivity(intent);
-            finish();
-        }else {
-            nama.setText(user.getEmail());
-        }
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
+                //FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(),login.class);
                 startActivity(intent);
                 finish();
@@ -59,5 +53,18 @@ public class profile extends AppCompatActivity {
                 startActivity(roufishintent);
             }
         });
+
+
+    }
+    public void showUserData(){
+        Intent intent = getIntent();
+
+        String namaUser = intent.getStringExtra("username");
+        String emailUser = intent.getStringExtra("email");
+        String noHPUser = intent.getStringExtra("NoHP");
+
+        profilUsername.setText(namaUser);
+        profilEmail.setText(emailUser);
+        profilNoHP.setText(noHPUser);
     }
 }

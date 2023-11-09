@@ -9,7 +9,6 @@ import android.widget.Button;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class lupapwd_code extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +22,6 @@ public class lupapwd_code extends AppCompatActivity {
                 startActivity(lupaPwIntent);
             }
         });
-
         buttonVerif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

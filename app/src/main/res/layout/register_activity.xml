@@ -167,7 +167,7 @@
                 app:layout_constraintStart_toStartOf="@+id/input_NoHP"
                 app:layout_constraintTop_toBottomOf="@+id/input_Alamat" />
 
-            <EditText
+            <TextView
                 android:id="@+id/input_NoHP"
                 android:layout_width="300dp"
                 android:layout_height="44dp"
