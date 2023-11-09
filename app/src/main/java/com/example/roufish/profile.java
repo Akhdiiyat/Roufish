@@ -17,12 +17,8 @@ public class profile extends AppCompatActivity {
 
     FirebaseAuth auth;
     Button logout;
-
     FirebaseUser user;
-
     TextView nama;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +29,6 @@ public class profile extends AppCompatActivity {
         nama = findViewById(R.id.nama);
         //EditText editTextNama = findViewById(R.id.input_nama);
         FloatingActionButton roufish = findViewById(R.id.roufish);
-
         if (user == null){
             Intent intent = new Intent(getApplicationContext(),login.class);
             startActivity(intent);
@@ -41,7 +36,6 @@ public class profile extends AppCompatActivity {
         }else {
             nama.setText(user.getEmail());
         }
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +45,6 @@ public class profile extends AppCompatActivity {
                 finish();
             }
         });
-
         roufish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

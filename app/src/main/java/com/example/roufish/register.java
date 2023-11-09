@@ -29,14 +29,9 @@ public class register extends Activity {
     FirebaseAuth mAuth;
     EditText inputPassword ;
     EditText inputUsername;
-
     Button btnDaftar ;
-
     FloatingActionButton backToMain ;
-
     Button daftar ;
-
-
 
     @Override
     public void onStart() {
@@ -59,22 +54,17 @@ public class register extends Activity {
         btnDaftar = findViewById(R.id.btn_daftar);
         backToMain = findViewById(R.id.backToMainREG);
         daftar = findViewById(R.id.btn_daftar);
-
-
         daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent registerIntent = new Intent(register.this, login.class);
-
                 startActivity(registerIntent);
             }
         });
-
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent registerIntent = new Intent(register.this, MainActivity.class);
-
                 startActivity(registerIntent);
             }
         });
@@ -86,7 +76,6 @@ public class register extends Activity {
             @Override
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 final int Right = 2;
-
                 if(motionEvent.getAction()== motionEvent.ACTION_UP){
                     if (motionEvent.getRawX()>=inputPassword.getRight()-inputPassword.getCompoundDrawables()[Right].getBounds().width()){
                         int selection=inputPassword.getSelectionEnd();
@@ -103,7 +92,6 @@ public class register extends Activity {
                         return true;
                     }
                 }
-
                 return false;
             }
         });
@@ -113,13 +101,9 @@ public class register extends Activity {
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String username,password = null;
-
                 username = String.valueOf(inputUsername.getText());
                 password = String.valueOf(inputPassword.getText());
-
-
                 if (TextUtils.isEmpty(username)){
                     Toast.makeText(register.this,"Masukkan username",Toast.LENGTH_SHORT).show();
                     return;
@@ -128,7 +112,6 @@ public class register extends Activity {
                     Toast.makeText(register.this,"Masukkan password",Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 mAuth.createUserWithEmailAndPassword(username, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -139,7 +122,6 @@ public class register extends Activity {
                                     //FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(register.this, "Account Created",
                                             Toast.LENGTH_SHORT).show();
-
                                     AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
                                     builder.setTitle("Pendaftaran Berhasil");
                                     builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
@@ -147,7 +129,6 @@ public class register extends Activity {
                                         public void onClick(DialogInterface dialogInterface, int i) {
                                             dialogInterface.dismiss();
                                             Intent registerIntent = new Intent(register.this, login.class);
-
                                             startActivity(registerIntent);
                                         }
                                     }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
@@ -156,20 +137,14 @@ public class register extends Activity {
                                             finish();
                                         }
                                     }).create().show();
-
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     //Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(register.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-
                                 }
                             }
                         });
-
-
-
-
             }
         });
     }
