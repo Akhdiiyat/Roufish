@@ -21,7 +21,7 @@ public class profile extends AppCompatActivity {
 
     //FirebaseUser user;
 
-    EditText profileUsername,profileEmail,profilenoHP;
+    TextView profileUsername,profileEmail,profilenoHP;
 
 
     @Override
