@@ -23,12 +23,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class register extends Activity {
 
-    FirebaseAuth mAuth;
-    EditText inputPassword ;
+    //FirebaseAuth mAuth;
+    EditText inputPassword, inputAlamat, inputNoHP ;
     EditText inputUsername;
+
+    EditText inputEmail;
 
     Button btnDaftar ;
 
@@ -36,9 +43,11 @@ public class register extends Activity {
 
     Button daftar ;
 
+    DatabaseReference database;
 
 
-    @Override
+
+    /*@Override
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -47,18 +56,23 @@ public class register extends Activity {
             startActivity(registerIntent);
             finish();
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
         inputPassword = findViewById(R.id.inputPassword);
         inputUsername = findViewById(R.id.inputUsername);
         btnDaftar = findViewById(R.id.btn_daftar);
         backToMain = findViewById(R.id.backToMainREG);
         daftar = findViewById(R.id.btn_daftar);
+        inputEmail = findViewById(R.id.input_Email);
+        inputAlamat = findViewById(R.id.input_Alamat);
+        inputNoHP = findViewById(R.id.input_NoHP);
+
+        database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
 
 
         daftar.setOnClickListener(new View.OnClickListener() {
@@ -114,59 +128,68 @@ public class register extends Activity {
             @Override
             public void onClick(View view) {
 
-                String username,password = null;
+                String username,password, email,alamat, noHP;
 
-                username = String.valueOf(inputUsername.getText());
+                /*username = String.valueOf(inputUsername.getText());
                 password = String.valueOf(inputPassword.getText());
+                email = String.valueOf(inputEmail.getText());*/
+
+                username = inputUsername.getText().toString();
+                password = inputPassword.getText().toString();
+                email = inputEmail.getText().toString();
+                alamat = inputAlamat.getText().toString();
+                noHP = inputNoHP.getText().toString();
 
 
-                if (TextUtils.isEmpty(username)){
-                    Toast.makeText(register.this,"Masukkan username",Toast.LENGTH_SHORT).show();
+                if (username.isEmpty() || password.isEmpty() || email.isEmpty() || alamat.isEmpty() ||noHP.isEmpty()){
+                    Toast.makeText(register.this,"Data masih ada yang kosong",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.isEmpty(password)){
-                    Toast.makeText(register.this,"Masukkan password",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                mAuth.createUserWithEmailAndPassword(username, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    //Log.d(TAG, "createUserWithEmail:success");
-                                    //FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(register.this, "Account Created",
-                                            Toast.LENGTH_SHORT).show();
-
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
-                                    builder.setTitle("Pendaftaran Berhasil");
-                                    builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            dialogInterface.dismiss();
-                                            Intent registerIntent = new Intent(register.this, login.class);
-
-                                            startActivity(registerIntent);
-                                        }
-                                    }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            finish();
-                                        }
-                                    }).create().show();
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    //Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(register.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-
-                                }
+                else {
+                    database.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(username)){
+                                Toast.makeText(register.this,"username sudah tersedia",Toast.LENGTH_SHORT).show();
                             }
-                        });
+                            else {
+                                database.child("users").child(username).child("username").setValue(username);
+                                database.child("users").child(username).child("email").setValue(email);
+                                database.child("users").child(username).child("password").setValue(password);
+                                database.child("users").child(username).child("alamat").setValue(alamat);
+                                database.child("users").child(username).child("NoHP").setValue(noHP);
 
+                                Toast.makeText(register.this,"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
+                                builder.setTitle("Pendaftaran Berhasil");
+                                builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                        Intent registerIntent = new Intent(register.this, login.class);
+
+                                        startActivity(registerIntent);
+                                    }
+                                }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        finish();
+                                    }
+                                }).create().show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+
+
+                }
 
 
 
