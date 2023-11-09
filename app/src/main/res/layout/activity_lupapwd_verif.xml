@@ -112,12 +112,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
                 app:layout_constraintVertical_bias="0.035" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
                 android:layout_width="279dp"
                 android:layout_height="50dp"
                 android:text="Submit"
-                android:backgroundTint="@color/primary_blue"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="7pt"
+                android:background="@drawable/rounded_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.507"

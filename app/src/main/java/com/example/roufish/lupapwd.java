@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -24,8 +25,15 @@ public class lupapwd extends AppCompatActivity {
         setContentView(R.layout.activity_lupapwd);
         emailInput = findViewById(R.id.emailInput);
         //emailTextInput = findViewById(R.id.emailTextInput);
+        FloatingActionButton backToMain = findViewById(R.id.backToMainREG);
         buttonSend = findViewById(R.id.btn_send_code);
-
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lupaPwIntent = new Intent(lupapwd.this, MainActivity.class);
+                startActivity(lupaPwIntent);
+            }
+        });
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

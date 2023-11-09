@@ -101,7 +101,7 @@
                 android:layout_marginBottom="508dp"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
-                android:background="@color/primary_blue"
+                android:background="@drawable/rounded_button"
                 android:text="Verifikasi"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

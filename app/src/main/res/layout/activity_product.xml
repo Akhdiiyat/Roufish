@@ -79,10 +79,29 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.031" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/search_button"
+                    android:layout_width="74dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#00A8F0"
+                    android:text="Search"
+                    android:textSize="5pt"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.16"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/info_produk"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
+                    app:cardCornerRadius="10sp"
+                    app:cardElevation="8sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
@@ -94,24 +113,40 @@
                         android:id="@+id/nama_ikan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
                         android:text="Ikan Mujair"
                         android:textStyle="bold"
                         tools:ignore="MissingConstraints" />
 
                     <ImageView
                         android:id="@+id/Gambar_ikan"
-                        android:layout_width="229dp"
-                        android:layout_height="117dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_width="267dp"
+                        android:layout_height="139dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="10dp"
                         tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/text_harga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="250dp"
+                        android:layout_marginTop="175dp"
+                        android:text="Harga"
+                        android:textSize="5pt"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/harga_ikan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="180dp"
-                        android:text="Rp50.000" />
+                        android:layout_marginLeft="230dp"
+                        android:layout_marginTop="190dp"
+                        android:text="Rp 50.000"
+                        android:textColor="#2CD93D"
+                        android:textSize="5pt" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -123,30 +158,48 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/info_produk">
+                    app:layout_constraintTop_toBottomOf="@+id/info_produk"
+                    app:cardCornerRadius="10sp"
+                    app:cardElevation="8sp">
 
                     <TextView
                         android:id="@+id/nama_ikan2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
                         android:text="Ikan Mujair"
                         android:textStyle="bold"
                         tools:ignore="MissingConstraints" />
 
                     <ImageView
                         android:id="@+id/Gambar_ikan2"
-                        android:layout_width="229dp"
-                        android:layout_height="117dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_width="267dp"
+                        android:layout_height="139dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="10dp"
                         tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/text_harga2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="250dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="175dp"
+                        android:textSize="5pt"
+                        android:text="Harga" />
 
                     <TextView
                         android:id="@+id/harga_ikan2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="180dp"
-                        android:text="Rp50.000" />
+                        android:layout_marginLeft="230dp"
+                        android:textSize="5pt"
+                        android:layout_marginTop="190dp"
+                        android:textColor="#2CD93D"
+                        android:text="Rp 50.000" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -159,30 +212,48 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/info_produk2">
+                    app:layout_constraintTop_toBottomOf="@+id/info_produk2"
+                    app:cardCornerRadius="10sp"
+                    app:cardElevation="8sp">
 
                     <TextView
                         android:id="@+id/nama_ikan3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
                         android:text="Ikan Mujair"
                         android:textStyle="bold"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"/>
 
                     <ImageView
                         android:id="@+id/Gambar_ikan3"
-                        android:layout_width="229dp"
-                        android:layout_height="117dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginBottom="20dp"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:layout_width="267dp"
+                        android:layout_height="139dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="10dp"
+                        tools:srcCompat="@tools:sample/avatars"  />
+
+                    <TextView
+                        android:id="@+id/text_harga3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="250dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="175dp"
+                        android:textSize="5pt"
+                        android:text="Harga" />
 
                     <TextView
                         android:id="@+id/harga_ikan3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="180dp"
-                        android:text="Rp50.000" />
+                        android:layout_marginLeft="230dp"
+                        android:textSize="5pt"
+                        android:layout_marginTop="190dp"
+                        android:textColor="#2CD93D"
+                        android:text="Rp 50.000" />
 
 
                 </androidx.cardview.widget.CardView>

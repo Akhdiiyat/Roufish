@@ -66,21 +66,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />-->
 
-            <TextView
-                android:id="@+id/alamat_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:text="Masukkan alamat email"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/emailInput"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.036" />
-
             <!--<com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailInputLayout"
                 android:layout_width="402dp"
@@ -105,10 +90,25 @@
 
             </com.google.android.material.textfield.TextInputLayout>-->
 
+            <TextView
+                android:id="@+id/alamat_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Masukkan alamat email"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/emailInput"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.333" />
+
             <EditText
                 android:id="@+id/emailInput"
-                android:layout_width="300dp"
-                android:layout_height="39dp"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:inputType="text"
@@ -119,18 +119,23 @@
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.113" />
+                app:layout_constraintVertical_bias="0.142" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_send_code"
                 android:layout_width="279dp"
                 android:layout_height="44dp"
-                android:layout_marginBottom="36dp"
-                android:background="@color/app_theme"
-                android:text="Send Bottom"
+                android:layout_marginBottom="200dp"
+                android:background="@drawable/rounded_button"
+                android:layout_marginTop="5dp"
+                android:text="Send Code"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/sudah_punya_akun"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailInput"
+                />
 
             <TextView
                 android:id="@+id/sudah_punya_akun"
@@ -142,25 +147,35 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_send_code"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.557"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_register_pwd"
                 android:layout_width="279dp"
                 android:layout_height="44dp"
-                android:layout_marginBottom="108dp"
-                android:background="@color/app_theme"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_button"
                 android:text="Register"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sudah_punya_akun"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
