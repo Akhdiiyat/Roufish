@@ -68,12 +68,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <EditText
                 android:id="@+id/nama"
                 android:layout_width="300dp"
                 android:layout_height="39dp"
                 android:background="@drawable/custom_input"
                 android:drawableLeft="@drawable/ic_person"
+                android:hint="Nama"
                 android:ems="10"
                 android:inputType="text"
                 android:paddingLeft="10dp"

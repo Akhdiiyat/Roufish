@@ -26,12 +26,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity {
+
     FirebaseAuth mAuth;
     FloatingActionButton backToMain ;
     EditText editTextUsername ;
     EditText editTextpassword ;
     CheckBox checkPassword ;
     AppCompatButton login ;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -42,6 +44,7 @@ public class login extends AppCompatActivity {
             finish();
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,7 @@ public class login extends AppCompatActivity {
         editTextpassword =  findViewById(R.id.input_Password);
         checkPassword  = (CheckBox) findViewById(R.id.tampilkanPassword);
         login = findViewById(R.id.btn_login);
+
         checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -63,19 +67,26 @@ public class login extends AppCompatActivity {
                 }
             }
         });
+
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent registerIntent = new Intent(login.this, MainActivity.class);
+
                 startActivity(registerIntent);
+
             }
         });
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username,password = null;
+
                 username = String.valueOf(editTextUsername.getText());
                 password = String.valueOf(editTextpassword.getText());
+
+
                 if (TextUtils.isEmpty(username)){
                     Toast.makeText(login.this,"Masukkan username",Toast.LENGTH_SHORT).show();
                     return;
@@ -84,6 +95,7 @@ public class login extends AppCompatActivity {
                     Toast.makeText(login.this,"Masukkan password",Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 mAuth.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -102,6 +114,8 @@ public class login extends AppCompatActivity {
                                 }
                             }
                         });
+
+
             }
         });
     }

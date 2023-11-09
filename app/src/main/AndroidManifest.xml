@@ -13,9 +13,6 @@
         android:theme="@style/Theme.Roufish"
         tools:targetApi="31">
         <activity
-            android:name=".Bottom_Sheet_beliLangsung"
-            android:exported="false" />
-        <activity
             android:name=".Beli_Langsung"
             android:exported="false" />
         <activity

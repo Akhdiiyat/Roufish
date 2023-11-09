@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_theme"
+    tools:context=".product">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="93dp"
+        android:layout_height="78dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        app:srcCompat="@drawable/logo" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/info_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end|bottom"
+        android:clickable="true"
+        android:isScrollContainer="false"
+        android:src="@drawable/ic_person"
+        android:tint="#6E6C6C"
+        app:backgroundTint="#C6C6C6"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557"
+        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FORUM"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.107"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/info_produk"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.108">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/floatingActionButton13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:src="@drawable/ic_person"
+                            tools:layout_editor_absoluteX="16dp"
+                            tools:layout_editor_absoluteY="9dp"
+                            app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+                            />
+
+                        <TextView
+                            android:id="@+id/nama_ikan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem Ipsum"
+                            android:textStyle="bold"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="84dp"
+                            tools:layout_editor_absoluteY="26dp" />
+
+                        <EditText
+                            android:id="@+id/editTextText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:text="Comment"
+                            tools:layout_editor_absoluteX="19dp"
+                            tools:layout_editor_absoluteY="182dp" />
+
+                        <ImageView
+                            android:id="@+id/Gambar_ikan"
+                            android:layout_width="229dp"
+                            android:layout_height="117dp"
+                            tools:layout_editor_absoluteX="19dp"
+                            tools:layout_editor_absoluteY="65dp"
+                            tools:srcCompat="@tools:sample/avatars" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/info_produk2"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/info_produk">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/floatingActionButton12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:src="@drawable/ic_person"
+                            tools:layout_editor_absoluteX="16dp"
+                            tools:layout_editor_absoluteY="16dp"
+                            app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+                            />
+
+                        <ImageView
+                            android:id="@+id/Gambar_ikan2"
+                            android:layout_width="229dp"
+                            android:layout_height="117dp"
+                            tools:layout_editor_absoluteX="0dp"
+                            tools:layout_editor_absoluteY="92dp"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                        <EditText
+                            android:id="@+id/editTextText3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:text="Comment"
+                            tools:layout_editor_absoluteX="19dp"
+                            tools:layout_editor_absoluteY="209dp" />
+
+                        <TextView
+                            android:id="@+id/nama_ikan2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem Ipsum"
+                            android:textStyle="bold"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="84dp"
+                            tools:layout_editor_absoluteY="35dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/botttom_nav_bar"
+            android:layout_width="414dp"
+            android:layout_height="67dp"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="40dp"
+            android:background="@color/app_theme"
+            app:itemRippleColor="@color/white"
+            app:menu="@menu/bottom_nav_menu"
+            android:paddingStart="10dp"
+            android:paddingEnd="15dp">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        <!--   <com.google.android.material.bottomappbar.BottomAppBar
+           android:layout_width="443dp"
+           android:layout_height="61dp"
+           android:layout_gravity="bottom"
+           app:fabCradleMargin="10dp"
+           app:fabCradleRoundedCornerRadius="1dp"
+           app:fabCradleVerticalOffset="10dp"
+           android:backgroundTint="@color/app_theme">
+
+           &lt;!&ndash;<ImageButton
+               android:id="@+id/imageButton2"
+               android:layout_width="100dp"
+               android:layout_height="60dp"
+               android:backgroundTint="@color/app_theme"
+               android:src="@drawable/ic_home"
+               android:layout_marginLeft="50dp"
+               android:layout_marginBottom="100dp"
+               tools:layout_editor_absoluteX="16dp"
+               tools:layout_editor_absoluteY="568dp" />&ndash;&gt;
+
+           <com.google.android.material.bottomnavigation.BottomNavigationView
+               android:id="@+id/botttom_nav_bar"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="40dp"
+               android:layout_gravity="bottom"
+               android:background="@color/app_theme"
+               app:menu="@menu/bottom_nav_menu"
+               app:itemRippleColor="@color/white">
+
+
+           </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+       </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="179dp"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            app:backgroundTint="#DCD6D6"
+            app:layout_anchor="@id/botttom_nav_bar"
+            app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+            app:srcCompat="@drawable/icn_mata_pancing" />
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
