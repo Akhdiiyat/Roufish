@@ -10,42 +10,47 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.DataCollectionDefaultChange;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class profile extends AppCompatActivity {
 
-    FirebaseAuth auth;
+    //FirebaseAuth auth;
     Button logout;
 
-    FirebaseUser user;
+    //FirebaseUser user;
 
-    TextView nama;
+    EditText profileUsername,profileEmail,profilenoHP;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        auth = FirebaseAuth.getInstance();
+        //auth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.btn_logout);
-        user = auth.getCurrentUser();
-        nama = findViewById(R.id.nama);
+        //user = auth.getCurrentUser();
+        profileEmail = findViewById(R.id.input_email);
+        profileUsername = findViewById(R.id.nama);
+        profilenoHP = findViewById(R.id.input_NoHP);
         //EditText editTextNama = findViewById(R.id.input_nama);
         FloatingActionButton roufish = findViewById(R.id.roufish);
 
-        if (user == null){
+
+
+        /*if (user == null){
             Intent intent = new Intent(getApplicationContext(),login.class);
             startActivity(intent);
             finish();
         }else {
-            nama.setText(user.getEmail());
-        }
+            email.setText(user.getEmail());
+        }*/
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
+                //FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(),login.class);
                 startActivity(intent);
                 finish();
@@ -59,5 +64,21 @@ public class profile extends AppCompatActivity {
                 startActivity(roufishintent);
             }
         });
+
+        showUserData();
+    }
+
+    public void showUserData(){
+        Intent intent = getIntent();
+
+        String namaUser = intent.getStringExtra("username");
+        String emailUser = intent.getStringExtra("email");
+        String noHPUser = intent.getStringExtra("noHP");
+
+        profileUsername.setText(namaUser);
+        profileEmail.setText(emailUser);
+        profilenoHP.setText(noHPUser);
+
+
     }
 }

@@ -24,38 +24,36 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class login extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
+    //FirebaseAuth mAuth;
     FloatingActionButton backToMain ;
     EditText editTextUsername ;
     EditText editTextpassword ;
     CheckBox checkPassword ;
     AppCompatButton login ;
+    DatabaseReference database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent registerIntent = new Intent(login.this, product.class);
-            startActivity(registerIntent);
-            finish();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
         backToMain = findViewById(R.id.backToMain);
         editTextUsername = findViewById(R.id.input_Username);
         editTextpassword =  findViewById(R.id.input_Password);
         checkPassword  = (CheckBox) findViewById(R.id.tampilkanPassword);
         login = findViewById(R.id.btn_login);
+
+
 
         checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -81,39 +79,59 @@ public class login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username,password = null;
+                String username,password;
 
-                username = String.valueOf(editTextUsername.getText());
-                password = String.valueOf(editTextpassword.getText());
+                //username = String.valueOf(editTextUsername.getText());
+                //password = String.valueOf(editTextpassword.getText());
 
+                username = editTextUsername.getText().toString();
+                password = editTextpassword.getText().toString();
+                //database = FirebaseDatabase.getInstance().getReference("users");
 
-                if (TextUtils.isEmpty(username)){
-                    Toast.makeText(login.this,"Masukkan username",Toast.LENGTH_SHORT).show();
-                    return;
+                if(username.isEmpty() || password.isEmpty()){
+                    Toast.makeText(login.this,"Masukkan Data yang Kosong",Toast.LENGTH_SHORT).show();
+
                 }
-                if (TextUtils.isEmpty(password)){
-                    Toast.makeText(login.this,"Masukkan password",Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                else {
+                    database.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        //check username ada atau tidak di database
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(username)){
+                                final String getpassword = snapshot.child(username).child("password").getValue(String.class);
 
-                mAuth.signInWithEmailAndPassword(username, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Toast.makeText(getApplicationContext(),"login sukses", Toast.LENGTH_SHORT).show();
-                                    Intent registerIntent = new Intent(login.this, product.class);
-                                    startActivity(registerIntent);
+                                if(getpassword.equals(password)){
+                                    Toast.makeText(login.this,"Loggin Sukses",Toast.LENGTH_SHORT).show();
+
+                                    String usernameDB = snapshot.child(username).child("username").getValue(String.class);
+                                    String emailDB = snapshot.child(username).child("email").getValue(String.class);
+                                    String noHPDB = snapshot.child(username).child("noHP").getValue(String.class);
+
+                                    Intent loginIntent = new Intent(login.this, product.class);
+                                    loginIntent.putExtra("username", usernameDB);
+                                    loginIntent.putExtra("email",emailDB );
+                                    loginIntent.putExtra("noHP",noHPDB );
+                                    startActivity(loginIntent);
                                     finish();
-                                } else {
-                                    // If sign in fails, display a message to the user.
-
-                                    Toast.makeText(login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
                                 }
+                                else {
+                                    Toast.makeText(login.this,"Password Salah",Toast.LENGTH_SHORT).show();
+                                }
+
                             }
-                        });
+                            else {
+                                Toast.makeText(login.this,"Masukkan Data yang Benar",Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+
 
 
             }
