@@ -1,5 +1,6 @@
 package com.example.roufish;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -32,7 +33,9 @@ import com.google.firebase.database.ValueEventListener;
 public class register extends Activity {
 
     //FirebaseAuth mAuth;
-    EditText inputPassword, inputAlamat, inputNoHP ;
+    EditText inputPassword;
+    EditText inputAlamat;
+    EditText inputNoHP ;
     EditText inputUsername;
     EditText inputEmail;
     Button btnDaftar ;
@@ -40,6 +43,7 @@ public class register extends Activity {
     Button daftar ;
     DatabaseReference database;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
