@@ -21,24 +21,18 @@ public class pelelangan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelelangan);
-
         Text_Waktu = findViewById(R.id.Text_Waktu);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
-
         Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-
                 @SuppressLint("SimpleDateFormat")
                 DateFormat waktuformat = new SimpleDateFormat("HH:mm:ss");
-
                 Text_Waktu.setText(waktuformat.format(new Date()));
-
                 handler.postDelayed(this,1000);
             }
         });
-
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

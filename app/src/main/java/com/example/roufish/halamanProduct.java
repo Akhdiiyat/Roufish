@@ -14,23 +14,19 @@ import com.example.roufish.databinding.ActivityHalamanProductBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class halamanProduct extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_halaman_product);
-
         RadioGroup radioGroup = findViewById(R.id.radiogroup);
         RadioButton lelang = findViewById(R.id.lelang);
         RadioButton jual = findViewById(R.id.jual);
         Button lanjutkan = findViewById(R.id.btn_lanjutkan);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
-
         lelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+            //belum di isi
             }
         });
 
@@ -46,7 +42,6 @@ public class halamanProduct extends AppCompatActivity {
                 }
             }
         });
-
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +49,5 @@ public class halamanProduct extends AppCompatActivity {
                 startActivity(backToMainIntent);
             }
         });
-
-
     }
 }

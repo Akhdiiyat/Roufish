@@ -34,29 +34,11 @@ public class register extends Activity {
     //FirebaseAuth mAuth;
     EditText inputPassword, inputAlamat, inputNoHP ;
     EditText inputUsername;
-
     EditText inputEmail;
-
     Button btnDaftar ;
-
     FloatingActionButton backToMain ;
-
     Button daftar ;
-
     DatabaseReference database;
-
-
-
-    /*@Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent registerIntent = new Intent(register.this, product.class);
-            startActivity(registerIntent);
-            finish();
-        }
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,7 +159,6 @@ public class register extends Activity {
                                     }
                                 }).create().show();
                             }
-
                         }
 
                         @Override
@@ -185,14 +166,7 @@ public class register extends Activity {
 
                         }
                     });
-
-
-
-
                 }
-
-
-
             }
         });
     }

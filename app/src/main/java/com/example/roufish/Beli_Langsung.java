@@ -16,18 +16,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Beli_Langsung extends AppCompatActivity {
-
-
     TextView BelumAdaPilihan;
     TextView textzero;
     private int nilaipesanan = 0;
-
     public void tambahpesanan(int i) {
         nilaipesanan += i;
         nilaipesanan = Math.max(0,nilaipesanan);
         textzero.setText(String.valueOf(nilaipesanan));
     }
-
     private void showBottomSheetDialog(){
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(activity_bottom_sheet_beli_langsung);
@@ -76,7 +72,6 @@ public class Beli_Langsung extends AppCompatActivity {
                 startActivity(backToMainintent);
             }
         });
-
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +79,6 @@ public class Beli_Langsung extends AppCompatActivity {
                 tambahpesanan(1);
             }
         });
-
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,10 +86,5 @@ public class Beli_Langsung extends AppCompatActivity {
                 tambahpesanan(-1);
             }
         });
-
-
     }
-
-
-
 }
