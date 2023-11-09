@@ -1,0 +1,64 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+    <!-- ImageView -->
+
+        <!-- RadioGroup -->
+        <ImageView
+            android:id="@+id/ic_remove"
+            android:layout_width="300dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_remove"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.007" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="383dp"
+        android:layout_height="165dp">
+
+        <!-- RadioButton 1 -->
+        <RadioButton
+            android:id="@+id/Ambilditempat"
+            android:layout_width="284dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="2dp"
+            android:text="Ambil ditempat"
+            android:textSize="10pt"
+            app:layout_constraintBottom_toTopOf="@+id/lelang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.656"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Text_Opsi_Pembelian"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <!-- RadioButton 2 -->
+        <RadioButton
+            android:id="@+id/Diantarkerumah"
+            android:layout_width="288dp"
+            android:layout_height="80dp"
+            android:text="Diantar Ke Rumah"
+            android:textSize="10pt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="376dp" />
+
+    </RadioGroup>
+
+</LinearLayout>
