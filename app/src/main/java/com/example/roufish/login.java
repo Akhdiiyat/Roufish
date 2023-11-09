@@ -1,5 +1,6 @@
 package com.example.roufish;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -16,21 +17,45 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity {
+
+    FirebaseAuth mAuth;
+    FloatingActionButton backToMain ;
+    EditText editTextUsername ;
+    EditText editTextpassword ;
+    CheckBox checkPassword ;
+    AppCompatButton login ;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent registerIntent = new Intent(login.this, product.class);
+            startActivity(registerIntent);
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        FloatingActionButton backToMain = findViewById(R.id.backToMain);
-        EditText editTextUsername = findViewById(R.id.input_Username);
-        EditText editTextpassword =  findViewById(R.id.input_Password);
-        CheckBox checkPassword  = (CheckBox) findViewById(R.id.tampilkanPassword);
-        AppCompatButton login = findViewById(R.id.btn_login);
+        mAuth = FirebaseAuth.getInstance();
+        backToMain = findViewById(R.id.backToMain);
+        editTextUsername = findViewById(R.id.input_Username);
+        editTextpassword =  findViewById(R.id.input_Password);
+        checkPassword  = (CheckBox) findViewById(R.id.tampilkanPassword);
+        login = findViewById(R.id.btn_login);
 
         checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -71,9 +96,26 @@ public class login extends AppCompatActivity {
                     return;
                 }
 
-                Intent registerIntent = new Intent(login.this, product.class);
+                mAuth.signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Toast.makeText(getApplicationContext(),"login sukses", Toast.LENGTH_SHORT).show();
+                                    Intent registerIntent = new Intent(login.this, product.class);
+                                    startActivity(registerIntent);
+                                    finish();
+                                } else {
+                                    // If sign in fails, display a message to the user.
 
-                startActivity(registerIntent);
+                                    Toast.makeText(login.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+
             }
         });
     }

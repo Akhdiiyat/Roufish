@@ -68,14 +68,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/input_nama"
+            <TextView
+                android:id="@+id/nama"
                 android:layout_width="300dp"
                 android:layout_height="39dp"
                 android:background="@drawable/custom_input"
                 android:drawableLeft="@drawable/ic_person"
                 android:ems="10"
-                android:hint="Nama"
                 android:inputType="text"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -127,8 +126,11 @@
                 android:layout_height="42dp"
                 android:backgroundTint="@color/red"
                 android:text="Logout"
-                tools:layout_editor_absoluteX="152dp"
-                tools:layout_editor_absoluteY="350dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.643" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
