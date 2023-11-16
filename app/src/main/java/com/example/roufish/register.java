@@ -41,7 +41,9 @@ public class register extends Activity {
     Button btnDaftar ;
     FloatingActionButton backToMain ;
     Button daftar ;
-    DatabaseReference database;
+    DatabaseReference reference;
+
+    FirebaseDatabase database;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -49,26 +51,29 @@ public class register extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
         //mAuth = FirebaseAuth.getInstance();
-        inputPassword = findViewById(R.id.inputPassword);
         inputUsername = findViewById(R.id.inputUsername);
-        btnDaftar = findViewById(R.id.btn_daftar);
-        backToMain = findViewById(R.id.backToMainREG);
-        daftar = findViewById(R.id.btn_daftar);
+        inputPassword = findViewById(R.id.inputPassword);
         inputEmail = findViewById(R.id.input_Email);
         inputAlamat = findViewById(R.id.input_Alamat);
         inputNoHP = findViewById(R.id.input_NoHP);
+        btnDaftar = (Button) findViewById(R.id.btn_daftar);
+        backToMain = findViewById(R.id.backToMainREG);
+        //daftar = findViewById(R.id.btn_daftar);
 
-        database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
+
+        //reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
 
 
-        daftar.setOnClickListener(new View.OnClickListener() {
+
+
+       /* daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent registerIntent = new Intent(register.this, login.class);
 
                 startActivity(registerIntent);
             }
-        });
+        });*/
 
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,11 +119,11 @@ public class register extends Activity {
             @Override
             public void onClick(View view) {
 
+                database = FirebaseDatabase.getInstance();
+                reference = database.getReference("users");
                 String username,password, email,alamat, noHP;
 
-                /*username = String.valueOf(inputUsername.getText());
-                password = String.valueOf(inputPassword.getText());
-                email = String.valueOf(inputEmail.getText());*/
+
 
                 username = inputUsername.getText().toString();
                 password = inputPassword.getText().toString();
@@ -132,18 +137,46 @@ public class register extends Activity {
                     return;
                 }
                 else {
-                    database.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    user user = new user(username,password,email,alamat,noHP);
+                    reference.child(username).setValue(user);
+
+
+                    /*Toast.makeText(register.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(register.this, login.class);
+                    startActivity(intent);*/
+
+                    Toast.makeText(register.this,"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
+                    builder.setTitle("Pendaftaran Berhasil");
+                    builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                            Intent registerIntent = new Intent(register.this, login.class);
+
+                            startActivity(registerIntent);
+                        }
+                    }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    }).create().show();
+
+
+
+                    /*reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.hasChild(username)){
                                 Toast.makeText(register.this,"username sudah tersedia",Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                database.child("users").child(username).child("username").setValue(username);
-                                database.child("users").child(username).child("email").setValue(email);
-                                database.child("users").child(username).child("password").setValue(password);
-                                database.child("users").child(username).child("alamat").setValue(alamat);
-                                database.child("users").child(username).child("NoHP").setValue(noHP);
+                                reference.child("users").child(username).child("username").setValue(username);
+                                reference.child("users").child(username).child("email").setValue(email);
+                                reference.child("users").child(username).child("password").setValue(password);
+                                reference.child("users").child(username).child("alamat").setValue(alamat);
+                                reference.child("users").child(username).child("NoHP").setValue(noHP);
 
                                 Toast.makeText(register.this,"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
                                 AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
@@ -169,7 +202,7 @@ public class register extends Activity {
                         public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    });
+                    });*/
                 }
             }
         });
