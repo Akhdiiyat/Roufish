@@ -2,8 +2,6 @@ package com.example.roufish;
 
 import static com.example.roufish.R.layout.activity_bottom_sheet_beli_langsung;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -54,16 +54,11 @@ public class Beli_Langsung extends AppCompatActivity {
         Button plus = findViewById(R.id.btn_plus);
         Button minus = findViewById(R.id.btn_minus);
 
-        BelumAdaPilihan = findViewById(R.id.BelumAdaPilihan);
+
 
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
-        TextView Text_Ubah = findViewById(R.id.Text_Ubah);
-        Text_Ubah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showBottomSheetDialog();
-            }
-        });
+
+
 
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override

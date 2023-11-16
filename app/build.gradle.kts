@@ -7,17 +7,14 @@ plugins {
 android {
     namespace = "com.example.roufish"
     compileSdk = 33
-
     defaultConfig {
         applicationId = "com.example.roufish"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -38,9 +35,7 @@ android {
         viewBinding = true
     }
 }
-
 dependencies {
-
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
@@ -49,7 +44,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.5.3")
     implementation("com.google.firebase:firebase-inappmessaging:20.4.0")
     implementation("com.google.firebase:firebase-auth:22.2.0")
-    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

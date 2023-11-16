@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_theme"
-    tools:context=".product">
+    tools:context=".ProductActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -54,281 +54,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4">
 
-
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/textView3"
-                    android:layout_width="221dp"
-                    android:layout_height="29dp"
-                    android:background="@drawable/custom_input"
-                    android:drawableRight="@drawable/icn_search"
-                    android:hint="Search Produk"
-                    android:padding="4dp"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.289"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.031" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/search_button"
-                    android:layout_width="74dp"
-                    android:layout_height="28dp"
-                    android:layout_marginTop="31dp"
-                    android:layout_marginRight="20dp"
-                    android:background="#00A8F0"
-                    android:text="Search"
-                    android:textSize="5pt"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.16"
-                    app:layout_constraintStart_toEndOf="@+id/textView3"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/info_produk"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    app:cardCornerRadius="10sp"
-                    app:cardElevation="8sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.108">
-
-                    <TextView
-                        android:id="@+id/nama_ikan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="10dp"
-                        android:text="Ikan Mujair"
-                        android:textStyle="bold"
-                        tools:ignore="MissingConstraints" />
-
-                    <ImageView
-                        android:id="@+id/Gambar_ikan"
-                        android:layout_width="267dp"
-                        android:layout_height="139dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="10dp"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/text_harga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="250dp"
-                        android:layout_marginTop="175dp"
-                        android:text="Harga"
-                        android:textSize="5pt"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/harga_ikan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="230dp"
-                        android:layout_marginTop="190dp"
-                        android:text="Rp 50.000"
-                        android:textColor="#2CD93D"
-                        android:textSize="5pt" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/info_produk2"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/info_produk"
-                    app:cardCornerRadius="10sp"
-                    app:cardElevation="8sp">
-
-                    <TextView
-                        android:id="@+id/nama_ikan2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:text="Ikan Mujair"
-                        android:textStyle="bold"
-                        tools:ignore="MissingConstraints" />
-
-                    <ImageView
-                        android:id="@+id/Gambar_ikan2"
-                        android:layout_width="267dp"
-                        android:layout_height="139dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="10dp"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <TextView
-                        android:id="@+id/text_harga2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="250dp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="175dp"
-                        android:textSize="5pt"
-                        android:text="Harga" />
-
-                    <TextView
-                        android:id="@+id/harga_ikan2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="230dp"
-                        android:textSize="5pt"
-                        android:layout_marginTop="190dp"
-                        android:textColor="#2CD93D"
-                        android:text="Rp 50.000" />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/info_produk3"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/info_produk2"
-                    app:cardCornerRadius="10sp"
-                    app:cardElevation="8sp">
-
-                    <TextView
-                        android:id="@+id/nama_ikan3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:text="Ikan Mujair"
-                        android:textStyle="bold"
-                        tools:ignore="MissingConstraints"/>
-
-                    <ImageView
-                        android:id="@+id/Gambar_ikan3"
-                        android:layout_width="267dp"
-                        android:layout_height="139dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="10dp"
-                        tools:srcCompat="@tools:sample/avatars"  />
-
-                    <TextView
-                        android:id="@+id/text_harga3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="250dp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="175dp"
-                        android:textSize="5pt"
-                        android:text="Harga" />
-
-                    <TextView
-                        android:id="@+id/harga_ikan3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="230dp"
-                        android:textSize="5pt"
-                        android:layout_marginTop="190dp"
-                        android:textColor="#2CD93D"
-                        android:text="Rp 50.000" />
-
-
-                </androidx.cardview.widget.CardView>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/botttom_nav_bar"
-            android:layout_width="414dp"
-            android:layout_height="67dp"
-            android:layout_gravity="bottom"
-            android:layout_marginRight="40dp"
-            android:background="@color/app_theme"
-            app:itemRippleColor="@color/white"
-            app:menu="@menu/bottom_nav_menu"
-            android:paddingStart="10dp"
-            android:paddingEnd="15dp">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-         <!--   <com.google.android.material.bottomappbar.BottomAppBar
-            android:layout_width="443dp"
-            android:layout_height="61dp"
-            android:layout_gravity="bottom"
-            app:fabCradleMargin="10dp"
-            app:fabCradleRoundedCornerRadius="1dp"
-            app:fabCradleVerticalOffset="10dp"
-            android:backgroundTint="@color/app_theme">
-
-            &lt;!&ndash;<ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:backgroundTint="@color/app_theme"
-                android:src="@drawable/ic_home"
-                android:layout_marginLeft="50dp"
-                android:layout_marginBottom="100dp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="568dp" />&ndash;&gt;
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/botttom_nav_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
-                android:layout_gravity="bottom"
-                android:background="@color/app_theme"
-                app:menu="@menu/bottom_nav_menu"
-                app:itemRippleColor="@color/white">
-
-
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-        </com.google.android.material.bottomappbar.BottomAppBar>-->
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="179dp"
-            android:layout_marginBottom="30dp"
-            android:clickable="true"
-            app:backgroundTint="#DCD6D6"
-            app:layout_anchor="@id/botttom_nav_bar"
-            app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
-            app:srcCompat="@drawable/icn_mata_pancing" />
-
-
-
+            tools:listitem="@layout/item_product" />
     </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/botttom_nav_bar"
+        android:layout_width="414dp"
+        android:layout_height="67dp"
+        android:layout_gravity="bottom"
+        android:background="@color/app_theme"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
+        app:itemRippleColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="40dp"
+        android:clickable="true"
+        app:backgroundTint="#DCD6D6"
+        app:layout_anchor="@id/botttom_nav_bar"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/botttom_nav_bar"
+        app:layout_constraintStart_toStartOf="@+id/botttom_nav_bar"
+        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+        app:srcCompat="@drawable/icn_mata_pancing" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
