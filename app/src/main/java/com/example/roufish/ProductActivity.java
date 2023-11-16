@@ -21,24 +21,20 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-
         for (int i = 0; i < 100; i++) {
-            products.add(new ListProduct("Mujair", 5000, R.drawable.custom_input));
+            products.add(new ListProduct("Mujair", 5000, "https://placehold.co/600x400"));
         }
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new ProductsAdapter(products));
-        recycler_view.apply {
-            layoutManager = LinearLayoutManager(this@ProductActivty);
-            adapter = ProductsAdapter(products);
-        }
+
         FloatingActionButton profile = findViewById(R.id.info_profile);
         CardView cardView = findViewById(R.id.info_produk);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profileintent = new Intent(product.this, profile.class);
+                Intent profileintent = new Intent(ProductActivity.this, profile.class);
                 startActivity(profileintent);
             }
         });
