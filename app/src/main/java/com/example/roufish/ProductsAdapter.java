@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         Picasso.get().load(product.getImageResId()).into(holder.productImageView);
         holder.productNameTextView.setText(product.getName());
         holder.productPriceTextView.setText(String.valueOf(product.getPrice()));
+        holder.productImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle image click here, for example, open a new activity with the image
+                Intent intent = new Intent(v.getContext(), halamanProduct.class);
+                intent.putExtra("image_url", product.getImageResId()); // Pass the image URL to the next activity
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

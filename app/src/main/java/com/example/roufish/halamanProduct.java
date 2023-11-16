@@ -45,7 +45,7 @@ public class halamanProduct extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backToMainIntent = new Intent(halamanProduct.this, MainActivity.class);
+                Intent backToMainIntent = new Intent(halamanProduct.this, ProductActivity.class);
                 startActivity(backToMainIntent);
             }
         });
