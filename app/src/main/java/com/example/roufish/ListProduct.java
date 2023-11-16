@@ -5,7 +5,7 @@ public class ListProduct {
     private double price;
     private int imageResId;
 
-    public ListProduct(String name, double price, int imageResId) {
+    public ListProduct(String name, double price, String imageResId) {
         this.name = name;
         this.price = price;
         this.imageResId = imageResId;
