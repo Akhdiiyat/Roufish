@@ -68,7 +68,7 @@ public class profile extends AppCompatActivity {
         roufish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent roufishintent = new Intent(profile.this, product.class);
+                Intent roufishintent = new Intent(profile.this, ProductActivity.class);
                 startActivity(roufishintent);
             }
         });

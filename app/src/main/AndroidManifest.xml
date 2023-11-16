@@ -34,7 +34,7 @@
             android:name=".halamanProduct"
             android:exported="false" />
         <activity
-            android:name=".product"
+            android:name=".ProductActivity"
             android:exported="false" />
         <activity
             android:name=".lupapwd"

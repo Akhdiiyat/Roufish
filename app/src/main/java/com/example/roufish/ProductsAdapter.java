@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,10 +33,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ListProduct product = productList.get(position);
-        Picasso.get().load(product.getImageResId()).into((Target) holder.productImageView);
-        // Set the data to views in the ViewHolder
+        Picasso.get().load(product.getImageResId()).into(holder.productImageView);
         holder.productNameTextView.setText(product.getName());
-        //holder.productImageView.setImageResource(product.getImageResId());
         holder.productPriceTextView.setText(String.valueOf(product.getPrice()));
     }
 
@@ -45,7 +44,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageSwitcher productImageView;
+        ImageView productImageView; // Changed to ImageView
         TextView productNameTextView;
         TextView productPriceTextView;
 
@@ -53,8 +52,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             super(itemView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
-            productImageView = productImageView.findViewById(R.id.productImageView);
+            productImageView = itemView.findViewById(R.id.productImageView); // Corrected initialization
         }
     }
 }
-

@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@id/productNameTextView" />
 
         <TextView
-            android:id="@+id/productPriceText"
+            android:id="@+id/productPriceTextView"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="186dp"

@@ -30,7 +30,7 @@ public class ProductActivity extends AppCompatActivity {
         recyclerView.setAdapter(new ProductsAdapter(products));
 
         FloatingActionButton profile = findViewById(R.id.info_profile);
-        CardView cardView = findViewById(R.id.info_produk);
+        //CardView cardView = findViewById(R.id.info_produk2);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

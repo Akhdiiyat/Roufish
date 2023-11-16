@@ -3,7 +3,7 @@ package com.example.roufish;
 public class ListProduct {
     private String name;
     private double price;
-    private int imageResId;
+    private String imageResId;
 
     public ListProduct(String name, double price, String imageResId) {
         this.name = name;
@@ -18,7 +18,7 @@ public class ListProduct {
     public double getPrice() {
         return price;
     }
-    public int getImageResId() {
+    public String getImageResId() {
         return imageResId;
     }
     // Add any other methods or attributes you need for your ListProduct class
