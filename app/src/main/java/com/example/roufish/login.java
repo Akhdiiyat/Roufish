@@ -107,7 +107,7 @@ public class login extends AppCompatActivity {
                                     String emailDB = snapshot.child(username).child("email").getValue(String.class);
                                     String noHPDB = snapshot.child(username).child("noHP").getValue(String.class);
 
-                                    Intent loginIntent = new Intent(login.this, product.class);
+                                    Intent loginIntent = new Intent(login.this, ProductActivity.class);
                                     loginIntent.putExtra("username", usernameDB);
                                     loginIntent.putExtra("email",emailDB );
                                     loginIntent.putExtra("noHP",noHPDB );
