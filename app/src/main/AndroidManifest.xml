@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Roufish"
         tools:targetApi="31">
         <activity
+            android:name=".home_screen"
+            android:exported="false" />
+        <activity
             android:name=".pembayaran"
             android:exported="false" />
         <activity
@@ -38,7 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.AuctionActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".lupapwd"
             android:exported="false" />
