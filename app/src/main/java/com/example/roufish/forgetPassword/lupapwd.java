@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.forgetPassword;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.roufish.MainActivity;
+import com.example.roufish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class lupapwd extends AppCompatActivity {
 
