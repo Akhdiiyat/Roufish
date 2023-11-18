@@ -23,12 +23,12 @@
             android:id="@+id/productImageView"
             android:layout_width="725px"
             android:layout_height="400px"
-            android:layout_marginLeft="11dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="40dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@drawable/mujair" />
 
         <TextView
             android:id="@+id/productNameTextView"
