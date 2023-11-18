@@ -34,10 +34,10 @@
             android:name=".halamanProduct"
             android:exported="false" />
         <activity
-            android:name=".ProductActivity"
+            android:name=".activities.ProductActivity"
             android:exported="false" />
         <activity
-            android:name=".AuctionActivity"
+            android:name=".activities.AuctionActivity"
             android:exported="false"/>
         <activity
             android:name=".lupapwd"

@@ -1,7 +1,6 @@
-package com.example.roufish;
+package com.example.roufish.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,7 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.roufish.ListProduct;
+import com.example.roufish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import com.example.roufish.adapters.ProductsAdapter;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -35,7 +38,7 @@ public class ProductActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profileintent = new Intent(ProductActivity.this, profile.class);
+                Intent profileintent = new Intent(ProductActivity.this, com.example.roufish.profile.class);
                 startActivity(profileintent);
             }
         });

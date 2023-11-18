@@ -2,7 +2,6 @@ package com.example.roufish;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +9,9 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.example.roufish.databinding.ActivityHalamanProductBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import com.example.roufish.activities.ProductActivity;
 
 public class halamanProduct extends AppCompatActivity {
     @Override
