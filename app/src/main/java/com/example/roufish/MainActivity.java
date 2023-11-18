@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.roufish.activities.login;
+import com.example.roufish.forgetPassword.lupapwd;
+
 public class MainActivity extends Activity {
     Button buttonLogin, buttonRegister;
     @SuppressLint("MissingInflatedId")

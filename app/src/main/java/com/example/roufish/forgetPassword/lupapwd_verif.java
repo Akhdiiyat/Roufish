@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.forgetPassword;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.roufish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class lupapwd_verif extends AppCompatActivity {

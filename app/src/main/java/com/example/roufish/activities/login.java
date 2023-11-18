@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.roufish.MainActivity;
+import com.example.roufish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import com.example.roufish.activities.ProductActivity;
 
 public class login extends AppCompatActivity {
 

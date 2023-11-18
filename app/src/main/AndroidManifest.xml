@@ -31,7 +31,7 @@
             android:name=".pelelangan"
             android:exported="false" />
         <activity
-            android:name=".lupapwd_code"
+            android:name=".forgetPassword.lupapwd_code"
             android:exported="false" />
         <activity
             android:name=".halamanProduct"
@@ -43,10 +43,10 @@
             android:name=".activities.AuctionActivity"
             android:exported="false" />
         <activity
-            android:name=".lupapwd"
+            android:name=".forgetPassword.lupapwd"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".activities.login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
