@@ -8,7 +8,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/info_produk2"
+        android:id="@+id/info_lelang"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/productImageView"
+            android:id="@+id/productAuctionImageView"
             android:layout_width="725px"
             android:layout_height="400px"
             android:layout_marginLeft="11dp"
@@ -31,7 +31,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/productNameTextView"
+            android:id="@+id/productAuctionNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -44,13 +44,13 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/productHargaText"
-            android:layout_width="100dp"
+            android:id="@+id/productHargaLelangText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="186dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="270dp"
             android:gravity="end"
-            android:text="Harga"
+            android:text="Starting Price: "
             android:textColor="@android:color/black"
             android:textSize="5.5pt"
             android:textStyle="bold"
@@ -58,21 +58,30 @@
             app:layout_constraintTop_toBottomOf="@id/productNameTextView" />
 
         <TextView
-            android:id="@+id/productPriceTextView"
+            android:id="@+id/productStartingPriceTextView"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="186dp"
-            android:layout_marginTop="215dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="270dp"
             android:gravity="end"
             android:text="Rp.5,000"
             android:textColor="#2CD93D"
             android:textSize="5.5pt"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/productHargaText" />
-
-
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDescriptionTextView"
+            android:text="Lorem Ipsum Dolor Sit Amet"
+            android:layout_marginTop="220dp"
+            android:layout_marginLeft="16dp"/>
     </androidx.cardview.widget.CardView>
 
 

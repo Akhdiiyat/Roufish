@@ -30,12 +30,19 @@ public class ProductActivity extends AppCompatActivity {
         recyclerView.setAdapter(new ProductsAdapter(products));
 
         FloatingActionButton profile = findViewById(R.id.info_profile);
+        FloatingActionButton nextActivity = findViewById(R.id.rou);
         //CardView cardView = findViewById(R.id.info_produk2);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent profileintent = new Intent(ProductActivity.this, profile.class);
                 startActivity(profileintent);
+            }
+        });
+        nextActivity.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent activity = new Intent(ProductActivity.this, AuctionActivity.class);
+                startActivity(activity);
             }
         });
     }

@@ -55,11 +55,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/recycler_view_lelang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            tools:listitem="@layout/item_product" />
+            tools:listitem="@layout/item_auction" />
     </androidx.cardview.widget.CardView>
 
 

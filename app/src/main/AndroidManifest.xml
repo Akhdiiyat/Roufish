@@ -37,6 +37,9 @@
             android:name=".ProductActivity"
             android:exported="false" />
         <activity
+            android:name=".AuctionActivity"
+            android:exported="false"/>
+        <activity
             android:name=".lupapwd"
             android:exported="false" />
         <activity

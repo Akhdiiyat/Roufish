@@ -92,7 +92,7 @@ public class login extends AppCompatActivity {
                                 final String getpassword = snapshot.child(username).child("password").getValue(String.class);
 
                                 if(getpassword.equals(password)){
-                                    Toast.makeText(login.this,"Loggin Sukses",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(login.this,"Login Sukses",Toast.LENGTH_SHORT).show();
 
                                     String usernameDB = snapshot.child(username).child("username").getValue(String.class);
                                     String emailDB = snapshot.child(username).child("email").getValue(String.class);
@@ -115,16 +115,12 @@ public class login extends AppCompatActivity {
 
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 
                         }
                     });
                 }
-
-
-
             }
         });
     }
