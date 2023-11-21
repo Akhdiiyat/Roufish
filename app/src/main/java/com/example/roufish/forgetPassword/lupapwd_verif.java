@@ -24,5 +24,6 @@ public class lupapwd_verif extends AppCompatActivity {
                 startActivity(codeIntent);
             }
         });
+
     }
 }

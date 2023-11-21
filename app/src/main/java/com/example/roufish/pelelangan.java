@@ -40,5 +40,6 @@ public class pelelangan extends AppCompatActivity {
                 startActivity(backToMainintent);
             }
         });
+
     }
 }

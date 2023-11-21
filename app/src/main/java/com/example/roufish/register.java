@@ -1,41 +1,64 @@
 package com.example.roufish;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.roufish.activities.login;
+import androidx.annotation.NonNull;
+
+import com.example.roufish.activities.ProductActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class register extends Activity {
 
-    //FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+    FirebaseFirestore firestore;
     EditText inputPassword, inputAlamat, inputNoHP ;
     EditText inputUsername;
     EditText inputEmail;
     Button btnDaftar ;
     FloatingActionButton backToMain ;
-    Button daftar ;
+    //Button daftar ;
     DatabaseReference reference;
 
     FirebaseDatabase database;
+
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
-        //mAuth = FirebaseAuth.getInstance();
+
         inputUsername = findViewById(R.id.inputUsername);
         inputPassword = findViewById(R.id.inputPassword);
         inputEmail = findViewById(R.id.input_Email);
@@ -43,6 +66,9 @@ public class register extends Activity {
         inputNoHP = findViewById(R.id.input_NoHP);
         btnDaftar = (Button) findViewById(R.id.btn_daftar);
         backToMain = findViewById(R.id.backToMainREG);
+
+        mAuth = FirebaseAuth.getInstance();
+        firestore =FirebaseFirestore.getInstance();
         //daftar = findViewById(R.id.btn_daftar);
 
 
@@ -59,7 +85,10 @@ public class register extends Activity {
                 startActivity(registerIntent);
             }
         });*/
-
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+            finish();
+        }
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,98 +127,91 @@ public class register extends Activity {
             }
         });
 
-        //pop up akun berhasil di daftarkan
-
+        //pendaftaran akun
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                database = FirebaseDatabase.getInstance();
-                reference = database.getReference("users");
-                String username,password, email,alamat, noHP;
-
-
+                String email ;
+                String password ;
+                String username ;
+                String alamat ;
+                String noHp ;
 
                 username = inputUsername.getText().toString();
-                password = inputPassword.getText().toString();
-                email = inputEmail.getText().toString();
+                email = inputEmail.getText().toString().trim();
+                password = inputPassword.getText().toString().trim();
                 alamat = inputAlamat.getText().toString();
-                noHP = inputNoHP.getText().toString();
-
-
-                if (username.isEmpty() || password.isEmpty() || email.isEmpty() || alamat.isEmpty() ||noHP.isEmpty()){
-                    Toast.makeText(register.this,"Data masih ada yang kosong",Toast.LENGTH_SHORT).show();
+                noHp = inputNoHP.getText().toString();
+                //check empty
+                if(TextUtils.isEmpty(email)){
+                    inputEmail.setError("Masukkan Email");
+                    return;
+                }else if(TextUtils.isEmpty(password)){
+                    inputPassword.setError("Masukkan password");
                     return;
                 }
-                else {
-                    user user = new user(username,password,email,alamat,noHP);
-                    reference.child(username).setValue(user);
 
-
-                    /*Toast.makeText(register.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(register.this, login.class);
-                    startActivity(intent);*/
-
-                    Toast.makeText(register.this,"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
-                    builder.setTitle("Pendaftaran Berhasil");
-                    builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            Intent registerIntent = new Intent(register.this, login.class);
-
-                            startActivity(registerIntent);
-                        }
-                    }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    }).create().show();
-
-
-
-                    /*reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(username)){
-                                Toast.makeText(register.this,"username sudah tersedia",Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                reference.child("users").child(username).child("username").setValue(username);
-                                reference.child("users").child(username).child("email").setValue(email);
-                                reference.child("users").child(username).child("password").setValue(password);
-                                reference.child("users").child(username).child("alamat").setValue(alamat);
-                                reference.child("users").child(username).child("NoHP").setValue(noHP);
-
-                                Toast.makeText(register.this,"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
-                                AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
-                                builder.setTitle("Pendaftaran Berhasil");
-                                builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                        Intent registerIntent = new Intent(register.this, login.class);
-
-                                        startActivity(registerIntent);
-                                    }
-                                }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        finish();
-                                    }
-                                }).create().show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });*/
+                if(password.length() < 6) {
+                    inputPassword.setError("password harus lebih dari 6 karakter");
+                    return;
                 }
+
+                //masukkan data ke firebase
+
+                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(register.this,"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
+
+                            userID = mAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = firestore.collection("users").document(userID);
+                            Map<String,Object> user = new HashMap<>();
+                            user.put("username",username );
+                            user.put("email",email );
+                            user.put("alamat",alamat );
+                            user.put("noHP",noHp );
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d(TAG, "onSuccess : user profile created for " + userID);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d(TAG, "onFailure " + e.toString());
+                                }
+                            });
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
+                            builder.setTitle("Pendaftaran Berhasil");
+                            builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                    Intent registerIntent = new Intent(register.this, login.class);
+
+                                    startActivity(registerIntent);
+                                }
+                            }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            }).create().show();
+                        }else {
+                            Toast.makeText(register.this,"Pendaftaran Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                });
+
+
+
+
             }
         });
+
     }
 }
