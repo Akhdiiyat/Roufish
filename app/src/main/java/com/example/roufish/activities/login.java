@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.roufish.MainActivity;
+import com.example.roufish.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -102,7 +104,7 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(login.this,"Loginn berhasil",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login.this,"Login berhasil",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),ProductActivity.class));
                         }else {
                             Toast.makeText(login.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
