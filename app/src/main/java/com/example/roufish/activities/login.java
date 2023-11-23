@@ -1,5 +1,6 @@
 package com.example.roufish.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,15 +11,19 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.roufish.MainActivity;
 import com.example.roufish.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
@@ -38,6 +43,7 @@ public class login extends AppCompatActivity {
     FloatingActionButton backToMain ;
     EditText editTextUsername ;
     EditText editTextpassword ;
+    TextView lupaPassword;
     CheckBox checkPassword ;
     AppCompatButton loginBtn ;
     DatabaseReference database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
@@ -54,6 +60,7 @@ public class login extends AppCompatActivity {
         editTextpassword = findViewById(R.id.input_Password);
         checkPassword = (CheckBox) findViewById(R.id.tampilkanPassword);
         loginBtn = findViewById(R.id.btn_login);
+        lupaPassword = findViewById(R.id.lupaPassword);
 
 
         checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -72,6 +79,49 @@ public class login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registerIntent = new Intent(login.this, MainActivity.class);
                 startActivity(registerIntent);
+            }
+        });
+
+        lupaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText resetMail = new EditText(view.getContext());
+                AlertDialog.Builder passwordResetDialog =new AlertDialog.Builder(view.getContext());
+                passwordResetDialog.setTitle("Reset Password");
+                passwordResetDialog.setMessage("Enter Your Email To Received Link");
+                passwordResetDialog.setView(resetMail);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String mail =resetMail.getText().toString();
+                        mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(login.this,"Reset Link Sent to Your Mail",Toast.LENGTH_SHORT).show();
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(login.this,"Eror ! Reset Link is Not Sent" + e.getMessage(),Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+
+                    }
+                });
+
+                passwordResetDialog.create().show();
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
             }
         });
 
