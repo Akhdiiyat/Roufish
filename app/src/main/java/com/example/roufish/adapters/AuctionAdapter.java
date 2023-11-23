@@ -1,5 +1,6 @@
 package com.example.roufish.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.ListLelang;
 import com.example.roufish.R;
-import com.example.roufish.halaman_pelelangan;
-import com.example.roufish.activities.AuctionActivity;
+import com.example.roufish.HalamanPelelangan;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,8 +44,10 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 // Handle image click here, for example, open a new activity with the image
-                Intent intent = new Intent(v.getContext(), halaman_pelelangan.class);
+                Log.d("AuctionAdapter", "Image clicked");
+                Intent intent = new Intent(v.getContext(), HalamanPelelangan.class);
                 intent.putExtra("image_url", product.getImageUrl()); // Pass the image URL to the next activity
+                intent.putExtra("item_name", product.getItemName());
                 v.getContext().startActivity(intent);
             }
         });

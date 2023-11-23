@@ -34,7 +34,7 @@ public class halamanProduct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(lelang.isChecked()){
-                    Intent lelangIntent = new Intent(halamanProduct.this, pelelangan.class);
+                    Intent lelangIntent = new Intent(halamanProduct.this, HalamanPelelangan.class);
                     startActivity(lelangIntent);
                 } else if (jual.isChecked()) {
                     Intent jualIntent = new Intent(halamanProduct.this, Beli_Langsung.class);

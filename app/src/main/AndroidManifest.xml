@@ -28,7 +28,7 @@
             android:name=".profile"
             android:exported="false" />
         <activity
-            android:name=".pelelangan"
+            android:name=".HalamanPelelangan"
             android:exported="false" />
         <activity
             android:name=".forgetPassword.lupapwd_code"

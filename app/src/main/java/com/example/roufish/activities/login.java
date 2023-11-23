@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -70,9 +71,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent registerIntent = new Intent(login.this, MainActivity.class);
-
                 startActivity(registerIntent);
-
             }
         });
 
@@ -108,6 +107,8 @@ public class login extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),ProductActivity.class));
                         }else {
                             Toast.makeText(login.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            Log.e("LoginError", "onComplete: " + task.getException().getMessage(), task.getException());
+
                         }
                     }
                     });
