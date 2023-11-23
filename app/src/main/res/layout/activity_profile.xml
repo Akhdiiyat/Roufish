@@ -432,7 +432,7 @@
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/arrow_back_icon"
-        tools:layout_editor_absoluteY="30dp"
+        tools:layout_editor_absoluteY="48dp"
 
         />
 
