@@ -69,7 +69,7 @@ public class register extends Activity {
         backToMain = findViewById(R.id.backToMainREG);
 
         mAuth = FirebaseAuth.getInstance();
-        firestore =FirebaseFirestore.getInstance();
+        firestore = FirebaseFirestore.getInstance();
         //daftar = findViewById(R.id.btn_daftar);
 
 
@@ -86,7 +86,7 @@ public class register extends Activity {
                 startActivity(registerIntent);
             }
         });*/
-        if(mAuth.getCurrentUser() != null){
+        if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), ProductActivity.class));
             finish();
         }
@@ -103,21 +103,22 @@ public class register extends Activity {
         //hide password yang diinputkan
         inputPassword.setOnTouchListener(new View.OnTouchListener() {
             boolean passwordView = false;
+
             @Override
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 final int Right = 2;
 
-                if(motionEvent.getAction()== motionEvent.ACTION_UP){
-                    if (motionEvent.getRawX()>=inputPassword.getRight()-inputPassword.getCompoundDrawables()[Right].getBounds().width()){
-                        int selection=inputPassword.getSelectionEnd();
-                        if(passwordView){
-                            inputPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.visibilityoff_icon,0);
+                if (motionEvent.getAction() == motionEvent.ACTION_UP) {
+                    if (motionEvent.getRawX() >= inputPassword.getRight() - inputPassword.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection = inputPassword.getSelectionEnd();
+                        if (passwordView) {
+                            inputPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibilityoff_icon, 0);
                             inputPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordView=false;
-                        }else{
-                            inputPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.visibility_icon,0);
+                            passwordView = false;
+                        } else {
+                            inputPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_icon, 0);
                             inputPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordView=true;
+                            passwordView = true;
                         }
                         inputPassword.setSelection(selection);
                         return true;
@@ -132,11 +133,11 @@ public class register extends Activity {
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email ;
-                String password ;
-                String username ;
-                String alamat ;
-                String noHp ;
+                String email;
+                String password;
+                String username;
+                String alamat;
+                String noHp;
 
                 username = inputUsername.getText().toString();
                 email = inputEmail.getText().toString().trim();
@@ -144,75 +145,78 @@ public class register extends Activity {
                 alamat = inputAlamat.getText().toString();
                 noHp = inputNoHP.getText().toString();
                 //check empty
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     inputEmail.setError("Masukkan Email");
                     return;
-                }else if(TextUtils.isEmpty(password)){
+                } else if (TextUtils.isEmpty(password)) {
                     inputPassword.setError("Masukkan password");
+                    return;
+                } else if (TextUtils.isEmpty(username)) {
+                    inputUsername.setError("Masukkan username");
                     return;
                 }
 
-                if(password.length() < 6) {
+                if (password.length() < 6) {
                     inputPassword.setError("password harus lebih dari 6 karakter");
                     return;
                 }
 
-                //masukkan data ke firebase
+                    //masukkan data ke firebase
 
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(register.this,"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
+                    mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(register.this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show();
 
-                            userID = mAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = firestore.collection("users").document(userID);
-                            Map<String,Object> user = new HashMap<>();
-                            user.put("username",username );
-                            user.put("email",email );
-                            user.put("alamat",alamat );
-                            user.put("noHP",noHp );
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Log.d(TAG, "onSuccess : user profile created for " + userID);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure " + e.toString());
-                                }
-                            });
+                                userID = mAuth.getCurrentUser().getUid();
+                                DocumentReference documentReference = firestore.collection("users").document(userID);
+                                Map<String, Object> user = new HashMap<>();
+                                user.put("username", username);
+                                user.put("email", email);
+                                user.put("alamat", alamat);
+                                user.put("noHP", noHp);
+                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Log.d(TAG, "onSuccess : user profile created for " + userID);
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d(TAG, "onFailure " + e.toString());
+                                    }
+                                });
 
-                            AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
-                            builder.setTitle("Pendaftaran Berhasil");
-                            builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                    Intent registerIntent = new Intent(register.this, login.class);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
+                                builder.setTitle("Pendaftaran Berhasil");
+                                builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                        Intent registerIntent = new Intent(register.this, login.class);
 
-                                    startActivity(registerIntent);
-                                }
-                            }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    finish();
-                                }
-                            }).create().show();
-                        }else {
-                            Toast.makeText(register.this,"Pendaftaran Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                        startActivity(registerIntent);
+                                    }
+                                }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        finish();
+                                    }
+                                }).create().show();
+                            } else {
+                                Toast.makeText(register.this, "Pendaftaran Gagal" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
 
                         }
-
-                    }
-                });
+                    });
 
 
+                }
+            });
 
+            ;
 
-            }
-        });
-
+        };
     }
-}

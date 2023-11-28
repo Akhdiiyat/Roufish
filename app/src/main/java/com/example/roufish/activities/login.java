@@ -21,6 +21,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.roufish.MainActivity;
 import com.example.roufish.R;
+import com.example.roufish.home_screen;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,6 +62,11 @@ public class login extends AppCompatActivity {
         checkPassword = (CheckBox) findViewById(R.id.tampilkanPassword);
         loginBtn = findViewById(R.id.btn_login);
         lupaPassword = findViewById(R.id.lupaPassword);
+
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), home_screen.class));
+            finish();
+        }
 
 
         checkPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -154,7 +160,7 @@ public class login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(login.this,"Login berhasil",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),ProductActivity.class));
+                            startActivity(new Intent(getApplicationContext(), home_screen.class));
                         }else {
                             Toast.makeText(login.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             Log.e("LoginError", "onComplete: " + task.getException().getMessage(), task.getException());

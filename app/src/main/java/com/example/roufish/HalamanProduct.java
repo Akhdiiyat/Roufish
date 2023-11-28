@@ -20,7 +20,7 @@ public class HalamanProduct extends AppCompatActivity {
         setContentView(R.layout.activity_halaman_product);
         RadioGroup radioGroup = findViewById(R.id.radiogroup);
         RadioButton lelang = findViewById(R.id.lelang);
-        RadioButton jual = findViewById(R.id.jual);
+        //RadioButton jual = findViewById(R.id.jual);
         Button lanjutkan = findViewById(R.id.btn_lanjutkan);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
         lelang.setOnClickListener(new View.OnClickListener() {
@@ -36,10 +36,10 @@ public class HalamanProduct extends AppCompatActivity {
                 if(lelang.isChecked()){
                     Intent lelangIntent = new Intent(HalamanProduct.this, HalamanPelelangan.class);
                     startActivity(lelangIntent);
-                } else if (jual.isChecked()) {
+                } /*else if (jual.isChecked()) {
                     Intent jualIntent = new Intent(HalamanProduct.this, Beli_Langsung.class);
                     startActivity(jualIntent);
-                }
+                }*/
             }
         });
         backToMain.setOnClickListener(new View.OnClickListener() {

@@ -39,7 +39,7 @@ public class profile extends AppCompatActivity {
     TextView profileUsername, profileEmail, profileName, profilePassword, titleName, titleUsername;
     TextView profileNoHP;
 
-
+    //Button editProfile;
     String userId;
 
 
@@ -57,11 +57,20 @@ public class profile extends AppCompatActivity {
         titleUsername = (TextView) findViewById(R.id.titleUsername);
         profileNoHP = (TextView) findViewById(R.id.profileNoHP);
 
-
+        editProfile = (Button) findViewById(R.id.editProfile);
         mAuth =FirebaseAuth.getInstance();
         firestore =FirebaseFirestore.getInstance();
         userId = mAuth.getCurrentUser().getUid();
 
+        editProfile.setOnClickListener((v) ->{
+
+            Intent i = new Intent(v.getContext(),EditProfile.class);
+            i.putExtra("username", profileUsername.getText().toString());
+            i.putExtra("email", profileEmail.getText().toString());
+            i.putExtra("noHP", profileNoHP.getText().toString());
+            startActivity(i);
+
+        });
 
         //FloatingActionButton roufish = findViewById(R.id.roufish);
 
