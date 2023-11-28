@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.ListProduct;
 import com.example.roufish.R;
-import com.example.roufish.halamanProduct;
-import com.example.roufish.activities.ProductActivity;
+import com.example.roufish.HalamanProduct;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 // Handle image click here, for example, open a new activity with the image
-                Intent intent = new Intent(v.getContext(), halamanProduct.class);
+                Intent intent = new Intent(v.getContext(), HalamanProduct.class);
                 intent.putExtra("image_url", product.getImageResId()); // Pass the image URL to the next activity
                 v.getContext().startActivity(intent);
             }

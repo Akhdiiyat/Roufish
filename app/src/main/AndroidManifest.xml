@@ -34,7 +34,7 @@
             android:name=".forgetPassword.lupapwd_code"
             android:exported="false" />
         <activity
-            android:name=".halamanProduct"
+            android:name=".HalamanProduct"
             android:exported="false" />
         <activity
             android:name=".activities.ProductActivity"

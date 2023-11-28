@@ -47,7 +47,6 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
                 Log.d("AuctionAdapter", "Image clicked");
                 Intent intent = new Intent(v.getContext(), HalamanPelelangan.class);
                 intent.putExtra("image_url", product.getImageUrl()); // Pass the image URL to the next activity
-                intent.putExtra("item_name", product.getItemName());
                 v.getContext().startActivity(intent);
             }
         });

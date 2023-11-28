@@ -13,7 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.example.roufish.activities.ProductActivity;
 
-public class halamanProduct extends AppCompatActivity {
+public class HalamanProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +34,10 @@ public class halamanProduct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(lelang.isChecked()){
-                    Intent lelangIntent = new Intent(halamanProduct.this, HalamanPelelangan.class);
+                    Intent lelangIntent = new Intent(HalamanProduct.this, HalamanPelelangan.class);
                     startActivity(lelangIntent);
                 } else if (jual.isChecked()) {
-                    Intent jualIntent = new Intent(halamanProduct.this, Beli_Langsung.class);
+                    Intent jualIntent = new Intent(HalamanProduct.this, Beli_Langsung.class);
                     startActivity(jualIntent);
                 }
             }
@@ -45,7 +45,7 @@ public class halamanProduct extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backToMainIntent = new Intent(halamanProduct.this, ProductActivity.class);
+                Intent backToMainIntent = new Intent(HalamanProduct.this, ProductActivity.class);
                 startActivity(backToMainIntent);
             }
         });
