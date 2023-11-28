@@ -59,16 +59,4 @@
         app:strokeColor="@color/primary_blue"
         app:strokeWidth="2.5dp" />
 
-    <TextView
-        android:id="@+id/lupaPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lupa Password?"
-        android:textColor="#048BB5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

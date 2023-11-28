@@ -103,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_add"
+        app:srcCompat="@drawable/ic_beli_product"
         tools:layout_editor_absoluteY="102dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -114,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_add"
+        app:srcCompat="@drawable/ic_pelelangan"
         tools:layout_editor_absoluteY="102dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -125,7 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_add"
+        app:srcCompat="@drawable/ic_delivery"
         tools:layout_editor_absoluteY="102dp" />
 
     <TextView
@@ -171,7 +171,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_recommendation"/>
+            tools:listitem="@layout/item_recommendation" />
     </androidx.cardview.widget.CardView>
 
 
