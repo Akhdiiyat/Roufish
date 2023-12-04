@@ -3,12 +3,16 @@ package com.example.roufish;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +26,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,33 +37,47 @@ import java.util.Map;
 public class EditProfile extends AppCompatActivity {
 
     //@SuppressLint("MissingInflatedId")
+    EditText editUsername, editEmail, editNoHp;
+    ImageView editImage;
+    Button saveEditProfile;
+    FirebaseAuth mAuth;
+    FirebaseFirestore firestore;
+    FirebaseUser user;
+    StorageReference profileRef;
+    StorageReference storageReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        EditText editUsername, editEmail, editNoHp;
-        ImageView editImage;
-        Button saveEditProfile;
-        FirebaseAuth mAuth;
-        FirebaseFirestore firestore;
-        FirebaseUser user;
+
+
 
 
         editUsername = findViewById(R.id.profileEditUsername);
         editEmail = findViewById(R.id.profileEditEmail);
         editNoHp = findViewById(R.id.profileNomorHP);
-        editImage = findViewById(R.id.profileImageView);
+        editImage = findViewById(R.id.profileEditImageView);
         saveEditProfile = findViewById(R.id.saveEditProfile);
 
+        storageReference = FirebaseStorage.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
 
+        profileRef = storageReference.child("users/" + mAuth.getCurrentUser().getUid()+ "/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(editImage);
+            }
+        });
+
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EditProfile.this,"Image Clicked", Toast.LENGTH_SHORT).show();
+                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGallery, 1000);
 
             }
         });
@@ -111,5 +133,39 @@ public class EditProfile extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: " + username + " " + email + " " + noHP);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000) {
+            if(resultCode == Activity.RESULT_OK){
+                Uri imageUri = data.getData();
+                //profileImg.setImageURI(imageUri);
+
+                uploadImagerToFirebase(imageUri);
+            }
+        }
+    }
+
+    private void uploadImagerToFirebase(Uri imageUri) {
+        StorageReference fileRef = storageReference.child("users/" + mAuth.getCurrentUser().getUid()+ "/profile.jpg");
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                //Toast.makeText(profile.this, "Profile sudah terupload",Toast.LENGTH_SHORT).show();
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(editImage);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(EditProfile.this, "Profile gagal terupload",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.roufish.activities.*;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +28,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class profile extends AppCompatActivity {
 
@@ -42,6 +50,11 @@ public class profile extends AppCompatActivity {
     //Button editProfile;
     String userId;
 
+    ImageView profileImg;
+
+    StorageReference storageReference;
+    StorageReference profileRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +69,21 @@ public class profile extends AppCompatActivity {
         titleName =  (TextView) findViewById(R.id.titleName);
         titleUsername = (TextView) findViewById(R.id.titleUsername);
         profileNoHP = (TextView) findViewById(R.id.profileNoHP);
+        profileImg = (ImageView) findViewById(R.id.profileImg);
 
         editProfile = (Button) findViewById(R.id.editProfile);
         mAuth =FirebaseAuth.getInstance();
         firestore =FirebaseFirestore.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
+
         userId = mAuth.getCurrentUser().getUid();
+        profileRef = storageReference.child("users/" + mAuth.getCurrentUser().getUid()+ "/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImg);
+            }
+        });
 
         editProfile.setOnClickListener((v) ->{
 
@@ -90,6 +113,10 @@ public class profile extends AppCompatActivity {
 
 
     }
+
+
+
+
 
     public  void logOut(View view){
         mAuth.getInstance().signOut();
