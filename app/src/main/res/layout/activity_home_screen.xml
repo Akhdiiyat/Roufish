@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,13 +8,6 @@
     android:background="@color/app_theme"
     android:backgroundTint="#BAD5EE"
     tools:context=".activities.ProductActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.14" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,48 +22,38 @@
         android:tint="#6E6C6C"
         app:backgroundTint="#B8D3EB"
         app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toEndOf="@+id/floatingActionButton3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.557"
         app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator" />
-
-
-
-
-
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_gravity="end"
-        android:background="@color/white"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/white"
         android:queryHint="Cari Product"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.557" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:background="#C0DBF5"
         android:clickable="true"
         app:backgroundTint="#C0DBF5"
         app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.709"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041"
         app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
         app:srcCompat="@drawable/icn_shopping_cart" />
 
@@ -77,54 +61,51 @@
         android:id="@+id/floatingActionButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/app_theme"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_beli_product" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/app_theme"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
-
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_pelelangan" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/app_theme"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintHorizontal_bias="0.901"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
-        app:layout_constraintVertical_bias="0.727"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_delivery" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
         android:text="Beli Product"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cardView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton4" />
 
     <TextView
         android:id="@+id/textView10"
@@ -134,7 +115,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/cardView5"
         app:layout_constraintTop_toBottomOf="@+id/floatingActionButton5" />
 
     <TextView
@@ -143,24 +123,49 @@
         android:layout_height="wrap_content"
         android:text="Pesanan Saya"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cardView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.919"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton6" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView5"
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
+        app:layout_constraintTop_toBottomOf="@+id/guideline4"
+        >
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view2"
             android:layout_width="match_parent"
-            android:layout_height="538dp"
+            android:layout_height="match_parent"
             tools:listitem="@layout/item_recommendation" />
     </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/rou"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        app:backgroundTint="#DCD6D6"
+        app:layout_anchor="@id/botttom_nav_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/botttom_nav_bar"
+        app:layout_constraintStart_toStartOf="@+id/botttom_nav_bar"
+        android:layout_marginBottom="40dp"
+        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+        app:srcCompat="@drawable/icn_mata_pancing" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/botttom_nav_bar"
@@ -175,20 +180,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/rou"
-        android:layout_width="69dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="40dp"
-        android:clickable="true"
-        app:backgroundTint="#DCD6D6"
-        app:layout_anchor="@id/botttom_nav_bar"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView5"
-        app:layout_constraintEnd_toEndOf="@+id/botttom_nav_bar"
-        app:layout_constraintStart_toStartOf="@+id/botttom_nav_bar"
-        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
-        app:srcCompat="@drawable/icn_mata_pancing" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

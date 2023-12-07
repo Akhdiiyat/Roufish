@@ -87,6 +87,7 @@
                     android:text="Nama Produk"
                     android:textSize="24dp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/Gambar_ikan"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.06"
                     app:layout_constraintStart_toStartOf="parent"
@@ -96,9 +97,12 @@
                     android:id="@+id/Gambar_ikan"
                     android:layout_width="329dp"
                     android:layout_height="180dp"
+                    android:layout_marginBottom="300dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="56dp"
+
                     tools:srcCompat="@tools:sample/avatars" />
 
 
@@ -107,7 +111,8 @@
                     android:layout_width="330dp"
                     android:layout_height="120dp"
                     android:backgroundTint="#EDEDED"
-                    tools:layout_editor_absoluteX="41dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     tools:layout_editor_absoluteY="282dp">
 
                     <TextView
@@ -183,7 +188,8 @@
                     app:layout_constraintBottom_toTopOf="@+id/cardView4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.138"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Gambar_ikan" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
