@@ -59,4 +59,18 @@
         app:strokeColor="@color/primary_blue"
         app:strokeWidth="2.5dp" />
 
+    <TextView
+        android:id="@+id/login_seller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Login Sebagai Penjual?"
+        android:textColor="#2196F3"
+        android:textColorHighlight="#00BCD4"
+        android:textColorHint="#00BCD4"
+        android:textColorLink="#03A9F4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
