@@ -64,7 +64,7 @@ public class login extends AppCompatActivity {
         lupaPassword = findViewById(R.id.lupaPassword);
 
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), home_screen.class));
+            startActivity(new Intent(getApplicationContext(), ProductActivity.class));
             finish();
         }
 
@@ -160,7 +160,7 @@ public class login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(login.this,"Login berhasil",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), home_screen.class));
+                            startActivity(new Intent(getApplicationContext(), ProductActivity.class));
                         }else {
                             Toast.makeText(login.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             Log.e("LoginError", "onComplete: " + task.getException().getMessage(), task.getException());
