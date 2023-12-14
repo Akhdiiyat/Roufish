@@ -42,12 +42,10 @@ public class LoginBuyer extends AppCompatActivity {
     AppCompatButton loginBtn ;
     DatabaseReference database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_buyer);
-
         mAuth = FirebaseAuth.getInstance();
         backToMain = findViewById(R.id.backToMain);
         editTextUsername = findViewById(R.id.input_Username);

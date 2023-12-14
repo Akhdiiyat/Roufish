@@ -12,7 +12,6 @@ import com.example.roufish.activities.*;
 
 public class Homepage extends AppCompatActivity {
     Button buttonLogin, buttonRegister;
-    //TextView loginSeller;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
