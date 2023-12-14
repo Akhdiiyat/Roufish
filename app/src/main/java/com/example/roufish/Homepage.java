@@ -10,7 +10,7 @@ import com.example.roufish.activities.*;
 
 public class Homepage extends Activity {
     Button buttonLogin, buttonRegister;
-    //TextView lupaPassword;
+    TextView loginSeller;
 
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState){
@@ -18,18 +18,16 @@ public class Homepage extends Activity {
         setContentView(R.layout.activity_homepage);
         buttonRegister = findViewById(R.id.buttonRegister);
         buttonLogin =findViewById(R.id.buttonLogin);
-        //lupaPassword = findViewById(R.id.lupaPassword);
+        loginSeller = findViewById(R.id.login_seller);
 
 
-        /*lupaPassword.setOnClickListener(new View.OnClickListener() {
+        loginSeller.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                *//*Intent lupaPassIntent = new Intent(MainActivity.this, lupapwd.class);
-                startActivity(lupaPassIntent);*//*
-                EditText resetMail = new EditText(v.getContext());
-
+            public void onClick(View view) {
+                Intent sellerIntent = new Intent(MainActivity.this, login_seller.class);
+                startActivity(sellerIntent);
             }
-        });*/
+        });
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
