@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
-    tools:context=".activities.login">
+    tools:context=".LoginSeller">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -14,20 +14,20 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.44" />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/tmbl_kembali"
+        android:id="@+id/tmbl_kembaliSeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.054"
         app:srcCompat="@drawable/arrow_back_icon" />
-
 
     <ImageView
         android:id="@+id/imageView4"
@@ -56,7 +56,7 @@
 
 
             <EditText
-                android:id="@+id/input_Username"
+                android:id="@+id/inputSellerId"
                 android:layout_width="300dp"
                 android:layout_height="39dp"
                 android:background="@drawable/custom_input"
@@ -82,7 +82,7 @@
                 android:text="Seller ID"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/input_Username"
+                app:layout_constraintBottom_toTopOf="@+id/inputSellerId"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.145"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,15 +97,15 @@
                 android:text="Password"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/input_Password"
+                app:layout_constraintBottom_toTopOf="@+id/input_PasswordSeller"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.153"
+                app:layout_constraintHorizontal_bias="0.144"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_Username"
+                app:layout_constraintTop_toBottomOf="@+id/inputSellerId"
                 app:layout_constraintVertical_bias="1.0" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_login"
+                android:id="@+id/btn_loginSeller"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="14dp"
@@ -120,11 +120,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.432"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tampilkanPassword"
-                app:layout_constraintVertical_bias="0.304" />
+                app:layout_constraintTop_toBottomOf="@+id/tampilkanPasswordSeller"
+                app:layout_constraintVertical_bias="0.478" />
 
             <CheckBox
-                android:id="@+id/tampilkanPassword"
+                android:id="@+id/tampilkanPasswordSeller"
                 android:layout_width="231dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="28dp"
@@ -132,13 +132,13 @@
                 android:text="Tampilkan Password"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.283"
+                app:layout_constraintHorizontal_bias="0.277"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_Password"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/input_PasswordSeller"
+                app:layout_constraintVertical_bias="1.0" />
 
             <EditText
-                android:id="@+id/input_Password"
+                android:id="@+id/input_PasswordSeller"
                 android:layout_width="300dp"
                 android:layout_height="39dp"
                 android:background="@drawable/custom_input"
@@ -150,11 +150,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.432"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_Username"
+                app:layout_constraintTop_toBottomOf="@+id/inputSellerId"
                 app:layout_constraintVertical_bias="0.188" />
 
             <TextView
-                android:id="@+id/lupaPassword"
+                android:id="@+id/lupaPasswordSeller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lupa Password?"

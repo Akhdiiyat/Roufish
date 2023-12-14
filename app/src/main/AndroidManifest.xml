@@ -31,10 +31,13 @@
             android:name=".RegisterSeller"
             android:exported="false" />
         <activity
-            android:name=".login_seller"
+            android:name=".LoginSeller"
             android:exported="false" />
         <activity
-            android:name=".widgets.login_seller"
+            android:name=".activities.LoginBuyer"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterBuyer"
             android:exported="false" />
         <activity
             android:name=".EditProfile"
@@ -70,9 +73,6 @@
             android:name=".forgetPassword.lupapwd"
             android:exported="false" />
         <activity
-            android:name=".activities.login"
-            android:exported="false" />
-        <activity
             android:name=".Homepage"
             android:exported="false" />
         <activity
@@ -80,11 +80,9 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterBuyer" />
     </application>
 
 </manifest>

@@ -19,8 +19,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.roufish.activities.LoginBuyer;
 import com.example.roufish.activities.ProductActivity;
-import com.example.roufish.activities.login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -191,7 +191,7 @@ public class RegisterBuyer extends Activity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         dialogInterface.dismiss();
-                                        Intent registerIntent = new Intent(RegisterBuyer.this, login.class);
+                                        Intent registerIntent = new Intent(RegisterBuyer.this, LoginBuyer.class);
 
                                         startActivity(registerIntent);
                                     }

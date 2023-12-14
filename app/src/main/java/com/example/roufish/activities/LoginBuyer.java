@@ -31,7 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class login extends AppCompatActivity {
+public class LoginBuyer extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FloatingActionButton backToMain ;
@@ -42,12 +42,10 @@ public class login extends AppCompatActivity {
     AppCompatButton loginBtn ;
     DatabaseReference database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_buyer);
-
         mAuth = FirebaseAuth.getInstance();
         backToMain = findViewById(R.id.backToMain);
         editTextUsername = findViewById(R.id.input_Username);
@@ -76,7 +74,7 @@ public class login extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(login.this, Homepage.class);
+                Intent registerIntent = new Intent(LoginBuyer.this, Homepage.class);
                 startActivity(registerIntent);
             }
         });
@@ -98,13 +96,13 @@ public class login extends AppCompatActivity {
                         mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(login.this,"Reset Link Sent to Your Mail",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginBuyer.this,"Reset Link Sent to Your Mail",Toast.LENGTH_SHORT).show();
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(login.this,"Eror ! Reset Link is Not Sent" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginBuyer.this,"Eror ! Reset Link is Not Sent" + e.getMessage(),Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -152,10 +150,10 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(login.this,"Login berhasil",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginBuyer.this,"Login berhasil",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), ProductActivity.class));
                         }else {
-                            Toast.makeText(login.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginBuyer.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             Log.e("LoginError", "onComplete: " + task.getException().getMessage(), task.getException());
 
                         }

@@ -22,7 +22,7 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.activity_list_product);
 
         for (int i = 0; i < 100; i++) {
             products.add(new ListProduct("Mujair", 5000, "https://placehold.co/600x400"));
