@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.ListLelang;
 import com.example.roufish.R;
-import com.example.roufish.HalamanPelelangan;
+import com.example.roufish.PageLelang;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
             public void onClick(View v) {
                 // Handle image click here, for example, open a new activity with the image
                 Log.d("AuctionAdapter", "Image clicked");
-                Intent intent = new Intent(v.getContext(), HalamanPelelangan.class);
+                Intent intent = new Intent(v.getContext(), PageLelang.class);
                 intent.putExtra("image_url", product.getImageUrl()); // Pass the image URL to the next activity
                 v.getContext().startActivity(intent);
             }

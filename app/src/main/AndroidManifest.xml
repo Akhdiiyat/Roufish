@@ -16,6 +16,18 @@
         android:theme="@style/Theme.Roufish"
         tools:targetApi="31">
         <activity
+            android:name=".LoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterPage"
+            android:exported="false" />
+        <activity
+            android:name=".MainPageSeller"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterSeller"
+            android:exported="false" />
+        <activity
             android:name=".login_seller"
             android:exported="false" />
         <activity
@@ -25,7 +37,7 @@
             android:name=".EditProfile"
             android:exported="false" />
         <activity
-            android:name=".home_screen"
+            android:name=".MainPageBuyer"
             android:exported="false" />
         <activity
             android:name=".pembayaran"
@@ -37,13 +49,13 @@
             android:name=".profile"
             android:exported="false" />
         <activity
-            android:name=".HalamanPelelangan"
+            android:name=".PageLelang"
             android:exported="false" />
         <activity
             android:name=".forgetPassword.lupapwd_code"
             android:exported="false" />
         <activity
-            android:name=".HalamanProduct"
+            android:name=".DescriptionProduct"
             android:exported="false" />
         <activity
             android:name=".activities.ProductActivity"
@@ -58,7 +70,7 @@
             android:name=".activities.login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Homepage"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
@@ -69,7 +81,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".register" />
+        <activity android:name=".RegisterBuyer" />
     </application>
 
 </manifest>

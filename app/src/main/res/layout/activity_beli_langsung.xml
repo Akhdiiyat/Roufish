@@ -211,7 +211,7 @@
                 android:layout_height="44dp"
                 android:background="@color/primary_blue"
                 android:backgroundTint="@color/primary_blue"
-                android:text="+ Tambah Produk"
+                android:text="Pilih Product"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="7pt"

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#2C88D9"
-    tools:context=".MainActivity">
+    android:background="@color/app_theme"
+    android:backgroundTint="@color/app_theme"
+    tools:context=".Homepage">
 
 
     <ImageView
@@ -27,9 +28,9 @@
         android:layout_marginRight="30dp"
         android:backgroundTint="@color/primary_blue"
         android:text="Login"
-        android:textSize="20dp"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="20dp"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,19 +59,5 @@
         app:layout_constraintVertical_bias="0.78"
         app:strokeColor="@color/primary_blue"
         app:strokeWidth="2.5dp" />
-
-    <TextView
-        android:id="@+id/login_seller"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="Login Sebagai Penjual?"
-        android:textColor="#2196F3"
-        android:textColorHighlight="#00BCD4"
-        android:textColorHint="#00BCD4"
-        android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

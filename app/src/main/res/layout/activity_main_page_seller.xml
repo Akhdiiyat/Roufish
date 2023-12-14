@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_theme"
+    android:backgroundTint="#BAD5EE"
+    tools:context=".activities.ProductActivity">
+
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/white"
+        android:queryHint="Cari Product"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:background="#C0DBF5"
+        android:clickable="true"
+        app:backgroundTint="#C0DBF5"
+        app:fabCustomSize="50dp"
+        app:layout_constraintStart_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+        app:srcCompat="@drawable/icn_shopping_cart" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline4"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_recommendation" />
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/rou"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        app:backgroundTint="#DCD6D6"
+        app:layout_anchor="@id/botttom_nav_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/botttom_nav_bar"
+        app:layout_constraintStart_toStartOf="@+id/botttom_nav_bar"
+        android:layout_marginBottom="40dp"
+        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+        app:srcCompat="@drawable/icn_mata_pancing" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/botttom_nav_bar"
+        android:layout_width="414dp"
+        android:layout_height="67dp"
+        android:layout_gravity="bottom"
+        android:background="@color/app_theme"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
+        app:itemRippleColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="165dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#2196F3"
+        android:background="@drawable/rounded_button"
+        android:text="Jual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="104dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="165dp"
+        android:layout_height="53dp"
+        android:background="@drawable/rounded_button"
+        android:text="Button"
+        tools:layout_editor_absoluteX="230dp"
+        tools:layout_editor_absoluteY="104dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

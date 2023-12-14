@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
-    tools:context=".HalamanProduct">
+    tools:context=".PageLelang">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18" />
+        app:layout_constraintGuide_begin="132dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/keranjang"
@@ -22,7 +22,7 @@
         android:clickable="true"
         android:isScrollContainer="false"
         android:src="@drawable/icn_shopping_cart"
-        android:tint="#6E6C6C"
+        android:tint="@color/light_blue"
         app:backgroundTint="@color/light_blue"
         app:fabCustomSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,11 +69,6 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -83,117 +78,142 @@
                     android:id="@+id/Text_Nama_Produk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="28dp"
                     android:text="Nama Produk"
                     android:textSize="24dp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/Gambar_ikan"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.06"
+                    app:layout_constraintHorizontal_bias="0.151"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/Text_Waktu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    android:text="09.05.41"
+                    android:textColor="@color/red"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/Gambar_ikan"
-                    android:layout_width="329dp"
-                    android:layout_height="180dp"
-                    android:layout_marginBottom="300dp"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="326dp"
+                    android:layout_height="160dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-
-                    tools:srcCompat="@tools:sample/avatars" />
-
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView4"
-                    android:layout_width="330dp"
-                    android:layout_height="120dp"
-                    android:backgroundTint="#EDEDED"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="282dp">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Berat Produk : 50 Kg" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/textView19"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ditangkap pada pukul 04.00 pagi di perairan tidak jauh dari pesisir"
-                            tools:layout_editor_absoluteX="0dp"
-                            tools:layout_editor_absoluteY="31dp" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
+                    tools:layout_editor_absoluteY="109dp"
+                    tools:srcCompat="@tools:sample/avatars"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
-                    android:id="@+id/Text_informasi_lelang"
+                    android:id="@+id/Text_penawaran"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Harga "
+                    android:layout_marginBottom="5dp"
+                    android:text="Penawaran"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.119"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_masukkan_harga"
+                    android:layout_width="337dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/rounded_button"
+                    android:text="Masukkan Harga"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.486"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Text_pasang_penawaran"
+                    app:layout_constraintVertical_bias="0.073" />
+
+                <TextView
+                    android:id="@+id/Text_pasang_penawaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="428dp"
+                    android:text="Pasang Penawaran"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.111"
+                    app:layout_constraintHorizontal_bias="0.13"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="418dp" />
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/Text_Selesai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="520dp"
+                    android:text="Selesai"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.099"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/Text_Pukul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="520dp"
+                    android:text="Pukul"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.215"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/constraintLayout"
-                    android:layout_width="330dp"
-                    android:layout_height="50dp"
-                    android:backgroundTint="#EDEDED"
+                    android:layout_width="333dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="4dp"
                     app:cardCornerRadius="5sp"
+                    android:backgroundTint="#EDEDED"
                     app:cardElevation="5dp"
-                    tools:layout_editor_absoluteX="41dp"
-                    tools:layout_editor_absoluteY="440dp">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Text_penawaran"
+                    app:layout_constraintVertical_bias="0.068">
 
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="136dp"
+
+                    <EditText
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rp. 50.000"
-                        android:textSize="15dp" />
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Bapak Sunaryo Harga Rp 500.0000"
+                        android:background="@null"
+                        android:textSize="15sp"
+                        tools:layout_editor_absoluteX="40dp"
+                        tools:layout_editor_absoluteY="322dp" />
+
+
                 </androidx.cardview.widget.CardView>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_lanjutkan"
-                    android:layout_width="337dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/rounded_button"
-                    android:text="Pilih Product"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="7pt"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="515dp" />
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Deskripsi Product"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/cardView4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.138"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Gambar_ikan" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+
+
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

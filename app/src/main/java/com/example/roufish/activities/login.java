@@ -19,9 +19,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.example.roufish.MainActivity;
+import com.example.roufish.Homepage;
 import com.example.roufish.R;
-import com.example.roufish.home_screen;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,14 +28,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import com.example.roufish.activities.ProductActivity;
 
 public class login extends AppCompatActivity {
 
@@ -53,7 +46,7 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_buyer);
 
         mAuth = FirebaseAuth.getInstance();
         backToMain = findViewById(R.id.backToMain);
@@ -83,7 +76,7 @@ public class login extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(login.this, MainActivity.class);
+                Intent registerIntent = new Intent(login.this, Homepage.class);
                 startActivity(registerIntent);
             }
         });

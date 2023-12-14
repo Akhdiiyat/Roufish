@@ -15,13 +15,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
-import org.checkerframework.common.subtyping.qual.Bottom;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HalamanPelelangan extends AppCompatActivity {
+public class PageLelang extends AppCompatActivity {
     private TextView Text_Waktu;
 
     private void showBottomSheetDialog() {
@@ -42,7 +40,7 @@ public class HalamanPelelangan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_halaman_pelelangan);
+        setContentView(R.layout.activity_page_lelang);
         Text_Waktu = findViewById(R.id.Text_Waktu);
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra("image_url");
@@ -69,7 +67,7 @@ public class HalamanPelelangan extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backToMainintent = new Intent(HalamanPelelangan.this, HalamanProduct.class);
+                Intent backToMainintent = new Intent(PageLelang.this, DescriptionProduct.class);
                 startActivity(backToMainintent);
             }
         });

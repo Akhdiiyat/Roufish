@@ -63,7 +63,7 @@ public class Beli_Langsung extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backToMainintent = new Intent(Beli_Langsung.this, HalamanProduct.class);
+                Intent backToMainintent = new Intent(Beli_Langsung.this, DescriptionProduct.class);
                 startActivity(backToMainintent);
             }
         });

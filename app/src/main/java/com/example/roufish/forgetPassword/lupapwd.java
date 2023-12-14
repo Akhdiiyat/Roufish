@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.roufish.MainActivity;
+import com.example.roufish.Homepage;
 import com.example.roufish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,7 +30,7 @@ public class lupapwd extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lupaPwIntent = new Intent(lupapwd.this, MainActivity.class);
+                Intent lupaPwIntent = new Intent(lupapwd.this, Homepage.class);
                 startActivity(lupaPwIntent);
             }
         });

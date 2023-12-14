@@ -13,11 +13,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.example.roufish.activities.ProductActivity;
 
-public class HalamanProduct extends AppCompatActivity {
+public class DescriptionProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_halaman_product);
+        setContentView(R.layout.activity_description_product);
         RadioGroup radioGroup = findViewById(R.id.radiogroup);
         RadioButton lelang = findViewById(R.id.lelang);
         //RadioButton jual = findViewById(R.id.jual);
@@ -34,7 +34,7 @@ public class HalamanProduct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(lelang.isChecked()){
-                    Intent lelangIntent = new Intent(HalamanProduct.this, HalamanPelelangan.class);
+                    Intent lelangIntent = new Intent(DescriptionProduct.this, PageLelang.class);
                     startActivity(lelangIntent);
                 } /*else if (jual.isChecked()) {
                     Intent jualIntent = new Intent(HalamanProduct.this, Beli_Langsung.class);
@@ -45,7 +45,7 @@ public class HalamanProduct extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backToMainIntent = new Intent(HalamanProduct.this, ProductActivity.class);
+                Intent backToMainIntent = new Intent(DescriptionProduct.this, ProductActivity.class);
                 startActivity(backToMainIntent);
             }
         });

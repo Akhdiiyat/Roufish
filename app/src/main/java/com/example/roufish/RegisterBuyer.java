@@ -28,18 +28,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class register extends Activity {
+public class RegisterBuyer extends Activity {
 
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
@@ -58,7 +55,7 @@ public class register extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_activity);
+        setContentView(R.layout.activity_register_buyer);
 
         inputUsername = findViewById(R.id.inputUsername);
         inputPassword = findViewById(R.id.inputPassword);
@@ -93,7 +90,7 @@ public class register extends Activity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(register.this, MainActivity.class);
+                Intent registerIntent = new Intent(RegisterBuyer.this, Homepage.class);
 
                 startActivity(registerIntent);
             }
@@ -167,7 +164,7 @@ public class register extends Activity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(register.this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterBuyer.this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show();
 
                                 userID = mAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = firestore.collection("users").document(userID);
@@ -188,13 +185,13 @@ public class register extends Activity {
                                     }
                                 });
 
-                                AlertDialog.Builder builder = new AlertDialog.Builder(register.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterBuyer.this);
                                 builder.setTitle("Pendaftaran Berhasil");
                                 builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         dialogInterface.dismiss();
-                                        Intent registerIntent = new Intent(register.this, login.class);
+                                        Intent registerIntent = new Intent(RegisterBuyer.this, login.class);
 
                                         startActivity(registerIntent);
                                     }
@@ -205,7 +202,7 @@ public class register extends Activity {
                                     }
                                 }).create().show();
                             } else {
-                                Toast.makeText(register.this, "Pendaftaran Gagal" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterBuyer.this, "Pendaftaran Gagal" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                             }
 
