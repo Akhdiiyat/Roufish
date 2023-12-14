@@ -28,7 +28,7 @@
             android:name=".RegisterSeller"
             android:exported="false" />
         <activity
-            android:name=".login_seller"
+            android:name=".LoginSeller"
             android:exported="false" />
         <activity
             android:name=".widgets.login_seller"
@@ -67,7 +67,7 @@
             android:name=".forgetPassword.lupapwd"
             android:exported="false" />
         <activity
-            android:name=".activities.login"
+            android:name=".activities.LoginBuyer"
             android:exported="false" />
         <activity
             android:name=".Homepage"

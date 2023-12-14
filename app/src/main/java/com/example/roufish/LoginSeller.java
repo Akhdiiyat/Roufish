@@ -3,7 +3,6 @@ package com.example.roufish;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -13,10 +12,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import com.example.roufish.activities.login;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class login_seller extends AppCompatActivity {
+public class LoginSeller extends AppCompatActivity {
 
     FloatingActionButton btnBack;
     CheckBox tampilPassword;
@@ -42,7 +40,7 @@ public class login_seller extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent btnBackIntent = new Intent(login_seller.this, MainActivity.class);
+                Intent btnBackIntent = new Intent(LoginSeller.this, LoginPage.class);
                 startActivity(btnBackIntent);
             }
         });
