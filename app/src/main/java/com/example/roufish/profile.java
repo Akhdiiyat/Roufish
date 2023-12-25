@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.roufish.activities.LoginBuyer;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -28,7 +29,7 @@ public class profile extends AppCompatActivity {
 
 
     Button logout, editProfile;
-
+    FloatingActionButton back;
     FirebaseFirestore firestore;
 
     FirebaseAuth mAuth;
@@ -51,7 +52,14 @@ public class profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        back = findViewById(R.id.tombolkmbl);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(profile.this, Homepage.class);
+                startActivity(backIntent);
+            }
+        });
         logout = findViewById(R.id.btn_logout);
 
 

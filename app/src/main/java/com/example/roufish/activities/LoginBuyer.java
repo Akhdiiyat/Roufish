@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.roufish.Homepage;
+import com.example.roufish.MainPageBuyer;
 import com.example.roufish.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -55,7 +56,7 @@ public class LoginBuyer extends AppCompatActivity {
         lupaPassword = findViewById(R.id.lupaPassword);
 
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainPageBuyer.class));
             finish();
         }
 

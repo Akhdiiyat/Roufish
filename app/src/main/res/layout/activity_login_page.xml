@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.026" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonLoginPembeli"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginLeft="30dp"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.667" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonLoginPenjual"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginLeft="30dp"
@@ -64,24 +64,25 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:text="atau"
         android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/belum_punya_akun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoginPenjual"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/belum_punya_akun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Sudah punya akun?"
+        android:layout_marginBottom="40dp"
+        android:text="Belum punya akun?"
         android:textColor="#2D40A8"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView22"
@@ -90,9 +91,24 @@
         android:text="Hai! Masuk\nsebagai apa?"
         android:textSize="38dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="205dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.297" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/arrow_back_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

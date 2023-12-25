@@ -7,8 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.activities.*;
+import com.example.roufish.adapters.ProductsAdapter;
+
+import java.util.ArrayList;
 
 public class Homepage extends AppCompatActivity {
     Button buttonLogin, buttonRegister;
@@ -18,6 +23,7 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         buttonRegister = findViewById(R.id.buttonRegister);
         buttonLogin = findViewById(R.id.buttonLogin);
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
