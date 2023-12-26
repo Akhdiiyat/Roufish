@@ -119,7 +119,7 @@ public class profile extends AppCompatActivity {
 
     public  void logOut(View view){
         mAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(), LoginBuyer.class));
+        startActivity(new Intent(getApplicationContext(), Homepage.class));
         finish();
     }
 

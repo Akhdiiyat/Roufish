@@ -65,5 +65,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
             productImageView = itemView.findViewById(R.id.productImageView); // Corrected initialization
         }
+        void bind(String name, int price, String imageUrl) {
+            productNameTextView.setText(name);
+            productPriceTextView.setText(String.valueOf(price));
+            Picasso.get().load(imageUrl).into(productImageView);
+        }
     }
 }

@@ -2,14 +2,15 @@ package com.example.roufish;
 
 public class ListProduct {
     private String name;
-    private double price;
+    private int price;
     private String imageResId;
 
-    public ListProduct(String name, double price, String imageResId) {
+    public ListProduct(String name, int price, String imageResId) {
         this.name = name;
         this.price = price;
         this.imageResId = imageResId;
     }
+    public ListProduct()  { }
 
     public String getName() {
         return name;
