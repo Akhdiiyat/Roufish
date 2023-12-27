@@ -1,45 +1,51 @@
 package com.example.roufish;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.roufish.adapters.ProductsAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.example.roufish.activities.ProductActivity;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DescriptionProduct extends AppCompatActivity {
+    TextView nama, berat, deskripsi, harga;
+    ImageView foto;
+    private FirebaseFirestore firestore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description_product);
-        RadioGroup radioGroup = findViewById(R.id.radiogroup);
-        RadioButton lelang = findViewById(R.id.lelang);
-        //RadioButton jual = findViewById(R.id.jual);
-        Button lanjutkan = findViewById(R.id.btn_lanjutkan);
+        firestore = FirebaseFirestore.getInstance();
+        getDataFromFirestore();
+        Button pilih = findViewById(R.id.btn_lanjutkan);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
-        lelang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            //belum di isi
-            }
-        });
-
-        lanjutkan.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton keranjang = findViewById(R.id.keranjang);
+        keranjang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(lelang.isChecked()){
-                    Intent lelangIntent = new Intent(DescriptionProduct.this, PageLelang.class);
-                    startActivity(lelangIntent);
-                } /*else if (jual.isChecked()) {
-                    Intent jualIntent = new Intent(HalamanProduct.this, Beli_Langsung.class);
-                    startActivity(jualIntent);
-                }*/
+                Intent cartIntent = new Intent(DescriptionProduct.this, Keranjang.class);
+                startActivity(cartIntent);
+            }
+        });
+        pilih.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(DescriptionProduct.this, "Produk Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
             }
         });
         backToMain.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +55,38 @@ public class DescriptionProduct extends AppCompatActivity {
                 startActivity(backToMainIntent);
             }
         });
+        nama = findViewById(R.id.Text_Nama_Produk);
+        berat = findViewById(R.id.textBerat);
+        deskripsi = findViewById(R.id.textDeskripsi);
+        harga = findViewById(R.id.textHarga);
+        firestore = FirebaseFirestore.getInstance();
+    }
+    private void getDataFromFirestore() {
+        firestore.collection("products")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (DocumentSnapshot document : queryDocumentSnapshots) {
+                        // Extract data from each document
+                        String name = document.getString("name");
+                        String description = document.getString("description");
+                        String weight = document.getString("weight");
+                        double price = document.getDouble("price");
 
+                        // Process or display the data as needed
+                        // For example, you can create ListLelang objects and add them to a list
+                        // productList.add(new ListLelang(name, description, price, imageUrl));
+
+                        // Update UI elements with the retrieved data (example: display the first item)
+                        nama.setText(name);
+                        berat.setText(weight);
+                        deskripsi.setText(description);
+                        harga.setText(String.valueOf(price));
+
+                        // Note: If you want to display a list of products, consider using a RecyclerView
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(DescriptionProduct.this, "Failed to retrieve data", Toast.LENGTH_SHORT).show();
+                });
     }
 }
