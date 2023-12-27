@@ -10,6 +10,10 @@
         android:title="Forum"
         android:icon="@drawable/ic_forum"/>
 
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_person"/>
 
 
 </menu>

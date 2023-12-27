@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Roufish"
         tools:targetApi="31">
         <activity
+            android:name=".Rekap_penjualan"
+            android:exported="false" />
+        <activity
+            android:name=".RekapPenjualan"
+            android:exported="false" />
+        <activity
             android:name=".ProdukLelang"
             android:exported="false" />
         <activity
@@ -52,7 +58,7 @@
             android:name=".Beli_Langsung"
             android:exported="false" />
         <activity
-            android:name=".profile"
+            android:name=".profileBuyer"
             android:exported="false" />
         <activity
             android:name=".PageLelang"
@@ -80,6 +86,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

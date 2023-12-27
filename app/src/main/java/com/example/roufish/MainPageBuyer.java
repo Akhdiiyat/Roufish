@@ -13,7 +13,6 @@ import android.view.View;
 import com.example.roufish.activities.AuctionActivity;
 import com.example.roufish.activities.ProductActivity;
 import com.example.roufish.adapters.HomepageAdapter;
-import com.example.roufish.adapters.ProductsAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class MainPageBuyer extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent profileIntent =  new Intent(MainPageBuyer.this, profile.class);
+                Intent profileIntent =  new Intent(MainPageBuyer.this, profileBuyer.class);
                 startActivity(profileIntent);
             }
         });
