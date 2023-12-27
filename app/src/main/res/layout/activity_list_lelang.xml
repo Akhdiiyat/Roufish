@@ -65,7 +65,7 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/botttom_nav_bar"
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="414dp"
         android:layout_height="67dp"
         android:layout_gravity="bottom"
@@ -86,10 +86,10 @@
         android:layout_marginBottom="40dp"
         android:clickable="true"
         app:backgroundTint="#DCD6D6"
-        app:layout_anchor="@id/botttom_nav_bar"
+        app:layout_anchor="@id/bottom_nav_bar"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/botttom_nav_bar"
-        app:layout_constraintStart_toStartOf="@+id/botttom_nav_bar"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_nav_bar"
+        app:layout_constraintStart_toStartOf="@+id/bottom_nav_bar"
         app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
         app:srcCompat="@drawable/icn_mata_pancing" />
 
