@@ -56,9 +56,9 @@ public class DescriptionProduct extends AppCompatActivity {
             }
         });
         nama = findViewById(R.id.Text_Nama_Produk);
-        berat = findViewById(R.id.textBerat);
-        deskripsi = findViewById(R.id.textDeskripsi);
-        harga = findViewById(R.id.textHarga);
+        berat = findViewById(R.id.text_berat);
+        deskripsi = findViewById(R.id.text_desc);
+        harga = findViewById(R.id.text_price);
         firestore = FirebaseFirestore.getInstance();
     }
     private void getDataFromFirestore() {
