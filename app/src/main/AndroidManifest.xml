@@ -58,7 +58,7 @@
             android:name=".Beli_Langsung"
             android:exported="false" />
         <activity
-            android:name=".profile"
+            android:name=".profileBuyer"
             android:exported="false" />
         <activity
             android:name=".PageLelang"

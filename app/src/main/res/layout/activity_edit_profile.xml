@@ -10,22 +10,30 @@
         android:id="@+id/profileEditUsername"
         android:layout_width="267dp"
         android:layout_height="38dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rounded_button"
         android:ems="10"
         android:inputType="text"
         android:text="Username"
+        android:paddingLeft="10dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/profileEditImageView"
+        app:strokeColor="@color/primary_blue"
+        app:strokeWidth="2.5dp"/>
 
     <EditText
         android:id="@+id/profileEditEmail"
         android:layout_width="267dp"
         android:layout_height="38dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="text"
         android:text="Email"
+        android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileEditUsername" />
@@ -35,29 +43,41 @@
         android:layout_width="267dp"
         android:layout_height="38dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:inputType="text"
+        android:paddingLeft="10dp"
         android:text="Nomor HP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileEditEmail" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/profileEditImageView"
-        android:layout_width="105dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="52dp"
+        android:background="@drawable/rounder_bg"
+        android:backgroundTint="#808080"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person" />
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_person"
+        />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveEditProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="150dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/primary_blue"
+        android:background="@drawable/rounder_bg"
         android:text="Save"
+        android:textSize="8pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

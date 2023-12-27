@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.roufish.activities.LoginBuyer;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class profile extends AppCompatActivity {
+public class profileBuyer extends AppCompatActivity {
 
 
     Button logout, editProfile;
@@ -56,7 +55,7 @@ public class profile extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backIntent = new Intent(profile.this, Homepage.class);
+                Intent backIntent = new Intent(profileBuyer.this, MainPageBuyer.class);
                 startActivity(backIntent);
             }
         });

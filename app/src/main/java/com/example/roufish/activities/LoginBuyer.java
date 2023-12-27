@@ -152,7 +152,7 @@ public class LoginBuyer extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginBuyer.this,"Login berhasil",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainPageBuyer.class));
                         }else {
                             Toast.makeText(LoginBuyer.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             Log.e("LoginError", "onComplete: " + task.getException().getMessage(), task.getException());

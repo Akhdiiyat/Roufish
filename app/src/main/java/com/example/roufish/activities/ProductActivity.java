@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.roufish.ListProduct;
 import com.example.roufish.R;
+import com.example.roufish.profileBuyer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.example.roufish.adapters.ProductsAdapter;
@@ -41,7 +42,7 @@ public class ProductActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profileintent = new Intent(ProductActivity.this, com.example.roufish.profile.class);
+                Intent profileintent = new Intent(ProductActivity.this, profileBuyer.class);
                 startActivity(profileintent);
             }
         });
