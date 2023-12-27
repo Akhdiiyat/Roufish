@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.roufish.DescriptionProduct;
 import com.example.roufish.ListProduct;
 import com.example.roufish.R;
 import com.example.roufish.profileBuyer;
@@ -45,14 +46,24 @@ public class ProductActivity extends AppCompatActivity {
                 startActivity(profileintent);
             }
         });
-        nextActivity.setOnClickListener(new View.OnClickListener(){
+        nextActivity.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent activity = new Intent(ProductActivity.this, AuctionActivity.class);
                 startActivity(activity);
             }
         });
-        firestore = FirebaseFirestore.getInstance();
     }
+        public void onItemClick(int position) {
+            ListProduct clickedProduct = products.get(position);
+
+            Intent intent = new Intent(ProductActivity.this, DescriptionProduct.class);
+            intent.putExtra("name", clickedProduct.getName());
+            //intent.putExtra("description", clickedProduct.getDescription());
+            //intent.putExtra("weight", clickedProduct.getWeight());
+            intent.putExtra("price", clickedProduct.getPrice());
+            // Add more information if needed
+            startActivity(intent);
+        }
     private void getDataFromFirestore() {
         firestore.collection("products")
                 .get()
@@ -70,5 +81,6 @@ public class ProductActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(ProductActivity.this, "Gagal mengambil data", Toast.LENGTH_SHORT).show();
                 });
+
     }
 }
