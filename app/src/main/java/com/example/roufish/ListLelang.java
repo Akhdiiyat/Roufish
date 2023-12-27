@@ -2,11 +2,11 @@ package com.example.roufish;
 
 public class ListLelang {
     private String itemName;
-    private double startingPrice;
+    private int startingPrice;
     private String itemDescription;
     private String imageUrl;
 
-    public ListLelang(String itemName, String itemDescription, double startingPrice, String imageUrl) {
+    public ListLelang(String itemName, String itemDescription, int startingPrice, String imageUrl) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.startingPrice = startingPrice;
@@ -21,7 +21,7 @@ public class ListLelang {
         return itemDescription;
     }
 
-    public double getStartingPrice() {
+    public int getStartingPrice() {
         return startingPrice;
     }
 }

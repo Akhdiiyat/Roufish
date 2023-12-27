@@ -70,7 +70,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/nama_produk"
+                        android:id="@+id/inputNamaProdukLelang"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -105,7 +105,7 @@
                         app:layout_constraintVertical_bias="0.194" />
 
                     <EditText
-                        android:id="@+id/input_beratproduk"
+                        android:id="@+id/inputBeratProdukLelang"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -140,7 +140,7 @@
                         app:layout_constraintVertical_bias="0.376" />
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/inputDeskripsiProdukLelang"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -175,7 +175,7 @@
                         app:layout_constraintVertical_bias="0.544" />
 
                     <EditText
-                        android:id="@+id/input_hargaproduk"
+                        android:id="@+id/inputHargaProdukLelang"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -210,7 +210,7 @@
                         app:layout_constraintVertical_bias="0.743" />
 
                     <EditText
-                        android:id="@+id/input_kelipatanlelang"
+                        android:id="@+id/inputKelipatanLelang"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"

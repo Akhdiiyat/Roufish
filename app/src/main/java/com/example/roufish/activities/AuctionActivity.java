@@ -10,27 +10,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.ListLelang;
 import com.example.roufish.R;
-import com.example.roufish.profileBuyer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 import com.example.roufish.adapters.AuctionAdapter;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class AuctionActivity extends AppCompatActivity {
     private ArrayList<ListLelang> productList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private AuctionAdapter adapter;
-    private FirebaseFirestore db;
     private AuctionAdapter auctionAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_lelang);
-
         RecyclerView recyclerView = findViewById(R.id.recycler_view_lelang);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new AuctionAdapter(productList));
@@ -41,7 +37,7 @@ public class AuctionActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profileintent = new Intent(AuctionActivity.this, profileBuyer.class);
+                Intent profileintent = new Intent(AuctionActivity.this, com.example.roufish.profileBuyer.class);
                 startActivity(profileintent);
             }
         });
@@ -62,11 +58,10 @@ public class AuctionActivity extends AppCompatActivity {
             for (DocumentSnapshot document : value.getDocuments()) {
                 String name = document.getString("nama");
                 String description = document.getString("deskripsi");
+                //int startingPrice = document.getLong("harga").intValue();
                 String Price = (String) document.get("harga");
-                String imageUrl = document.getString("image_url");
-
                 int startingPrice = Integer.parseInt(Price);
-
+                String imageUrl = document.getString("image_url");
 
                 ListLelang lelang = new ListLelang(name, description, startingPrice, imageUrl);
                 productList.add(lelang);
@@ -75,7 +70,7 @@ public class AuctionActivity extends AppCompatActivity {
                 auctionAdapter.notifyDataSetChanged();
             });
         });
-}
+    }
 }
 
 
