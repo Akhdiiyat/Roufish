@@ -8,7 +8,7 @@
     android:backgroundTint="@color/app_theme"
     tools:context=".Homepage">
 
-
+    <!---->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="199dp"
