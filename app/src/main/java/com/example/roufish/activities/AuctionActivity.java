@@ -3,13 +3,18 @@ package com.example.roufish.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.ListLelang;
+import com.example.roufish.MainPageBuyer;
+import com.example.roufish.MainPageSeller;
 import com.example.roufish.R;
+import com.example.roufish.forum;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -23,6 +28,7 @@ import com.google.firebase.firestore.Query;
 public class AuctionActivity extends AppCompatActivity {
     private ArrayList<ListLelang> productList = new ArrayList<>();
     private AuctionAdapter auctionAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +40,22 @@ public class AuctionActivity extends AppCompatActivity {
         FloatingActionButton profile = findViewById(R.id.info_profile);
         FloatingActionButton nextActivity = findViewById(R.id.rou);
         recyclerView.setAdapter(auctionAdapter);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_bar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                item -> {
+                    if (item.getItemId() == R.id.home) {
+                        // Navigate to HomeActivity when Home is clicked
+                        startActivity(new Intent(AuctionActivity.this, MainPageBuyer.class));
+                        return true;
+                    } else if (item.getItemId() == R.id.forum) {
+                        // Navigate to ForumActivity when Forum is clicked
+                        startActivity(new Intent(AuctionActivity.this, forum.class));
+                        return true;
+                    }
+                    // Add more conditions for other items if needed
+                    return false;
+                }
+        );
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
