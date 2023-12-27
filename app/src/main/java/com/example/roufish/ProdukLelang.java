@@ -54,8 +54,8 @@ public class ProdukLelang extends AppCompatActivity {
         inputHargaProdukLelang= findViewById(R.id.inputHargaProdukLelang) ;
         inputKelipatanLelang= findViewById(R.id.inputKelipatanLelang);
 
-        inputFoto = findViewById(R.id.inputFotoLelang);
-        uploadProduk = findViewById(R.id.uploadProdukLelang);
+//        inputFoto = findViewById(R.id.inputFotoLelang);
+//        uploadProduk = findViewById(R.id.uploadProdukLelang);
 
         backToMainPage = findViewById(R.id.floatingActionButton2);
 

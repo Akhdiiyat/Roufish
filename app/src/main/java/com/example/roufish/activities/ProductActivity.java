@@ -38,7 +38,6 @@ public class ProductActivity extends AppCompatActivity {
         getDataFromFirestore();
         FloatingActionButton profile = findViewById(R.id.info_profile);
         FloatingActionButton nextActivity = findViewById(R.id.rou);
-        //CardView cardView = findViewById(R.id.info_produk2);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,16 +52,13 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
         firestore = FirebaseFirestore.getInstance();
-
-
     }
     private void getDataFromFirestore() {
-        // Ganti "products" dengan nama koleksi Anda di Firestore
         firestore.collection("products")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
-                        products.clear(); // Hapus item yang sudah ada
+                        products.clear();
                         for (ListProduct product : queryDocumentSnapshots.toObjects(ListProduct.class)) {
                             products.add(product);
                         }
