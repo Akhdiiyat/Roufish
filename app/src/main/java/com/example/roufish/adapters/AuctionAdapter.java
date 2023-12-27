@@ -44,8 +44,6 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
         holder.productAuctionNameTextView.setText(product.getItemName());
         holder.productStartingPriceTextView.setText(String.valueOf(product.getStartingPrice()));
         holder.productDescriptionTextView.setText(product.getItemDescription());
-        /*holder.productWeightTextView.setText("Berat: " + product.getBerat() + " kg");
-        holder.productIncrementTextView.setText("Kelipatan: " + product.getKelipatan());*/
 
         // Menambahkan onClickListener untuk setiap item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
