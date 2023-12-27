@@ -56,7 +56,7 @@ public class profile extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backIntent = new Intent(profile.this, Homepage.class);
+                Intent backIntent = new Intent(profile.this, MainPageBuyer.class);
                 startActivity(backIntent);
             }
         });

@@ -67,22 +67,8 @@ public class RegisterBuyer extends Activity {
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        //daftar = findViewById(R.id.btn_daftar);
 
 
-        //reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://roufish-database-default-rtdb.firebaseio.com/");
-
-
-
-
-       /* daftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(register.this, login.class);
-
-                startActivity(registerIntent);
-            }
-        });*/
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), ProductActivity.class));
             finish();

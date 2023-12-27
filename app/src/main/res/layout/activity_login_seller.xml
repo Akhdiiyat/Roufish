@@ -62,7 +62,6 @@
                 android:background="@drawable/custom_input"
                 android:ems="10"
                 android:contentDescription="ID"
-                android:inputType="number"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"

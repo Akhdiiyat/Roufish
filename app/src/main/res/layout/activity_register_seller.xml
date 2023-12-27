@@ -17,7 +17,7 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/backToMainREG"
+        android:id="@+id/backToMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -49,15 +49,15 @@
                 android:text="Seller ID"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/inputUsername"
-                app:layout_constraintEnd_toEndOf="@+id/inputUsername"
+                app:layout_constraintBottom_toTopOf="@+id/inputSellerId"
+                app:layout_constraintEnd_toEndOf="@+id/inputSellerId"
                 app:layout_constraintHorizontal_bias="0.004"
-                app:layout_constraintStart_toStartOf="@+id/inputUsername"
+                app:layout_constraintStart_toStartOf="@+id/inputSellerId"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.529" />
 
             <EditText
-                android:id="@+id/inputUsername"
+                android:id="@+id/inputSellerId"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="48dp"
@@ -79,13 +79,13 @@
                 android:text="Password"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/inputPassword"
+                app:layout_constraintEnd_toEndOf="@+id/inputSellerPassword"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/inputPassword"
-                app:layout_constraintTop_toBottomOf="@+id/inputUsername" />
+                app:layout_constraintStart_toStartOf="@+id/inputSellerPassword"
+                app:layout_constraintTop_toBottomOf="@+id/inputSellerId" />
 
             <EditText
-                android:id="@+id/inputPassword"
+                android:id="@+id/inputSellerPassword"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -108,13 +108,13 @@
                 android:text="Email"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/input_Email"
+                app:layout_constraintEnd_toEndOf="@+id/inputSellerEmail"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/input_Email"
-                app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+                app:layout_constraintStart_toStartOf="@+id/inputSellerEmail"
+                app:layout_constraintTop_toBottomOf="@+id/inputSellerPassword" />
 
             <EditText
-                android:id="@+id/input_Email"
+                android:id="@+id/inputSellerEmail"
                 android:layout_width="300dp"
                 android:layout_height="44dp"
                 android:layout_marginTop="4dp"
@@ -135,13 +135,13 @@
                 android:text="Alamat"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/input_Alamat"
+                app:layout_constraintEnd_toEndOf="@+id/inputSellerAlamat"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/input_Alamat"
-                app:layout_constraintTop_toBottomOf="@+id/input_Email" />
+                app:layout_constraintStart_toStartOf="@+id/inputSellerAlamat"
+                app:layout_constraintTop_toBottomOf="@+id/inputSellerEmail" />
 
             <EditText
-                android:id="@+id/input_Alamat"
+                android:id="@+id/inputSellerAlamat"
                 android:layout_width="300dp"
                 android:layout_height="44dp"
                 android:layout_marginTop="4dp"
@@ -162,13 +162,13 @@
                 android:text="No. HP"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/input_NoHP"
+                app:layout_constraintEnd_toEndOf="@+id/inputSellerNoHP"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/input_NoHP"
-                app:layout_constraintTop_toBottomOf="@+id/input_Alamat" />
+                app:layout_constraintStart_toStartOf="@+id/inputSellerNoHP"
+                app:layout_constraintTop_toBottomOf="@+id/inputSellerAlamat" />
 
             <EditText
-                android:id="@+id/input_NoHP"
+                android:id="@+id/inputSellerNoHP"
                 android:layout_width="300dp"
                 android:layout_height="44dp"
                 android:layout_marginTop="4dp"
@@ -182,20 +182,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/Text_NoHP" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_daftar"
+                android:id="@+id/btnDaftarSeller"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:background="@drawable/rounded_button"
-                android:textColor="@color/white"
-                android:textStyle="normal"
                 android:text="Daftar"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="8pt"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_NoHP"
-                app:layout_constraintVertical_bias="0.556" />
+                app:layout_constraintTop_toBottomOf="@+id/inputSellerNoHP"
+                app:layout_constraintVertical_bias="0.195" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
