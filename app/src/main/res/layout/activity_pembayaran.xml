@@ -12,13 +12,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18" />
+        app:layout_constraintGuide_percent="0.15" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="93dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/backToMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/light_blue"
+        android:backgroundTint="@color/white"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +41,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="409dp"
-        android:layout_height="527dp"
+        android:layout_width="420dp"
+        android:layout_height="550dp"
         android:background="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,23 +55,40 @@
             android:layout_height="match_parent">
 
             <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pembayaran"
+            android:textSize="10pt"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.638" />
+
+            <TextView
                 android:id="@+id/Text_Pengiriman"
                 android:layout_width="146dp"
                 android:layout_height="31dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="40dp"
                 android:text="Nama Pemesan"
                 android:textSize="17dp"
                 android:textStyle="bold"
+                android:layout_marginLeft="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.06"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="330dp"
+                android:layout_width="350dp"
                 android:layout_height="66dp"
-                android:background="@color/card_view"
+                android:background="@drawable/rounded_button"
                 app:cornerRadius="10dp"
+                android:backgroundTint="@color/card_view"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.202"
@@ -100,12 +128,13 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginTop="136dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="150dp"
                 android:background="#BDBDBD"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="0dp"></LinearLayout>
+                tools:layout_editor_absoluteX="0dp"
+                ></LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -119,6 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Keranjang(1 Produk) "
+                    android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.126"
@@ -131,6 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp9999"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.747"
@@ -143,6 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Biaya Pengiriman"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.116"
@@ -155,14 +187,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp9999"
-                    tools:layout_editor_absoluteX="269dp"
-                    tools:layout_editor_absoluteY="218dp" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    tools:layout_editor_absoluteX="269dp" />
 
                 <TextView
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp0"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.7"
@@ -176,6 +211,7 @@
                     android:layout_height="wrap_content"
                     android:text="Total Pembayaran"
                     android:textStyle="bold"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.119"
@@ -187,67 +223,79 @@
                     android:id="@+id/btn_tambah_produk"
                     android:layout_width="196dp"
                     android:layout_height="44dp"
-                    android:background="@color/primary_blue"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/rounded_button"
                     android:backgroundTint="@color/primary_blue"
                     android:text="Kupon Pembayaran"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="7pt"
                     app:cornerRadius="20dp"
-                    tools:layout_editor_absoluteX="98dp"
-                    tools:layout_editor_absoluteY="275dp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout3"
                     android:layout_width="match_parent"
-                    android:layout_height="10dp"
+                    android:layout_height="5dp"
                     android:background="#BDBDBD"
                     android:orientation="horizontal"
                     tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="254dp">
+                    tools:layout_editor_absoluteY="280dp">
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="11dp"
+                    android:layout_height="5dp"
                     android:background="#BDBDBD"
                     android:orientation="horizontal"
                     tools:layout_editor_absoluteX="62dp"
-                    tools:layout_editor_absoluteY="341dp"></LinearLayout>
+                    tools:layout_editor_absoluteY="360dp"></LinearLayout>
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="17dp"
                     android:text="Pilih Metode Pembayaran"
                     android:textStyle="bold"
-                    tools:layout_editor_absoluteX="10dp"
-                    tools:layout_editor_absoluteY="358dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
                 <RadioButton
                     android:id="@+id/radioButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="30dp"
                     android:text="Bayar Di Tempat"
-                    tools:layout_editor_absoluteX="22dp"
-                    tools:layout_editor_absoluteY="378dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
                     android:text="Gopay"
-                    tools:layout_editor_absoluteX="22dp"
-                    tools:layout_editor_absoluteY="426dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioButton" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
                     android:text="Qris"
-                    tools:layout_editor_absoluteX="22dp"
-                    tools:layout_editor_absoluteY="474dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -270,6 +318,7 @@
         android:text="Barang"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:layout_marginLeft="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
@@ -284,6 +333,7 @@
         android:text="Total"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:layout_marginLeft="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
@@ -298,6 +348,7 @@
         android:text="1 Ekor"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:layout_marginLeft="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.292"
@@ -312,6 +363,7 @@
         android:text="Rp 9.999"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:layout_marginLeft="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.321"
@@ -323,31 +375,19 @@
         android:id="@+id/btn_bayar"
         android:layout_width="81dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="32dp"
-        android:background="@color/primary_blue"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/rounded_button"
         android:backgroundTint="@color/primary_blue"
         android:text="Bayar"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:layout_marginLeft="180dp"
         android:textSize="7pt"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.763"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pembayaran"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
