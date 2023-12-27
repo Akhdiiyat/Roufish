@@ -16,7 +16,6 @@
         android:layout_height="50dp"
         android:layout_gravity="end|bottom"
         android:layout_marginEnd="24dp"
-        android:background="#C0DBF5"
         android:backgroundTint="@color/app_theme"
         android:clickable="true"
         android:isScrollContainer="false"
