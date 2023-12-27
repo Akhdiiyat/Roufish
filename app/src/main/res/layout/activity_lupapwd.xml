@@ -34,6 +34,7 @@
         android:clickable="true"
         android:src="@drawable/arrow_back_icon"
         app:backgroundTint="#FFFFFF"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
