@@ -72,35 +72,41 @@
         android:layout_height="55dp"
         android:backgroundTint="@color/app_theme"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/lelang"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136"
         app:srcCompat="@drawable/ic_beli_product" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/lelang"
         android:layout_width="57dp"
         android:layout_height="56dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="80dp"
         android:backgroundTint="@color/app_theme"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginLeft="170dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/pesanan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136"
         app:srcCompat="@drawable/ic_pelelangan" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pesanan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="@color/app_theme"
         android:clickable="true"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,15 +117,12 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="Beli Product"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/beli"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/beli"
+        app:layout_constraintStart_toStartOf="@+id/beli"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/beli" />
 
     <TextView
         android:id="@+id/textView10"
@@ -127,11 +130,10 @@
         android:layout_height="wrap_content"
         android:text="Pelelangan"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lelang"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/lelang"
+        app:layout_constraintStart_toStartOf="@+id/lelang"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/lelang" />
 
     <TextView
         android:id="@+id/textView17"
@@ -139,19 +141,17 @@
         android:layout_height="wrap_content"
         android:text="Pesanan Saya"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pesanan"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/pesanan"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/pesanan"
+        app:layout_constraintTop_toBottomOf="@+id/pesanan" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_begin="178dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"

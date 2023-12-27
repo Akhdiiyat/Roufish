@@ -9,11 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.roufish.activities.AuctionActivity;
 import com.example.roufish.activities.ProductActivity;
 import com.example.roufish.adapters.HomepageAdapter;
+import com.example.roufish.adapters.ProductsAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class MainPageBuyer extends AppCompatActivity {
 
     FloatingActionButton beli,lelang,pesanan,cart, profile;
     RecyclerView recyclerView;
+    private FirebaseFirestore firestore;
     private ArrayList<ListProduct> products = new ArrayList<>();
 
     @Override
@@ -34,6 +38,8 @@ public class MainPageBuyer extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new HomepageAdapter(products));
         beli = findViewById(id.beli);
+        firestore = FirebaseFirestore.getInstance();
+        getDataFromFirestore();
         beli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,12 +55,8 @@ public class MainPageBuyer extends AppCompatActivity {
                 startActivity(lelangIntent);
             }
         });
-
-
         pesanan = findViewById(id.pesanan); // belum ada XML
         cart = findViewById(id.cart); // belum ada XML
-
-
         profile = findViewById(id.info_profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,24 @@ public class MainPageBuyer extends AppCompatActivity {
                 startActivity(profileIntent);
             }
         });
+    }
+    private void getDataFromFirestore() {
+        firestore.collection("products")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        products.clear();
+                        for (ListProduct product : queryDocumentSnapshots.toObjects(ListProduct.class)) {
+                            products.add(product);
+                        }
+                        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                        recyclerView.setAdapter(new HomepageAdapter(products));
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(MainPageBuyer.this, "Gagal mengambil data", Toast.LENGTH_SHORT).show();
+                });
 
     }
 }

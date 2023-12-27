@@ -7,7 +7,7 @@
     android:background="@color/app_theme"
     android:backgroundTint="@color/app_theme"
     tools:context=".Homepage">
-
+    <!-- asdad -->
 
     <ImageView
         android:id="@+id/imageView"
