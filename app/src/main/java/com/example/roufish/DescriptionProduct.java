@@ -45,13 +45,14 @@ public class DescriptionProduct extends AppCompatActivity {
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent cartIntent = new Intent(DescriptionProduct.this, Keranjang.class);
                 Toast.makeText(DescriptionProduct.this, "Produk Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
             }
         });
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backToMainIntent = new Intent(DescriptionProduct.this, ProductActivity.class);
+                Intent backToMainIntent = new Intent(DescriptionProduct.this, MainPageBuyer.class);
                 startActivity(backToMainIntent);
             }
         });

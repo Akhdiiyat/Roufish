@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.roufish.activities.AuctionActivity;
@@ -25,6 +26,7 @@ public class MainPageBuyer extends AppCompatActivity {
     FloatingActionButton beli,lelang,pesanan,cart, profile;
     RecyclerView recyclerView;
     private FirebaseFirestore firestore;
+    SearchView searchView;
     private ArrayList<ListProduct> products = new ArrayList<>();
 
     @Override
@@ -40,6 +42,19 @@ public class MainPageBuyer extends AppCompatActivity {
         beli = findViewById(id.beli);
         firestore = FirebaseFirestore.getInstance();
         getDataFromFirestore();
+        searchView = findViewById(id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterProducts(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterProducts(newText);
+                return false;
+            }
+        });
         beli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +72,13 @@ public class MainPageBuyer extends AppCompatActivity {
         });
         pesanan = findViewById(id.pesanan); // belum ada XML
         cart = findViewById(id.cart); // belum ada XML
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cartIntent = new Intent(MainPageBuyer.this, Keranjang.class);
+                startActivity(cartIntent);
+            }
+        });
         profile = findViewById(id.info_profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +87,16 @@ public class MainPageBuyer extends AppCompatActivity {
                 startActivity(profileIntent);
             }
         });
+    }
+    private void filterProducts(String query) {
+        ArrayList<ListProduct> filteredProducts = new ArrayList<>();
+
+        for (ListProduct product : products) {
+            if (product.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredProducts.add(product);
+            }
+        }
+        recyclerView.setAdapter(new HomepageAdapter(filteredProducts));
     }
     private void getDataFromFirestore() {
         firestore.collection("products")
