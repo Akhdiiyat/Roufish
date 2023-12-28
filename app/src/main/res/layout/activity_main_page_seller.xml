@@ -12,12 +12,12 @@
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="220dp"
+        android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_gravity="end"
-        android:layout_marginStart="-150dp"
+        android:layout_marginStart="-100dp"
         android:layout_marginTop="28dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounder_bg"
         android:backgroundTint="@color/white"
         android:queryHint="Cari Product"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,6 @@
         android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
         android:layout_marginTop="28dp"
         android:background="#C0DBF5"
         android:clickable="true"
@@ -37,12 +36,12 @@
         app:fabCustomSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/btnLelang"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toEndOf="@+id/searchView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintVertical_bias="0.0"
         app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
-        app:srcCompat="@drawable/icn_shopping_cart" />
+        app:srcCompat="@drawable/ic_person" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -97,12 +96,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_jual"
         android:layout_width="165dp"
         android:layout_height="53dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="@color/primary_blue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:text="Jual"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,12 +112,15 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView"
         app:layout_constraintVertical_bias="0.17" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLelang"
         android:layout_width="165dp"
         android:layout_height="53dp"
         android:background="@drawable/rounded_button"
         android:text="Lelang"
+        android:backgroundTint="@color/primary_blue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.845"

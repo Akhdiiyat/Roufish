@@ -15,29 +15,27 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="end|bottom"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="40dp"
         android:background="#C0DBF5"
         android:backgroundTint="@color/app_theme"
         android:clickable="true"
         android:isScrollContainer="false"
-        app:srcCompat="@drawable/ic_person"
         android:tint="#6E6C6C"
         app:backgroundTint="#B8D3EB"
         app:fabCustomSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/cart"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.044"
-        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator" />
+        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
+        app:srcCompat="@drawable/ic_person" />
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="220dp"
+        android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_gravity="end"
-        android:layout_marginStart="-150dp"
+        android:layout_marginStart="-100dp"
         android:background="@drawable/rounder_bg"
         android:backgroundTint="@color/white"
         android:queryHint="Cari Product"
@@ -47,24 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.044" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:background="#C0DBF5"
-        android:clickable="true"
-        app:backgroundTint="#C0DBF5"
-        app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044"
-        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
-        app:srcCompat="@drawable/icn_shopping_cart" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/beli"

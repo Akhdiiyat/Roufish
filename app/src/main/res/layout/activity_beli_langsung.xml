@@ -15,26 +15,6 @@
         app:layout_constraintGuide_percent="0.18" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/keranjang"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end|bottom"
-        android:clickable="true"
-        android:isScrollContainer="false"
-        android:src="@drawable/icn_shopping_cart"
-        android:tint="#6E6C6C"
-        android:layout_marginTop="5dp"
-        app:backgroundTint="@color/light_blue"
-        app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061"
-        app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/backToMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
