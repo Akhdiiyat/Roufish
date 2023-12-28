@@ -41,15 +41,12 @@ public class AuctionActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 item -> {
                     if (item.getItemId() == R.id.home) {
-                        // Navigate to HomeActivity when Home is clicked
                         startActivity(new Intent(AuctionActivity.this, MainPageBuyer.class));
                         return true;
                     } else if (item.getItemId() == R.id.forum) {
-                        // Navigate to ForumActivity when Forum is clicked
                         startActivity(new Intent(AuctionActivity.this, forum.class));
                         return true;
                     }
-                    // Add more conditions for other items if needed
                     return false;
                 }
         );
