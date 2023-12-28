@@ -1,5 +1,6 @@
 package com.example.roufish.adapters;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.roufish.ListLelang;
 import com.example.roufish.R;
 import com.example.roufish.PageLelang;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,7 +28,11 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
 
     private ArrayList<ListLelang> productList;
 
-    public AuctionAdapter(ArrayList<ListLelang> productList) {
+    /*public AuctionAdapter(ArrayList<ListLelang> productList) {
+        this.productList = productList;
+    }*/
+
+    public AuctionAdapter(ArrayList<com.example.roufish.ListLelang> productList) {
         this.productList = productList;
     }
 
@@ -35,10 +45,23 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ListLelang product = productList.get(position);
+        com.example.roufish.ListLelang product = productList.get(position);
 
         // Menggunakan Picasso untuk memuat gambar dari URL
-        Picasso.get().load(product.getImageUrl()).into(holder.productAuctionImageView);
+        /*FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReference = database.collection("produkLelang").document();
+        String produkId= documentReference.getId();
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference produkRef = storageReference.child("produklelang/" + produkId + ".jpg"  );
+
+
+        produkRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(holder.productAuctionImageView);
+            }
+        });*/
+        //Picasso.get().load(product.getImageUrl()).into(holder.productAuctionImageView);
 
         // Menetapkan teks pada TextView berdasarkan data produk
         holder.productAuctionNameTextView.setText(product.getItemName());
@@ -76,7 +99,6 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
             productAuctionNameTextView = itemView.findViewById(R.id.productAuctionNameTextView);
             productStartingPriceTextView = itemView.findViewById(R.id.productStartingPriceTextView);
             productDescriptionTextView = itemView.findViewById(R.id.productDescriptionTextView);
-            productAuctionImageView = itemView.findViewById(R.id.productAuctionImageView);
             /*productWeightTextView = itemView.findViewById(R.id.productWeightTextView); // ID baru untuk berat
             productIncrementTextView = itemView.findViewById(R.id.productIncrementTextView); // ID baru untuk kelipatan*/
         }

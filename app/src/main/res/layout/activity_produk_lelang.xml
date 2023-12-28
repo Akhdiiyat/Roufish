@@ -232,7 +232,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button4"
+                android:id="@+id/uploadProdukLelang"
                 android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="50dp"
@@ -240,7 +240,7 @@
                 android:textColor="@color/white"
                 android:backgroundTint="@color/primary_blue"
                 android:background="@drawable/rounder_bg"
-                android:text="Lanjutkan"
+                android:text="Upload Produk"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
@@ -264,7 +264,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button5"
+                android:id="@+id/inputFotoLelang"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:textAllCaps="false"
@@ -273,7 +273,7 @@
                 android:background="@drawable/rounder_bg"
                 android:text="Input Foto"
                 android:layout_marginTop="50dp"
-                app:layout_constraintBottom_toTopOf="@+id/button4"
+                app:layout_constraintBottom_toTopOf="@+id/uploadProdukLelang"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/new_lelang" />
