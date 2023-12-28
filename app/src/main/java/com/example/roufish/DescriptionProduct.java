@@ -51,7 +51,7 @@ public class DescriptionProduct extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent backToMainIntent = new Intent(DescriptionProduct.this, ProductActivity.class);
+                Intent backToMainIntent = new Intent(DescriptionProduct.this, MainPageBuyer.class);
                 startActivity(backToMainIntent);
             }
         });
