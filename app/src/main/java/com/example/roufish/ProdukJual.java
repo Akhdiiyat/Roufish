@@ -1,21 +1,20 @@
 package com.example.roufish;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,43 +24,47 @@ import com.google.firebase.storage.UploadTask;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProdukLelang extends AppCompatActivity {
-    DatabaseReference reference;
-    FirebaseDatabase database;
+public class ProdukJual extends AppCompatActivity {
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    EditText namaProduk, deskripsiProduk, beratProduk,hargaProduk;
+    FloatingActionButton backToMainSeller;
+    AppCompatButton inputFoto,uploadProduk;
     FirebaseFirestore firestore;
 
     FirebaseStorage storage;
     StorageReference storageRef;
-    private static final int PICK_IMAGE_REQUEST = 1;
+
     Uri imageUri;
     String produkId;
 
-    EditText inputNamaProdukLelang, inputBeratProdukLelang,inputDeskripsiProdukLelang;
-    EditText inputHargaProdukLelang, inputKelipatanLelang;
 
-    Button inputFoto,uploadProduk;
-    StorageReference storageReference;
-
-    FloatingActionButton backToMainPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_produk_lelang);
+        setContentView(R.layout.activity_produk_jual);
 
-        inputNamaProdukLelang = findViewById(R.id.inputNamaProdukLelang);
-        inputBeratProdukLelang = findViewById(R.id.inputBeratProdukLelang);
-        inputDeskripsiProdukLelang= findViewById(R.id.inputDeskripsiProdukLelang);
-        inputHargaProdukLelang= findViewById(R.id.inputHargaProdukLelang) ;
-        inputKelipatanLelang= findViewById(R.id.inputKelipatanLelang);
+        namaProduk = findViewById(R.id.inputNamaProduk);
+        beratProduk = findViewById(R.id.inputBeratProduk) ;
+        deskripsiProduk = findViewById(R.id.inputDeskripsiProduk);
+        hargaProduk = findViewById(R.id.inputHargaProduk);
 
-        inputFoto = findViewById(R.id.inputFotoLelang);
-        uploadProduk = findViewById(R.id.uploadProdukLelang);
+        backToMainSeller = findViewById(R.id.backToMainSeller);
 
-        backToMainPage = findViewById(R.id.floatingActionButton2);
+        inputFoto = findViewById(R.id.inputFotoJual);
+        uploadProduk= findViewById(R.id.uploadProdukJual);
 
         firestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+
+        backToMainSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backToMain = new Intent(ProdukJual.this, MainPageSeller.class);
+                startActivity(backToMain);
+            }
+        });
 
         inputFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +79,7 @@ public class ProdukLelang extends AppCompatActivity {
                 uploadData();
             }
         });
+
     }
 
     private void openFileChooser() {
@@ -84,7 +88,6 @@ public class ProdukLelang extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -94,17 +97,16 @@ public class ProdukLelang extends AppCompatActivity {
             // Anda bisa menampilkan preview foto jika diinginkan
         }
     }
-
     private void uploadData() {
         // Mengambil data dari input fields
-        String nama = inputNamaProdukLelang.getText().toString();
-        String harga = inputHargaProdukLelang.getText().toString();
-        String deskripsi = inputDeskripsiProdukLelang.getText().toString();
-        String kelipatan = inputKelipatanLelang.getText().toString();
-        String berat = inputBeratProdukLelang.getText().toString();
+        String nama = namaProduk.getText().toString();
+        String berat =beratProduk.getText().toString();
+        String deskripsi = deskripsiProduk.getText().toString();
+        String harga = hargaProduk.getText().toString();
+
 
         // Membuat ID produk unik
-        DocumentReference produkRef = firestore.collection("produkLelang").document();
+        DocumentReference produkRef = firestore.collection("produkJual").document();
         produkId = produkRef.getId(); // Simpan ID produk
 
         // Menyiapkan data untuk disimpan
@@ -113,11 +115,10 @@ public class ProdukLelang extends AppCompatActivity {
         produk.put("nama", nama);
         produk.put("harga", harga);
         produk.put("deskripsi", deskripsi);
-        produk.put("kelipatan", kelipatan);
         produk.put("berat", berat);
 
         if (imageUri != null) {
-            StorageReference fileReference = storageRef.child("produklelang/" + produkId + ".jpg"); // Gunakan ID produk sebagai nama file
+            StorageReference fileReference = storageRef.child("produkjual/" + produkId + ".jpg"); // Gunakan ID produk sebagai nama file
             fileReference.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -128,14 +129,14 @@ public class ProdukLelang extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             // Handle sukses
-                                            Toast.makeText(ProdukLelang.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ProdukJual.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             // Handle kegagalan
-                                            Toast.makeText(ProdukLelang.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ProdukJual.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
@@ -144,7 +145,7 @@ public class ProdukLelang extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             // Handle unsuccessful uploads
-                            Toast.makeText(ProdukLelang.this, "Error mengunggah foto", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProdukJual.this, "Error mengunggah foto", Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
@@ -153,13 +154,13 @@ public class ProdukLelang extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(ProdukLelang.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProdukJual.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(ProdukLelang.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProdukJual.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
                         }
                     });
         };

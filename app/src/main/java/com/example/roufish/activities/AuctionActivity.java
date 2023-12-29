@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.ListLelang;
+import com.example.roufish.MainPageBuyer;
 import com.example.roufish.R;
+import com.example.roufish.forum;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -34,6 +37,19 @@ public class AuctionActivity extends AppCompatActivity {
         FloatingActionButton profile = findViewById(R.id.info_profile);
         FloatingActionButton nextActivity = findViewById(R.id.rou);
         recyclerView.setAdapter(auctionAdapter);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_bar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                item -> {
+                    if (item.getItemId() == R.id.home) {
+                        startActivity(new Intent(AuctionActivity.this, MainPageBuyer.class));
+                        return true;
+                    } else if (item.getItemId() == R.id.forum) {
+                        startActivity(new Intent(AuctionActivity.this, forum.class));
+                        return true;
+                    }
+                    return false;
+                }
+        );
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +66,7 @@ public class AuctionActivity extends AppCompatActivity {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         Query query = database.collection("produkLelang");
 
+
         query.addSnapshotListener(this, (value, error) -> {
             if (error != null) {
                 return;
@@ -63,7 +80,7 @@ public class AuctionActivity extends AppCompatActivity {
                 int startingPrice = Integer.parseInt(Price);
                 String imageUrl = document.getString("image_url");
 
-                ListLelang lelang = new ListLelang(name, description, startingPrice, imageUrl);
+                ListLelang lelang = new ListLelang(name, description, startingPrice,imageUrl);
                 productList.add(lelang);
             }
             runOnUiThread(() -> {

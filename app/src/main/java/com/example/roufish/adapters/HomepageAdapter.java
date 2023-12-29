@@ -24,7 +24,9 @@ public class HomepageAdapter extends RecyclerView.Adapter<com.example.roufish.ad
         public HomepageAdapter(ArrayList<ListProduct> productList) {
             this.products = productList;
         }
-
+        public void setProductList(ArrayList<ListProduct> productList) {
+            this.products = productList;
+        }
         @NonNull
         @Override
         public com.example.roufish.adapters.HomepageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

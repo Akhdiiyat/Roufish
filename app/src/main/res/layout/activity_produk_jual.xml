@@ -70,7 +70,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/inputNamaProdukLelang"
+                        android:id="@+id/inputNamaProduk"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -105,7 +105,7 @@
                         app:layout_constraintVertical_bias="0.194" />
 
                     <EditText
-                        android:id="@+id/inputBeratProdukLelang"
+                        android:id="@+id/inputBeratProduk"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -140,7 +140,7 @@
                         app:layout_constraintVertical_bias="0.376" />
 
                     <EditText
-                        android:id="@+id/inputDeskripsiProdukLelang"
+                        android:id="@+id/inputDeskripsiProduk"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -163,19 +163,19 @@
                         android:id="@+id/harga_produk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Harga Mulai Produk"
+                        android:layout_marginTop="30dp"
+                        android:text="Harga Produk"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:layout_marginTop="30dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.101"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.544" />
+                        app:layout_constraintVertical_bias="0.541" />
 
                     <EditText
-                        android:id="@+id/inputHargaProdukLelang"
+                        android:id="@+id/inputHargaProduk"
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:background="@drawable/custom_input"
@@ -185,7 +185,7 @@
                         android:paddingRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
-                        android:hint="Masukkan Harga Mulai Produk"
+                        android:hint="Masukkan Harga Produk"
                         android:textSize="13sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -194,45 +194,11 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.666" />
 
-                    <TextView
-                        android:id="@+id/kelipatan_lelang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kelipatan Lelang"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="30dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.09"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.743" />
-
-                    <EditText
-                        android:id="@+id/inputKelipatanLelang"
-                        android:layout_width="250dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:layout_marginLeft="10dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:hint="Masukkan Kelipatan Lelang"
-                        android:layout_marginTop="20dp"
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.333"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.889" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/uploadProdukLelang"
+                android:id="@+id/uploadProdukJual"
                 android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="50dp"
@@ -240,7 +206,7 @@
                 android:textColor="@color/white"
                 android:backgroundTint="@color/primary_blue"
                 android:background="@drawable/rounder_bg"
-                android:text="Upload Produk"
+                android:text="Lanjutkan"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
@@ -253,7 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Produk Lelang Baru"
+                android:text="Produk Jual Baru"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/new_lelang"
@@ -264,7 +230,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/inputFotoLelang"
+                android:id="@+id/inputFotoJual"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:textAllCaps="false"
@@ -273,7 +239,7 @@
                 android:background="@drawable/rounder_bg"
                 android:text="Input Foto"
                 android:layout_marginTop="50dp"
-                app:layout_constraintBottom_toTopOf="@+id/uploadProdukLelang"
+                app:layout_constraintBottom_toTopOf="@+id/uploadProdukJual"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/new_lelang" />
@@ -282,7 +248,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/backToMainSeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/app_theme"

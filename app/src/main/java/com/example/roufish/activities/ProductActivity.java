@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import com.example.roufish.DescriptionProduct;
 import com.example.roufish.ListProduct;
+import com.example.roufish.MainPageBuyer;
 import com.example.roufish.R;
+import com.example.roufish.forum;
 import com.example.roufish.profileBuyer;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.example.roufish.adapters.ProductsAdapter;
@@ -39,6 +42,22 @@ public class ProductActivity extends AppCompatActivity {
         getDataFromFirestore();
         FloatingActionButton profile = findViewById(R.id.info_profile);
         FloatingActionButton nextActivity = findViewById(R.id.rou);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.botttom_nav_bar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                item -> {
+                    if (item.getItemId() == R.id.home) {
+                        // Navigate to HomeActivity when Home is clicked
+                        startActivity(new Intent(ProductActivity.this, MainPageBuyer.class));
+                        return true;
+                    } else if (item.getItemId() == R.id.forum) {
+                        // Navigate to ForumActivity when Forum is clicked
+                        startActivity(new Intent(ProductActivity.this, forum.class));
+                        return true;
+                    }
+                    // Add more conditions for other items if needed
+                    return false;
+                }
+        );
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
