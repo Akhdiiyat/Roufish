@@ -16,6 +16,7 @@ import com.example.roufish.activities.AuctionActivity;
 import com.example.roufish.activities.ProductActivity;
 import com.example.roufish.adapters.HomepageAdapter;
 import com.example.roufish.adapters.ProductsAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 
 public class MainPageBuyer extends AppCompatActivity {
 
-    FloatingActionButton beli,lelang,pesanan,cart, profile;
+    FloatingActionButton beli,lelang,pesananSaya, profile;
     RecyclerView recyclerView;
     private FirebaseFirestore firestore;
     SearchView searchView;
@@ -70,7 +71,14 @@ public class MainPageBuyer extends AppCompatActivity {
                 startActivity(lelangIntent);
             }
         });
-        pesanan = findViewById(id.pesanan); // belum ada XML
+        pesananSaya = findViewById(id.pesanan);
+        pesananSaya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pesananIntent = new Intent(MainPageBuyer.this, Keranjang.class);
+                startActivity(pesananIntent);
+            }
+        });
         profile = findViewById(id.info_profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +87,22 @@ public class MainPageBuyer extends AppCompatActivity {
                 startActivity(profileIntent);
             }
         });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.botttom_nav_bar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                item -> {
+                    if (item.getItemId() == R.id.home) {
+                        // Navigate to HomeActivity when Home is clicked
+                        startActivity(new Intent(MainPageBuyer.this, MainPageBuyer.class));
+                        return true;
+                    } else if (item.getItemId() == R.id.forum) {
+                        // Navigate to ForumActivity when Forum is clicked
+                        startActivity(new Intent(MainPageBuyer.this, forum.class));
+                        return true;
+                    }
+                    // Add more conditions for other items if needed
+                    return false;
+                }
+        );
     }
     private void filterProducts(String query) {
         ArrayList<ListProduct> filteredProducts = new ArrayList<>();

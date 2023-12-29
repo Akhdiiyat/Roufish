@@ -34,6 +34,7 @@ public class DescriptionProduct extends AppCompatActivity {
         getDataFromFirestore();
         Button pilih = findViewById(R.id.btn_lanjutkan);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
+
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
