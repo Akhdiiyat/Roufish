@@ -134,7 +134,7 @@
                         android:layout_height="48dp"
                         android:background="@drawable/rounded_button"
                         android:backgroundTint="@color/primary_blue"
-                        android:text="+Tambah Produk"
+                        android:text="Pesan Produk"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="7pt"
@@ -340,24 +340,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/byar_keranjang"
-        android:layout_width="81dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/primary_blue"
-        android:text="Bayar"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="7pt"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
