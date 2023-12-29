@@ -33,7 +33,7 @@ public class forum extends AppCompatActivity {
 
         // Inisialisasi RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recycler_forum);
-
+        //stopstosptosp
         // Mengatur layout manager dan adapter untuk RecyclerView
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
