@@ -71,14 +71,6 @@ public class MainPageBuyer extends AppCompatActivity {
             }
         });
         pesanan = findViewById(id.pesanan); // belum ada XML
-        cart = findViewById(id.cart); // belum ada XML
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cartIntent = new Intent(MainPageBuyer.this, Keranjang.class);
-                startActivity(cartIntent);
-            }
-        });
         profile = findViewById(id.info_profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
