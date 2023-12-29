@@ -34,14 +34,14 @@ public class DescriptionProduct extends AppCompatActivity {
         getDataFromFirestore();
         Button pilih = findViewById(R.id.btn_lanjutkan);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
-        //FloatingActionButton keranjang = findViewById(R.id.keranjang);
-        /*keranjang.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton keranjang = findViewById(R.id.keranjang);
+        keranjang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent cartIntent = new Intent(DescriptionProduct.this, Keranjang.class);
                 startActivity(cartIntent);
             }
-        });*/
+        });
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
