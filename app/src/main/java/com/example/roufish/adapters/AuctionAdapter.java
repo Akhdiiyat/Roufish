@@ -46,22 +46,16 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         com.example.roufish.ListLelang product = productList.get(position);
+        // Load the image from Firebase Storage URL
+        if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+            Picasso.get()
+                    .load(product.getImageUrl())
+                    .into(holder.productAuctionImageView);
+        } else {
+            // Set a default image in case URL is null or empty
+           holder.productAuctionImageView.setImageResource(R.drawable.logo);
+        }
 
-        // Menggunakan Picasso untuk memuat gambar dari URL
-        /*FirebaseFirestore database = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = database.collection("produkLelang").document();
-        String produkId= documentReference.getId();
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference produkRef = storageReference.child("produklelang/" + produkId + ".jpg"  );
-
-
-        produkRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(holder.productAuctionImageView);
-            }
-        });*/
-        //Picasso.get().load(product.getImageUrl()).into(holder.productAuctionImageView);
 
         // Menetapkan teks pada TextView berdasarkan data produk
         holder.productAuctionNameTextView.setText(product.getItemName());

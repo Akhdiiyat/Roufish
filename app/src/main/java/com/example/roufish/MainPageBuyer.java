@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.roufish.activities.AuctionActivity;
@@ -26,35 +25,21 @@ public class MainPageBuyer extends AppCompatActivity {
     FloatingActionButton beli,lelang,pesanan,cart, profile;
     RecyclerView recyclerView;
     private FirebaseFirestore firestore;
-    SearchView searchView;
     private ArrayList<ListProduct> products = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_main_page_buyer);
-        for (int i = 0; i < 100; i++) {
+        /*for (int i = 0; i < 100; i++) {
             products.add(new ListProduct("Mujair", 5000, "https://placehold.co/600x400"));
-        }
+        }*/
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new HomepageAdapter(products));
         beli = findViewById(id.beli);
         firestore = FirebaseFirestore.getInstance();
         getDataFromFirestore();
-        searchView = findViewById(id.searchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                filterProducts(query);
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filterProducts(newText);
-                return false;
-            }
-        });
         beli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,14 +56,7 @@ public class MainPageBuyer extends AppCompatActivity {
             }
         });
         pesanan = findViewById(id.pesanan); // belum ada XML
-        cart = findViewById(id.cart); // belum ada XML
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cartIntent = new Intent(MainPageBuyer.this, Keranjang.class);
-                startActivity(cartIntent);
-            }
-        });
+        //cart = findViewById(id.cart); // belum ada XML
         profile = findViewById(id.info_profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,16 +65,6 @@ public class MainPageBuyer extends AppCompatActivity {
                 startActivity(profileIntent);
             }
         });
-    }
-    private void filterProducts(String query) {
-        ArrayList<ListProduct> filteredProducts = new ArrayList<>();
-
-        for (ListProduct product : products) {
-            if (product.getName().toLowerCase().contains(query.toLowerCase())) {
-                filteredProducts.add(product);
-            }
-        }
-        recyclerView.setAdapter(new HomepageAdapter(filteredProducts));
     }
     private void getDataFromFirestore() {
         firestore.collection("products")

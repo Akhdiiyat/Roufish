@@ -42,7 +42,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ListProduct product = products.get(position);
-        Picasso.get().load(product.getImageResId()).into(holder.productImageView);
+        // Load the image from Firebase Storage URL
+        if (product.getImageResId() != null && !product.getImageResId().isEmpty()) {
+            Picasso.get()
+                    .load(product.getImageResId())
+                    .into(holder.productImageView);
+        } else {
+            // Set a default image in case URL is null or empty
+            holder.productImageView.setImageResource(R.drawable.logo);
+        }
         holder.productNameTextView.setText(product.getName());
         holder.productPriceTextView.setText(String.valueOf(product.getPrice()));
         holder.productImageView.setOnClickListener(new View.OnClickListener() {

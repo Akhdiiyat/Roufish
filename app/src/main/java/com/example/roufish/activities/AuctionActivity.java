@@ -1,6 +1,7 @@
 package com.example.roufish.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import com.example.roufish.ListLelang;
 import com.example.roufish.MainPageBuyer;
 import com.example.roufish.R;
 import com.example.roufish.forum;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -19,9 +21,13 @@ import java.util.ArrayList;
 
 import com.example.roufish.adapters.AuctionAdapter;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class AuctionActivity extends AppCompatActivity {
     private ArrayList<ListLelang> productList = new ArrayList<>();
@@ -78,14 +84,24 @@ public class AuctionActivity extends AppCompatActivity {
                 //int startingPrice = document.getLong("harga").intValue();
                 String Price = (String) document.get("harga");
                 int startingPrice = Integer.parseInt(Price);
-                String imageUrl = document.getString("image_url");
+                // Construct image path using the document ID
+                StorageReference imageRef = FirebaseStorage.getInstance().getReference()
+                        .child("produklelang/" + document.getId() + ".jpg");
 
-                ListLelang lelang = new ListLelang(name, description, startingPrice,imageUrl);
-                productList.add(lelang);
+                imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    ListLelang lelang = new ListLelang(name, description, startingPrice, uri.toString());
+                    productList.add(lelang);
+                    auctionAdapter.notifyDataSetChanged();
+                }).addOnFailureListener(exception -> {
+                    // Handle failure (e.g., set a default image URL)
+                    ListLelang lelang = new ListLelang(name, description, startingPrice, "default_image_url");
+                    productList.add(lelang);
+                });
+
+
             }
-            runOnUiThread(() -> {
-                auctionAdapter.notifyDataSetChanged();
-            });
+            runOnUiThread(() -> auctionAdapter.notifyDataSetChanged());
+
         });
     }
 }

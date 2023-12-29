@@ -11,37 +11,43 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.roufish.DescriptionProduct;
+import com.example.roufish.ListLelang;
 import com.example.roufish.ListProduct;
 import com.example.roufish.MainPageBuyer;
 import com.example.roufish.R;
+import com.example.roufish.adapters.AuctionAdapter;
 import com.example.roufish.forum;
 import com.example.roufish.profileBuyer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.example.roufish.adapters.ProductsAdapter;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ProductActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
 
     private ArrayList<ListProduct> products = new ArrayList<>();
+    private ProductsAdapter productsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_product);
 
-        for (int i = 0; i < 100; i++) {
-            products.add(new ListProduct("Mujair", 5000, "https://placehold.co/600x400"));
-        }
+
         firestore = FirebaseFirestore.getInstance();
         RecyclerView recyclerView = findViewById(R.id.recycler_view_beli);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new ProductsAdapter(products));
-        getDataFromFirestore();
+        productsAdapter = new ProductsAdapter(products);
         FloatingActionButton profile = findViewById(R.id.info_profile);
         FloatingActionButton nextActivity = findViewById(R.id.rou);
+        recyclerView.setAdapter(productsAdapter);
         BottomNavigationView bottomNavigationView = findViewById(R.id.botttom_nav_bar);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 item -> {
@@ -71,35 +77,42 @@ public class ProductActivity extends AppCompatActivity {
                 startActivity(activity);
             }
         });
-    }
-        public void onItemClick(int position) {
-            ListProduct clickedProduct = products.get(position);
 
-            Intent intent = new Intent(ProductActivity.this, DescriptionProduct.class);
-            intent.putExtra("name", clickedProduct.getName());
-            //intent.putExtra("description", clickedProduct.getDescription());
-            //intent.putExtra("weight", clickedProduct.getWeight());
-            intent.putExtra("price", clickedProduct.getPrice());
-            // Add more information if needed
-            startActivity(intent);
-        }
-    private void getDataFromFirestore() {
-        firestore.collection("products")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        products.clear();
-                        for (ListProduct product : queryDocumentSnapshots.toObjects(ListProduct.class)) {
-                            products.add(product);
-                        }
-                        RecyclerView recyclerView = findViewById(R.id.recycler_view_beli);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                        recyclerView.setAdapter(new ProductsAdapter(products));
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(ProductActivity.this, "Gagal mengambil data", Toast.LENGTH_SHORT).show();
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        Query query = database.collection("produkJual");
+
+
+        query.addSnapshotListener(this, (value, error) -> {
+            if (error != null) {
+                return;
+            }
+            products.clear();
+            for (DocumentSnapshot document : value.getDocuments()) {
+                String name = document.getString("nama");
+                String description = document.getString("deskripsi");
+                //int startingPrice = document.getLong("harga").intValue();
+                String Price = (String) document.get("harga");
+                int sellPrice = Integer.parseInt(Price);
+                // Construct image path using the document ID
+                StorageReference imageRef = FirebaseStorage.getInstance().getReference()
+                        .child("produkjual/" + document.getId() + ".jpg");
+
+                imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    ListProduct product = new ListProduct(name, description, sellPrice, uri.toString());
+                    products.add(product);
+                    productsAdapter.notifyDataSetChanged();
+                }).addOnFailureListener(exception -> {
+                    // Handle failure (e.g., set a default image URL)
+                    ListProduct product = new ListProduct(name, description, sellPrice, "Default_image");
+                    products.add(product);
                 });
 
+
+            }
+            runOnUiThread(() -> productsAdapter.notifyDataSetChanged());
+
+        });
+
     }
-}
+
+    }

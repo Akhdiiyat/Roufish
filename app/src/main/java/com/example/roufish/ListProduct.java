@@ -3,9 +3,10 @@ package com.example.roufish;
 public class ListProduct {
     private String name;
     private int price;
+    private String deskripsi;
     private String imageResId;
 
-    public ListProduct(String name, int price, String imageResId) {
+    public ListProduct(String name,String deskripsi, int price, String imageResId) {
         this.name = name;
         this.price = price;
         this.imageResId = imageResId;
