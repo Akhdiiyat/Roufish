@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/productAuctionImageView"
+                android:id="@+id/PesananLelangImage"
                 android:layout_width="725px"
                 android:layout_height="400px"
                 android:layout_marginLeft="11dp"
@@ -53,7 +53,6 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/productHargaLelangText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
