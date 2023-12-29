@@ -22,8 +22,11 @@
             android:name=".Rekap_penjualan"
             android:exported="false" />
         <activity
-            android:name=".RekapPenjualan"
-            android:exported="false" />
+            android:name="Keranjang"
+            android:exported="false"/>
+        <activity
+            android:name=".forum"
+            android:exported="false"/>
         <activity
             android:name=".ProdukLelang"
             android:exported="false" />
