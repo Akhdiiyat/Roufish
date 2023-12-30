@@ -59,6 +59,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                 // Handle image click here, for example, open a new activity with the image
                 Intent intent = new Intent(v.getContext(), DescriptionProduct.class);
                 intent.putExtra("image_url", product.getImageResId()); // Pass the image URL to the next activity
+                intent.putExtra("product_name", product.getName());
+                intent.putExtra("product_price", product.getPrice());
                 v.getContext().startActivity(intent);
             }
         });

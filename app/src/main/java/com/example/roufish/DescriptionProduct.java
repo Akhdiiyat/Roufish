@@ -34,12 +34,17 @@ public class DescriptionProduct extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         Button pilih = findViewById(R.id.btn_lanjutkan);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
+        Intent intent = getIntent();
+        ListProduct product = intent.getParcelableExtra("product");
 
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent cartIntent = new Intent(DescriptionProduct.this, Keranjang.class);
                 Toast.makeText(DescriptionProduct.this, "Produk Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                cartIntent.putExtra("productName", product.getName());
+                cartIntent.putExtra("productPrice",String.valueOf(product.getPrice()));
+                cartIntent.putExtra("productImageUrl", product.getImageResId());
                 startActivity(cartIntent);
             }
         });
@@ -56,14 +61,22 @@ public class DescriptionProduct extends AppCompatActivity {
         harga = findViewById(R.id.text_price);
         foto = findViewById(R.id.Gambar_ikan);
         firestore = FirebaseFirestore.getInstance();
-        Intent intent = getIntent();
+
         if (intent != null && intent.hasExtra("product")) {
-            ListProduct product = intent.getParcelableExtra("product");
+
             nama.setText(product.getName());
             //berat.setText(product.getWeight());  // Assuming you have a getWeight() method in ListProduct
             deskripsi.setText(product.getDeskripsi());
             harga.setText(String.valueOf(product.getPrice()));
             loadProductImage(product.getImageResId());
+            String imageUrl = intent.getStringExtra("image_url");
+            String productName = intent.getStringExtra("product_name");
+            double productPrice = intent.getDoubleExtra("product_price", 0);
+
+            nama.setText(productName);
+            harga.setText(String.valueOf(productPrice));
+            loadProductImage(imageUrl);
+
 
         } else {
             Toast.makeText(this, "No product information available", Toast.LENGTH_SHORT).show();
