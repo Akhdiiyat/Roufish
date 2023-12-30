@@ -56,12 +56,23 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
         holder.productPriceTextView.setText(String.valueOf(product.getPrice()));
 
         // Set click listener to handle item clicks
-        holder.productImageView.setOnClickListener(new View.OnClickListener() {
+       /* holder.productImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (itemClickListener != null) {
                     itemClickListener.onItemClick(position);
                 }
+            }
+        });*/
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DescriptionProduct.class);
+                intent.putExtra("productName", product.getName());
+                intent.putExtra("productPrice", String.valueOf(product.getPrice()));
+                intent.putExtra("productDescription", product.getDeskripsi());
+                intent.putExtra("image_url", product.getImageResId());
+                context.startActivity(intent);
             }
         });
     }

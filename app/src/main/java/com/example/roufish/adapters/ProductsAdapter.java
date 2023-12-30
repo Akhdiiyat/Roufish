@@ -3,7 +3,6 @@ package com.example.roufish.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
@@ -58,9 +57,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             public void onClick(View v) {
                 // Handle image click here, for example, open a new activity with the image
                 Intent intent = new Intent(v.getContext(), DescriptionProduct.class);
-                intent.putExtra("image_url", product.getImageResId()); // Pass the image URL to the next activity
-                intent.putExtra("product_name", product.getName());
-                intent.putExtra("product_price", product.getPrice());
+                intent.putExtra("image_url", product.getImageResId());
+                intent.putExtra("productName", product.getName());
+                intent.putExtra("productPrice", String.valueOf(product.getPrice()));
+                intent.putExtra("productDescription", product.getDeskripsi());
+                // Pass the image URL to the next activity
                 v.getContext().startActivity(intent);
             }
         });

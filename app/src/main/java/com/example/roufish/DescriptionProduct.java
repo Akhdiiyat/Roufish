@@ -40,11 +40,25 @@ public class DescriptionProduct extends AppCompatActivity {
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent cartIntent = new Intent(DescriptionProduct.this, Keranjang.class);
+
+                if (intent != null) {
+                    if (intent.hasExtra("productName")) {
+                        String productName = intent.getStringExtra("productName");
+                        cartIntent.putExtra("productName", productName);
+                    }
+                    if (intent.hasExtra("productPrice")) {
+                        String productPrice = intent.getStringExtra("productPrice");
+                        cartIntent.putExtra("productPrice", productPrice);
+                    }
+                    if (intent.hasExtra("image_url")) {
+                        String imageUrl = intent.getStringExtra("image_url");
+                        cartIntent.putExtra("productImageUrl", imageUrl);
+                    }
+                }
+
                 Toast.makeText(DescriptionProduct.this, "Produk Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
-                cartIntent.putExtra("productName", product.getName());
-                cartIntent.putExtra("productPrice",String.valueOf(product.getPrice()));
-                cartIntent.putExtra("productImageUrl", product.getImageResId());
                 startActivity(cartIntent);
             }
         });
@@ -62,57 +76,28 @@ public class DescriptionProduct extends AppCompatActivity {
         foto = findViewById(R.id.Gambar_ikan);
         firestore = FirebaseFirestore.getInstance();
 
-        if (intent != null && intent.hasExtra("product")) {
-
-            nama.setText(product.getName());
-            //berat.setText(product.getWeight());  // Assuming you have a getWeight() method in ListProduct
-            deskripsi.setText(product.getDeskripsi());
-            harga.setText(String.valueOf(product.getPrice()));
-            loadProductImage(product.getImageResId());
-            String imageUrl = intent.getStringExtra("image_url");
-            String productName = intent.getStringExtra("product_name");
-            double productPrice = intent.getDoubleExtra("product_price", 0);
-
-            nama.setText(productName);
-            harga.setText(String.valueOf(productPrice));
-            loadProductImage(imageUrl);
-
-
-        } else {
-            Toast.makeText(this, "No product information available", Toast.LENGTH_SHORT).show();
+        if (intent != null) {
+            if (intent.hasExtra("productName")) {
+                String productName = intent.getStringExtra("productName");
+                nama.setText(productName);
+            }
+            if (intent.hasExtra("productPrice")) {
+                String productPrice = intent.getStringExtra("productPrice");
+                harga.setText(productPrice);
+            }
+            if (intent.hasExtra("productDescription")) {
+                String productDescription = intent.getStringExtra("productDescription");
+                deskripsi.setText(productDescription);
+            }
+            if (intent.hasExtra("image_url")) {
+                String imageUrl = intent.getStringExtra("image_url");
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    Picasso.get().load(imageUrl).into(foto);
+                }
+            }
         }
-        getDataFromFirestore();
+
 
     }
-    private void getDataFromFirestore() {
-        firestore.collection("produkJual")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    for (DocumentSnapshot document : queryDocumentSnapshots) {
-                        String name = document.getString("nama");
 
-                        if (name != null && name.equals(nama.getText().toString())) {
-                            String description = document.getString("deskripsi");
-                            String weight = document.getString("berat");
-                            String Price = (String) document.get("harga");
-                            int sellPrice = Integer.parseInt(Price);
-
-                            // Update the text fields for the selected product
-                            berat.setText(weight);
-                            deskripsi.setText(description);
-                            harga.setText(String.valueOf(Price));
-
-                            break;
-                        }
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(DescriptionProduct.this, "Failed to retrieve data", Toast.LENGTH_SHORT).show();
-                });
-    }
-
-    private void loadProductImage(String imageUrl) {
-        // Load the image using Picasso into the ImageView
-        Picasso.get().load(imageUrl).into(foto);
-    }
 }
