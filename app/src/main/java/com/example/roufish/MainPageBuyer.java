@@ -31,6 +31,7 @@ public class MainPageBuyer extends AppCompatActivity {
     RecyclerView recyclerView;
     private FirebaseFirestore firestore;
     private ArrayList<ListProduct> products = new ArrayList<>();
+    private HomepageAdapter homepageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +42,22 @@ public class MainPageBuyer extends AppCompatActivity {
         }*/
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new HomepageAdapter(products));
+        //recyclerView.setAdapter(new HomepageAdapter(this,products));
+        homepageAdapter = new HomepageAdapter(this,products);
+        recyclerView.setAdapter(homepageAdapter);
         beli = findViewById(id.beli);
         firestore = FirebaseFirestore.getInstance();
+        homepageAdapter.setOnItemClickListener(new HomepageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                ListProduct clickedProduct = products.get(position);
+                Intent intent = new Intent(MainPageBuyer.this, DescriptionProduct.class);
+                intent.putExtra("product", clickedProduct);
+                startActivity(intent);
+            }
+        });
         //getDataFromFirestore();
+
         beli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +111,6 @@ public class MainPageBuyer extends AppCompatActivity {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         Query query = database.collection("produkJual");
 
-
         query.addSnapshotListener(this, (value, error) -> {
             if (error != null) {
                 return;
@@ -108,6 +120,7 @@ public class MainPageBuyer extends AppCompatActivity {
                 String name = document.getString("nama");
                 String description = document.getString("deskripsi");
                 String Price = (String) document.get("harga");
+                String weight = document.getString("berat");
                 int sellPrice = Integer.parseInt(Price);
                 // Construct image path using the document ID
                 StorageReference imageRef = FirebaseStorage.getInstance().getReference()
@@ -129,25 +142,7 @@ public class MainPageBuyer extends AppCompatActivity {
             //runOnUiThread(() -> HomepageAdapter.notifyDataSetChanged());
 
         });
-        //getDataFromFirestore();
+
     }
 
-//    private void getDataFromFirestore() {
-//        firestore.collection("products")
-//                .get()
-//                .addOnSuccessListener(queryDocumentSnapshots -> {
-//                    if (!queryDocumentSnapshots.isEmpty()) {
-//                        products.clear();
-//                        for (ListProduct product : queryDocumentSnapshots.toObjects(ListProduct.class)) {
-//                            products.add(product);
-//                        }
-//                        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//                        recyclerView.setAdapter(new HomepageAdapter(products));
-//                        recyclerView.getAdapter().notifyDataSetChanged();
-//                    }
-//                })
-//                .addOnFailureListener(e -> {
-//                    Toast.makeText(MainPageBuyer.this, "Gagal mengambil data", Toast.LENGTH_SHORT).show();
-//                });
-    }
+}

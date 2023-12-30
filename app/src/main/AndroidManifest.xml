@@ -19,6 +19,9 @@
             android:name=".ProdukJual"
             android:exported="false" />
         <activity
+            android:name=".Keranjang"
+            android:exported="false"/>
+        <activity
             android:name=".Rekap_penjualan"
             android:exported="false" />
         <activity
