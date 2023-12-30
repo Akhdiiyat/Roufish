@@ -49,13 +49,7 @@ public class Keranjang extends AppCompatActivity {
             harga.setText(String.valueOf(productPrice));
             Picasso.get().load(productImageUrl).into(gambar);
         }
-        backTomain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backIntent = new Intent(Keranjang.this, DescriptionProduct.class);
-                startActivity(backIntent);
-            }
-        });
+
         showUserData();
     }
 
