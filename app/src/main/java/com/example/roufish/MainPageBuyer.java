@@ -17,7 +17,11 @@ import com.example.roufish.adapters.HomepageAdapter;
 import com.example.roufish.adapters.ProductsAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -40,7 +44,7 @@ public class MainPageBuyer extends AppCompatActivity {
         recyclerView.setAdapter(new HomepageAdapter(products));
         beli = findViewById(id.beli);
         firestore = FirebaseFirestore.getInstance();
-        getDataFromFirestore();
+        //getDataFromFirestore();
         beli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,24 +95,59 @@ public class MainPageBuyer extends AppCompatActivity {
                     return false;
                 }
         );
-    }
-    private void getDataFromFirestore() {
-        firestore.collection("products")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        products.clear();
-                        for (ListProduct product : queryDocumentSnapshots.toObjects(ListProduct.class)) {
-                            products.add(product);
-                        }
-                        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                        recyclerView.setAdapter(new HomepageAdapter(products));
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(MainPageBuyer.this, "Gagal mengambil data", Toast.LENGTH_SHORT).show();
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        Query query = database.collection("produkJual");
+
+
+        query.addSnapshotListener(this, (value, error) -> {
+            if (error != null) {
+                return;
+            }
+            products.clear();
+            for (DocumentSnapshot document : value.getDocuments()) {
+                String name = document.getString("nama");
+                String description = document.getString("deskripsi");
+                String Price = (String) document.get("harga");
+                int sellPrice = Integer.parseInt(Price);
+                // Construct image path using the document ID
+                StorageReference imageRef = FirebaseStorage.getInstance().getReference()
+                        .child("produkjual/" + document.getId() + ".jpg");
+
+                imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    ListProduct product = new ListProduct(name, description, sellPrice, uri.toString());
+                    products.add(product);
+                    runOnUiThread(() -> recyclerView.getAdapter().notifyDataSetChanged());
+                }).addOnFailureListener(exception -> {
+                    // Handle failure (e.g., set a default image URL)
+                    ListProduct product = new ListProduct(name, description, sellPrice, "Default_image");
+                    products.add(product);
+                    runOnUiThread(() -> recyclerView.getAdapter().notifyDataSetChanged());
                 });
 
+
+            }
+            //runOnUiThread(() -> HomepageAdapter.notifyDataSetChanged());
+
+        });
+        //getDataFromFirestore();
     }
-}
+
+//    private void getDataFromFirestore() {
+//        firestore.collection("products")
+//                .get()
+//                .addOnSuccessListener(queryDocumentSnapshots -> {
+//                    if (!queryDocumentSnapshots.isEmpty()) {
+//                        products.clear();
+//                        for (ListProduct product : queryDocumentSnapshots.toObjects(ListProduct.class)) {
+//                            products.add(product);
+//                        }
+//                        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+//                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//                        recyclerView.setAdapter(new HomepageAdapter(products));
+//                        recyclerView.getAdapter().notifyDataSetChanged();
+//                    }
+//                })
+//                .addOnFailureListener(e -> {
+//                    Toast.makeText(MainPageBuyer.this, "Gagal mengambil data", Toast.LENGTH_SHORT).show();
+//                });
+    }
