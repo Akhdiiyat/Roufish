@@ -110,7 +110,6 @@ public class DescriptionProduct extends AppCompatActivity {
                     Toast.makeText(DescriptionProduct.this, "Failed to retrieve data", Toast.LENGTH_SHORT).show();
                 });
     }
-
     private void loadProductImage(String imageUrl) {
         // Load the image using Picasso into the ImageView
         Picasso.get().load(imageUrl).into(foto);

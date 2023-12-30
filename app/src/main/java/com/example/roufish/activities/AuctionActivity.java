@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.ListLelang;
 import com.example.roufish.MainPageBuyer;
+import com.example.roufish.PageLelang;
 import com.example.roufish.R;
 import com.example.roufish.forum;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,6 +43,13 @@ public class AuctionActivity extends AppCompatActivity {
         auctionAdapter = new AuctionAdapter(productList);
         FloatingActionButton profile = findViewById(R.id.info_profile);
         FloatingActionButton nextActivity = findViewById(R.id.rou);
+
+        auctionAdapter.setOnProductClickListener(new AuctionAdapter.OnProductClickListener(){
+            @Override
+            public void onProductClick(int position) {
+                openPageLelang(productList.get(position));
+            }
+        });
         recyclerView.setAdapter(auctionAdapter);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -103,6 +111,14 @@ public class AuctionActivity extends AppCompatActivity {
             runOnUiThread(() -> auctionAdapter.notifyDataSetChanged());
 
         });
+    }
+    private void openPageLelang(ListLelang product) {
+        Intent intent = new Intent(AuctionActivity.this, PageLelang.class);
+        intent.putExtra("image_url", product.getImageUrl());
+        intent.putExtra("item_name", product.getItemName());
+        intent.putExtra("starting_price", product.getStartingPrice());
+        intent.putExtra("item_description", product.getItemDescription());
+        startActivity(intent);
     }
 }
 
