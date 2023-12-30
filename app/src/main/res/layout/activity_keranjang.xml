@@ -69,19 +69,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.101">
 
-                <TextView
-                    android:id="@+id/Text_UbahKeranjang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ubah"
-                    android:textColor="@color/red"
-                    android:textSize="17sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.872"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.51" />
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -129,10 +117,24 @@
                         app:layout_constraintVertical_bias="0.278" />
 
                     <TextView
-                        android:id="@+id/ambilDitempat_keranjang"
+                        android:id="@+id/Text_UbahKeranjang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ambil Ditempat"
+                        android:text="Ubah"
+                        android:textColor="@color/red"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.797"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.182" />
+
+                    <TextView
+                        android:id="@+id/BelumAdaPilihan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Belum ada pilihan"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -145,13 +147,25 @@
                         android:id="@+id/jam_keranjang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ambil pada pukul 09.00"
+                        android:text="Ambil pada pukul "
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.175"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.193" />
+
+                    <TextView
+                        android:id="@+id/jam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07.00"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.45"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.192" />
 
                     <ImageView
                         android:id="@+id/fotoProduk_keranjang"
