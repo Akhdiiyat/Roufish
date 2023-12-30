@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_theme"
-    tools:context=".EditProfile">
+    tools:context=".EditProfileSeller">
 
     <EditText
-        android:id="@+id/profileEditUsername"
+        android:id="@+id/profileEditUsername_seller"
         android:layout_width="267dp"
         android:layout_height="38dp"
         android:layout_marginTop="70dp"
@@ -20,12 +20,12 @@
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditImageView"
+        app:layout_constraintTop_toBottomOf="@+id/profileEditImageView_seller"
         app:strokeColor="@color/primary_blue"
         app:strokeWidth="2.5dp"/>
 
     <EditText
-        android:id="@+id/profileEditEmail"
+        android:id="@+id/profileEditEmail_seller"
         android:layout_width="267dp"
         android:layout_height="38dp"
         android:layout_marginTop="32dp"
@@ -37,10 +37,10 @@
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/profileEditUsername_seller" />
 
     <EditText
-        android:id="@+id/profileNomorHP"
+        android:id="@+id/profileNomorHP_seller"
         android:layout_width="267dp"
         android:layout_height="38dp"
         android:layout_marginTop="32dp"
@@ -52,10 +52,10 @@
         android:text="Nomor HP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEditEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/profileEditEmail_seller" />
 
     <ImageButton
-        android:id="@+id/profileEditImageView"
+        android:id="@+id/profileEditImageView_seller"
         android:background="@drawable/rounder_bg"
         android:backgroundTint="#808080"
         android:layout_width="100dp"
@@ -83,6 +83,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileNomorHP"
+        app:layout_constraintTop_toBottomOf="@+id/profileNomorHP_seller"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
