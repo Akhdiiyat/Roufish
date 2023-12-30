@@ -34,14 +34,7 @@ public class DescriptionProduct extends AppCompatActivity {
         getDataFromFirestore();
         Button pilih = findViewById(R.id.btn_lanjutkan);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
-        FloatingActionButton keranjang = findViewById(R.id.keranjang);
-        keranjang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cartIntent = new Intent(DescriptionProduct.this, Keranjang.class);
-                startActivity(cartIntent);
-            }
-        });
+
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,23 +60,14 @@ public class DescriptionProduct extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     for (DocumentSnapshot document : queryDocumentSnapshots) {
-                        // Extract data from each document
                         String name = document.getString("name");
                         String description = document.getString("description");
                         String weight = document.getString("weight");
                         double price = document.getDouble("price");
-
-                        // Process or display the data as needed
-                        // For example, you can create ListLelang objects and add them to a list
-                        // productList.add(new ListLelang(name, description, price, imageUrl));
-
-                        // Update UI elements with the retrieved data (example: display the first item)
                         nama.setText(name);
                         berat.setText(weight);
                         deskripsi.setText(description);
                         harga.setText(String.valueOf(price));
-
-                        // Note: If you want to display a list of products, consider using a RecyclerView
                     }
                 })
                 .addOnFailureListener(e -> {

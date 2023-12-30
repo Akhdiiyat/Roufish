@@ -52,10 +52,8 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
                     .load(product.getImageUrl())
                     .into(holder.productAuctionImageView);
         } else {
-            // Set a default image in case URL is null or empty
            holder.productAuctionImageView.setImageResource(R.drawable.logo);
         }
-
 
         // Menetapkan teks pada TextView berdasarkan data produk
         holder.productAuctionNameTextView.setText(product.getItemName());

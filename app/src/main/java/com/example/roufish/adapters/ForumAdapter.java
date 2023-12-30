@@ -37,7 +37,6 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
     public void onBindViewHolder(@NonNull ForumViewHolder holder, int position) {
         ListForum forumItem = forumItemList.get(position);
 
-        // Set the data to views in the ViewHolder
         holder.textUserForum.setText(forumItem.getUsername());
         holder.textWaktuForum.setText(forumItem.getTimestamp());
         holder.textComForum.setText(forumItem.getComment());

@@ -24,6 +24,6 @@ public class ListForum {
         return comment;
     }
 
-    // Setter methods (if needed)
+    // Setter methods
 
 }
