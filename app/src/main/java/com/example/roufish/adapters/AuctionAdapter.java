@@ -28,12 +28,17 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
 
     private ArrayList<ListLelang> productList;
 
+    private static OnProductClickListener onProductClickListener;
+
     /*public AuctionAdapter(ArrayList<ListLelang> productList) {
         this.productList = productList;
     }*/
 
     public AuctionAdapter(ArrayList<com.example.roufish.ListLelang> productList) {
         this.productList = productList;
+    }
+    public void setOnProductClickListener(OnProductClickListener listener) {
+        this.onProductClickListener = listener;
     }
 
     @NonNull
@@ -77,7 +82,7 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
         return productList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView productAuctionImageView;
         TextView productAuctionNameTextView;
         TextView productStartingPriceTextView;
@@ -91,8 +96,22 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
             productAuctionNameTextView = itemView.findViewById(R.id.productAuctionNameTextView);
             productStartingPriceTextView = itemView.findViewById(R.id.productStartingPriceTextView);
             productDescriptionTextView = itemView.findViewById(R.id.productDescriptionTextView);
+            productAuctionImageView.setOnClickListener(this);
+            //onProductClickListener = listener;
             /*productWeightTextView = itemView.findViewById(R.id.productWeightTextView); // ID baru untuk berat
             productIncrementTextView = itemView.findViewById(R.id.productIncrementTextView); // ID baru untuk kelipatan*/
         }
+        @Override
+        public void onClick(View v) {
+            if(onProductClickListener != null) {
+                int position = getAdapterPosition();
+                if(position != RecyclerView.NO_POSITION) {
+                    onProductClickListener.onProductClick(position);
+                }
+            }
+        }
+    }
+    public interface OnProductClickListener {
+        void onProductClick(int position);
     }
 }

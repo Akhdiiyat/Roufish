@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.roufish.activities.AuctionActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -45,7 +46,11 @@ public class PageLelang extends AppCompatActivity {
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra("image_url");
         String itemName = intent.getStringExtra("item_name");
+        //int startingPrice = intent.getIntExtra("starting_price");
+        String itemDescription = intent.getStringExtra("item_description");
         ImageView imageView = findViewById(R.id.Gambar_ikan);
+        TextView name = findViewById(R.id.Text_Nama_Produk);
+        name.setText(itemName);
         Picasso.get().load(imageUrl).into(imageView);
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
         Handler handler = new Handler();
@@ -67,7 +72,7 @@ public class PageLelang extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backToMainintent = new Intent(PageLelang.this, DescriptionProduct.class);
+                Intent backToMainintent = new Intent(PageLelang.this, AuctionActivity.class);
                 startActivity(backToMainintent);
             }
         });
