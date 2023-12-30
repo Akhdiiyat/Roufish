@@ -109,9 +109,23 @@ public class Keranjang extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Handle the selected radio button using the SparseArray
-                BelumAdaPilihan.setText(radioButtonTextMap.get(checkedId, ""));
+                String selectedOption = radioButtonTextMap.get(checkedId, "");
+
+                // Check the selected option and hide/show elements
+                if ("Ambil di tempat".equals(selectedOption)) {
+                    jam.setVisibility(View.VISIBLE);
+                    jamKeranjang.setVisibility(View.VISIBLE);
+                } else if ("Diantar ke rumah".equals(selectedOption)) {
+                    jam.setVisibility(View.GONE);
+                    jamKeranjang.setVisibility(View.GONE);
+                } else {
+                    // Handle other cases if needed
+                }
+
+                // Update the text of BelumAdaPilihan
+                BelumAdaPilihan.setText(selectedOption);
             }
+
         });
 
         // Set a listener for the "Save" button click

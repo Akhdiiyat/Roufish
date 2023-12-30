@@ -147,13 +147,13 @@
                         android:id="@+id/jam_keranjang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ambil pada pukul "
+                        android:text="Ambil pada pukul : "
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.175"
+                        app:layout_constraintHorizontal_bias="0.149"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.193" />
+                        app:layout_constraintVertical_bias="0.19" />
 
                     <TextView
                         android:id="@+id/jam"
@@ -162,10 +162,10 @@
                         android:text="07.00"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.45"
+                        app:layout_constraintHorizontal_bias="0.473"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.192" />
+                        app:layout_constraintVertical_bias="0.188" />
 
                     <ImageView
                         android:id="@+id/fotoProduk_keranjang"
