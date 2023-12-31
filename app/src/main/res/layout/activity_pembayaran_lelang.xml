@@ -195,66 +195,44 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-
                     <RadioGroup
                         android:id="@+id/radioGroupPelelangan"
-                        android:layout_width="212dp"
-                        android:layout_height="89dp"
-                        tools:layout_editor_absoluteX="41dp"
-                        tools:layout_editor_absoluteY="415dp">
+                        android:layout_width="180dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="28dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.125"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView16"
+                        app:layout_constraintVertical_bias="0.0">
+
 
                         <RadioButton
-                            android:id="@+id/radioButton"
+                            android:id="@+id/bayarditempat"
                             android:layout_width="166dp"
                             android:layout_height="25dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="219dp"
-                            android:layout_marginBottom="106dp"
                             android:text="Bayar Di Tempat"
-                            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            tools:layout_editor_absoluteX="0dp"
+                            tools:layout_editor_absoluteY="404dp" />
 
                         <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginRight="285dp"
-                            android:layout_marginBottom="70dp"
+                            android:id="@+id/bayargopay"
+                            android:layout_width="166dp"
+                            android:layout_height="25dp"
                             android:text="Gopay"
-                            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+                            tools:layout_editor_absoluteX="0dp"
+                            tools:layout_editor_absoluteY="404dp" />
 
                         <RadioButton
-                            android:id="@+id/radioButton3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_marginRight="330dp"
-                            android:layout_marginBottom="40dp"
-                            android:text="Qris"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/radioButton2"
-                            app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="RadioButton" />
+                            android:id="@+id/bayarQris"
+                            android:layout_width="166dp"
+                            android:layout_height="25dp"
+                            android:text="QRIS"
+                            tools:layout_editor_absoluteX="0dp"
+                            tools:layout_editor_absoluteY="404dp" />
 
                     </RadioGroup>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:layout_editor_absoluteX="0dp"
-                        tools:layout_editor_absoluteY="0dp">
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -179,35 +179,44 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="30dp"
-                    android:text="Bayar Di Tempat"
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="180dp"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="28dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.125"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView16"
+                    app:layout_constraintVertical_bias="0.0">
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Gopay"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioButton" />
 
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Qris"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+                    <RadioButton
+                        android:id="@+id/bayarditempat"
+                        android:layout_width="166dp"
+                        android:layout_height="25dp"
+                        android:text="Bayar Di Tempat"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="404dp" />
+
+                    <RadioButton
+                        android:id="@+id/bayargopay"
+                        android:layout_width="166dp"
+                        android:layout_height="25dp"
+                        android:text="Gopay"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="404dp" />
+
+                    <RadioButton
+                        android:id="@+id/bayarQris"
+                        android:layout_width="166dp"
+                        android:layout_height="25dp"
+                        android:text="QRIS"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="404dp" />
+
+                </RadioGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

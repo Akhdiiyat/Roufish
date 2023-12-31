@@ -29,14 +29,14 @@
 
     <RadioGroup
         android:id="@+id/radiogroup"
-        android:layout_width="383dp"
-        android:layout_height="165dp">
+        android:layout_width="281dp"
+        android:layout_height="133dp">
 
         <!-- RadioButton 1 -->
         <RadioButton
             android:id="@+id/Ambilditempat"
-            android:layout_width="284dp"
-            android:layout_height="64dp"
+            android:layout_width="281dp"
+            android:layout_height="60dp"
             android:layout_marginTop="2dp"
             android:text="Ambil ditempat"
             android:textSize="10pt"
@@ -50,8 +50,8 @@
         <!-- RadioButton 2 -->
         <RadioButton
             android:id="@+id/Diantarkerumah"
-            android:layout_width="288dp"
-            android:layout_height="80dp"
+            android:layout_width="282dp"
+            android:layout_height="66dp"
             android:text="Diantar Ke Rumah"
             android:textSize="10pt"
             app:layout_constraintEnd_toEndOf="parent"

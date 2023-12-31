@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class pembayaran extends AppCompatActivity {
     TextView namaPemesan, harga,hargaTotal;
+    boolean radioGroupEnabled = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,7 @@ public class pembayaran extends AppCompatActivity {
         namaPemesan = findViewById(R.id.namaPemesan);
         harga = findViewById(R.id.hargaProduk);
         hargaTotal = findViewById(R.id.Text_harga_barang);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
 
 
         Bundle extras = getIntent().getExtras();
@@ -35,6 +38,19 @@ public class pembayaran extends AppCompatActivity {
 
         }
         showUserData();
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+
+                if (radioGroupEnabled) {
+                    // Handle the selected radio button here
+                    radioGroupEnabled = false; // Disable the RadioGroup after selection
+                }
+
+            }
+        });
 
     }
 
