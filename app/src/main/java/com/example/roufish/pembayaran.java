@@ -34,12 +34,7 @@ public class pembayaran extends AppCompatActivity {
             hargaTotal.setText(String.valueOf(productPrice));
 
         }
-
         showUserData();
-
-
-
-
 
     }
 
