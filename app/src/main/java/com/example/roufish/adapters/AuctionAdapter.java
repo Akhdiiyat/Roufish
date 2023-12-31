@@ -1,6 +1,5 @@
 package com.example.roufish.adapters;
 
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +10,9 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.roufish.ListLelang;
+import com.example.roufish.items.ListLelang;
 import com.example.roufish.R;
 import com.example.roufish.PageLelang;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -34,7 +28,7 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
         this.productList = productList;
     }*/
 
-    public AuctionAdapter(ArrayList<com.example.roufish.ListLelang> productList) {
+    public AuctionAdapter(ArrayList<ListLelang> productList) {
         this.productList = productList;
     }
     public void setOnProductClickListener(OnProductClickListener listener) {
@@ -50,7 +44,7 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        com.example.roufish.ListLelang product = productList.get(position);
+        ListLelang product = productList.get(position);
         // Load the image from Firebase Storage URL
         if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
             Picasso.get()

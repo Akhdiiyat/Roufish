@@ -1,7 +1,6 @@
 package com.example.roufish.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,26 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.roufish.ListLelang;
-import com.example.roufish.MainPageBuyer;
+import com.example.roufish.items.ListLelang;
 import com.example.roufish.PageLelang;
 import com.example.roufish.R;
-import com.example.roufish.forum;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 import com.example.roufish.adapters.AuctionAdapter;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 public class AuctionActivity extends AppCompatActivity {
     private ArrayList<ListLelang> productList = new ArrayList<>();

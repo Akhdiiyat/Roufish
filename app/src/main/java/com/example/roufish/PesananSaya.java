@@ -28,7 +28,7 @@ public class PesananSaya extends AppCompatActivity {
         btnLelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Pesan_pelelangan = new Intent(PesananSaya.this, ProdukLelang.class);
+                Intent Pesan_pelelangan = new Intent(PesananSaya.this, PesananLelang.class);
                 startActivity(Pesan_pelelangan);
             }
         });

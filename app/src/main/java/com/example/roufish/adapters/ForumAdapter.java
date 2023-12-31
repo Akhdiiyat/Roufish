@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.roufish.ListForum;
+import com.example.roufish.items.ListForum;
 import com.example.roufish.R;
 
 import java.util.List;

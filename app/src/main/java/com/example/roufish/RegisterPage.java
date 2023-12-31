@@ -42,7 +42,7 @@ public class RegisterPage extends AppCompatActivity {
         });
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent backIntent = new Intent(RegisterPage.this, RegisterPage.class);
+                Intent backIntent = new Intent(RegisterPage.this, Homepage.class);
                 startActivity(backIntent);
             }
         });
