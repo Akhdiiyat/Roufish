@@ -57,10 +57,20 @@ public class Keranjang extends AppCompatActivity {
         jamKeranjang = findViewById(R.id.jam_keranjang);
         jam = findViewById(R.id.jam);
 
+        Intent intent = getIntent();
+
         pesanproduk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent pesanprodukIntent = new Intent(Keranjang.this,pembayaran.class);
+                if (intent != null) {
+
+                    if (intent.hasExtra("productPrice")) {
+                        String productPrice = intent.getStringExtra("productPrice");
+                        pesanprodukIntent.putExtra("productPrice", productPrice);
+                    }
+
+                }
                 startActivity(pesanprodukIntent);
             }
         });

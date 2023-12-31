@@ -83,7 +83,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/BelumAdaPilihan"
+                android:id="@+id/namaPemesan"
                 android:layout_width="146dp"
                 android:layout_height="26dp"
                 android:text="Agung Sudarjo"
@@ -128,22 +128,9 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.36" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Rp9999"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.749"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.410" />
-
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/hargaProduk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp9999"
