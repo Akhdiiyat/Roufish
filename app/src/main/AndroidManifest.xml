@@ -22,6 +22,9 @@
             android:name=".Keranjang"
             android:exported="false"/>
         <activity
+            android:name=".PesananSaya"
+            android:exported="false"/>
+        <activity
             android:name=".Rekap_penjualan"
             android:exported="false" />
         <activity
