@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.items;
 public class ListForum {
 
     private String username;

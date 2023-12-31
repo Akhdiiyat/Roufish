@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.items;
 import android.os.Parcel;
 import android.os.Parcelable;
 

@@ -10,7 +10,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.roufish.ListProduct;
+import com.example.roufish.items.ListProduct;
 import com.example.roufish.R;
 import com.example.roufish.DescriptionProduct;
 import com.squareup.picasso.Picasso;

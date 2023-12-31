@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.roufish.ProdukJual;
+import com.example.roufish.ProdukLelang;
+import com.example.roufish.R;
 import com.example.roufish.adapters.SellerAdapter;
 import com.example.roufish.items.ListSeller;
 import com.google.firebase.firestore.CollectionReference;

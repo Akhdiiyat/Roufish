@@ -1,4 +1,4 @@
-package com.example.roufish;
+package com.example.roufish.activities;
 
 import static com.example.roufish.R.*;
 
@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.roufish.activities.AuctionActivity;
-import com.example.roufish.activities.ProductActivity;
+import com.example.roufish.DescriptionProduct;
+import com.example.roufish.PesananSaya;
+import com.example.roufish.R;
 import com.example.roufish.adapters.HomepageAdapter;
-import com.example.roufish.adapters.ProductsAdapter;
+import com.example.roufish.items.ListProduct;
+import com.example.roufish.profileBuyer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
