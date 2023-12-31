@@ -132,9 +132,26 @@ public class PageLelang extends AppCompatActivity {
             public void onClick(View view) {
                 EditText editTextHarga = bottomSheetDialog.findViewById(R.id.hargaLelang);
                 String harga = editTextHarga.getText().toString();
+                if (harga.isEmpty()) {
+                    Toast.makeText(PageLelang.this, "Masukkan harga baru", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int hargaBaru = Integer.parseInt(harga);
+                int hargaSebelumnya = Integer.parseInt(startingPrice);
+
+                if (hargaBaru <= hargaSebelumnya) {
+                    Toast.makeText(PageLelang.this, "Harga baru harus lebih besar dari harga sebelumnya", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
                 // Update harga di Firebase
                 updateHargaDiFirebase(harga);
+
+                Intent intent = new Intent(PageLelang.this, PembayaranLelang.class);
+                intent.putExtra("harga", harga);
+                startActivity(intent);
 
                 bottomSheetDialog.dismiss();
             }

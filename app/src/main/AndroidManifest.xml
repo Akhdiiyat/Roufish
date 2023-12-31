@@ -58,6 +58,9 @@
             android:name=".EditProfile"
             android:exported="false" />
         <activity
+            android:name=".PembayaranLelang"
+            android:exported="false" />
+        <activity
             android:name=".activities.MainPageBuyer"
             android:exported="false" />
         <activity

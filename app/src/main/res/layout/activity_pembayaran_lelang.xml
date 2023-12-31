@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_theme"
-        tools:context=".Beli_Langsung">
+        tools:context=".PembayaranLelang">
         <!--a -->
 
         <androidx.constraintlayout.widget.Guideline
@@ -87,7 +87,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/BelumAdaPilihan"
+                    android:id="@+id/namaPelelang"
                     android:layout_width="146dp"
                     android:layout_height="26dp"
                     android:text="Agung Sudarjo"
@@ -195,49 +195,64 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginRight="219dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="106dp"
-                        android:text="Bayar Di Tempat"
-                        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginRight="285dp"
-                        android:layout_marginBottom="70dp"
-                        android:text="Gopay"
-                        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+                    <RadioGroup
+                        android:id="@+id/radioGroupPelelangan"
+                        android:layout_width="212dp"
+                        android:layout_height="89dp"
+                        tools:layout_editor_absoluteX="41dp"
+                        tools:layout_editor_absoluteY="415dp">
 
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:text="Qris"
-                        android:layout_marginRight="330dp"
-                        android:layout_marginBottom="40dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/radioButton2"
-                        app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+                        <RadioButton
+                            android:id="@+id/radioButton"
+                            android:layout_width="166dp"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="219dp"
+                            android:layout_marginBottom="106dp"
+                            android:text="Bayar Di Tempat"
+                            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
 
+                        <RadioButton
+                            android:id="@+id/radioButton2"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="285dp"
+                            android:layout_marginBottom="70dp"
+                            android:text="Gopay"
+                            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="330dp"
+                            android:layout_marginBottom="40dp"
+                            android:text="Qris"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/radioButton2"
+                            app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="RadioButton" />
+
+                    </RadioGroup>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:layout_editor_absoluteY="191dp">
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp">
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -247,6 +262,9 @@
 
 
         </androidx.cardview.widget.CardView>
+
+
+
 
 
         <TextView
@@ -295,7 +313,7 @@
             app:layout_constraintVertical_bias="0.943" />
 
         <TextView
-            android:id="@+id/Text_harga_barang"
+            android:id="@+id/Text_total_harga_barang"
             android:layout_width="81dp"
             android:layout_height="18dp"
             android:layout_marginLeft="15dp"
