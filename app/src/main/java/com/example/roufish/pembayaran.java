@@ -33,8 +33,8 @@ public class pembayaran extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String productPrice = extras.getString("productPrice");
-            harga.setText(String.valueOf(productPrice));
-            hargaTotal.setText(String.valueOf(productPrice));
+            harga.setText("Rp."+ String.valueOf(productPrice));
+            hargaTotal.setText("Rp."+ String.valueOf(productPrice));
 
         }
         showUserData();

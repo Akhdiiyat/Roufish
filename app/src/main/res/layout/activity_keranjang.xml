@@ -325,7 +325,7 @@
         app:layout_constraintVertical_bias="0.943" />
 
     <TextView
-        android:id="@+id/harga_keranjang"
+        android:id="@+id/totHarga_keranjang"
         android:layout_width="81dp"
         android:layout_height="18dp"
         android:layout_marginLeft="15dp"

@@ -34,7 +34,7 @@ public class Keranjang extends AppCompatActivity {
     private FloatingActionButton backTomain;
     private ImageView gambar;
     TextView BelumAdaPilihan;
-    TextView jamKeranjang;
+    TextView jamKeranjang,totHarga;
     TextView jam;
     private SparseArray<String> radioButtonTextMap = new SparseArray<>();
     @Override
@@ -48,6 +48,7 @@ public class Keranjang extends AppCompatActivity {
         gambar = findViewById(R.id.fotoProduk_keranjang);
         alamat = findViewById(R.id.jln_keranjang);
         nohp = findViewById(R.id.nohp_keranjang);
+        totHarga = findViewById(R.id.totHarga_keranjang);
 
         backTomain = findViewById(R.id.backToMain_keranjang);
 
@@ -99,7 +100,8 @@ public class Keranjang extends AppCompatActivity {
             String productImageUrl = extras.getString("productImageUrl");
 
             nama.setText(productName);
-            harga.setText(String.valueOf(productPrice));
+            harga.setText("Rp." + String.valueOf(productPrice));
+            totHarga.setText("Rp." + String.valueOf(productPrice));
             Picasso.get().load(productImageUrl).into(gambar);
         }
 

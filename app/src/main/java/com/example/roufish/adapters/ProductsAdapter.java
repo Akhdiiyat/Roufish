@@ -51,7 +51,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             holder.productImageView.setImageResource(R.drawable.logo);
         }
         holder.productNameTextView.setText(product.getName());
-        holder.productPriceTextView.setText(String.valueOf(product.getPrice()));
+        holder.productPriceTextView.setText("Rp." +String.valueOf(product.getPrice()) + "/Kg");
         holder.productImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

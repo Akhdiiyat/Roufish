@@ -56,7 +56,7 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
 
         // Menetapkan teks pada TextView berdasarkan data produk
         holder.productAuctionNameTextView.setText(product.getItemName());
-        holder.productStartingPriceTextView.setText(String.valueOf(product.getStartingPrice()));
+        holder.productStartingPriceTextView.setText("Rp." + String.valueOf(product.getStartingPrice()));
         holder.productDescriptionTextView.setText(product.getItemDescription());
 
         // Menambahkan onClickListener untuk setiap item

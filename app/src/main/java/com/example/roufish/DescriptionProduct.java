@@ -65,7 +65,7 @@ public class DescriptionProduct extends AppCompatActivity {
             }
         });
         nama = findViewById(R.id.Text_Nama_Produk);
-        berat = findViewById(R.id.text_berat);
+        //berat = findViewById(R.id.text_berat);
         deskripsi = findViewById(R.id.text_desc);
         harga = findViewById(R.id.text_price);
         foto = findViewById(R.id.Gambar_ikan);
@@ -78,7 +78,7 @@ public class DescriptionProduct extends AppCompatActivity {
             }
             if (intent.hasExtra("productPrice")) {
                 String productPrice = intent.getStringExtra("productPrice");
-                harga.setText(productPrice);
+                harga.setText("Rp." + productPrice + "/KG");
             }
             if (intent.hasExtra("productDescription")) {
                 String productDescription = intent.getStringExtra("productDescription");

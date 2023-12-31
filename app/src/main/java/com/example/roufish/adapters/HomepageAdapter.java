@@ -53,7 +53,7 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
         }
 
         holder.productNameTextView.setText(product.getName());
-        holder.productPriceTextView.setText(String.valueOf(product.getPrice()));
+        holder.productPriceTextView.setText("Rp." +String.valueOf(product.getPrice())+ "/KG");
 
         // Set click listener to handle item clicks
        /* holder.productImageView.setOnClickListener(new View.OnClickListener() {

@@ -1,5 +1,6 @@
 package com.example.roufish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.roufish.activities.AuctionActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -18,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class PembayaranLelang extends AppCompatActivity {
     TextView penawaran,totalHarga,totkeseluruhan, namaPelelang;
     boolean radioGroupEnabled = true;
+    FloatingActionButton backToMain;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,15 @@ public class PembayaranLelang extends AppCompatActivity {
         totalHarga = findViewById(R.id.total_penawaran);
         totkeseluruhan = findViewById(R.id.Text_total_harga_barang);
         namaPelelang = findViewById(R.id.namaPelelang);
+        backToMain = findViewById(R.id.backToMain);
+
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backToMainintent = new Intent(PembayaranLelang.this, PageLelang.class);
+                startActivity(backToMainintent);
+            }
+        });
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -44,9 +57,9 @@ public class PembayaranLelang extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String productPrice = extras.getString("harga");
-            penawaran.setText(String.valueOf(productPrice));
-            totalHarga.setText(String.valueOf(productPrice));
-            totkeseluruhan.setText(String.valueOf(productPrice));
+            penawaran.setText("Rp."+ String.valueOf(productPrice));
+            totalHarga.setText("Rp."+ String.valueOf(productPrice));
+            totkeseluruhan.setText("Rp."+ String.valueOf(productPrice));
 
         }
 
