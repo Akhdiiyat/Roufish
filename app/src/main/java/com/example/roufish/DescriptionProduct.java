@@ -21,6 +21,7 @@ public class DescriptionProduct extends AppCompatActivity {
     TextView nama, berat, deskripsi, harga;
     ImageView foto;
     private FirebaseFirestore firestore;
+    //String produkId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class DescriptionProduct extends AppCompatActivity {
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
         Intent intent = getIntent();
         ListProduct product = intent.getParcelableExtra("product");
-
+        //produkId = intent.getStringExtra("document_id");
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

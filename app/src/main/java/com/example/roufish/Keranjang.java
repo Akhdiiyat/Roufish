@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.roufish.activities.MainPageBuyer;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,7 +60,6 @@ public class Keranjang extends AppCompatActivity {
         jam = findViewById(R.id.jam);
 
         Intent intent = getIntent();
-
         pesanproduk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +78,7 @@ public class Keranjang extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backToMainIntent = new Intent(Keranjang.this, DescriptionProduct.class);
+                Intent backToMainIntent = new Intent(Keranjang.this, MainPageBuyer.class);
                 startActivity(backToMainIntent);
             }
         });

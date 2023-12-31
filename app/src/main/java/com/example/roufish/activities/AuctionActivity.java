@@ -51,7 +51,7 @@ public class AuctionActivity extends AppCompatActivity {
                         startActivity(new Intent(AuctionActivity.this, MainPageBuyer.class));
                         return true;
                     } else if (item.getItemId() == R.id.forum) {
-                        startActivity(new Intent(AuctionActivity.this, forum.class));
+                        startActivity(new Intent(AuctionActivity.this, ForumActivity.class));
                         return true;
                     }
                     return false;

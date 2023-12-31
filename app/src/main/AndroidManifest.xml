@@ -22,13 +22,16 @@
             android:name=".Keranjang"
             android:exported="false"/>
         <activity
+            android:name=".AddForum"
+            android:exported="false"/>
+        <activity
             android:name=".PesananSaya"
             android:exported="false"/>
         <activity
             android:name=".Rekap_penjualan"
             android:exported="false" />
         <activity
-            android:name=".activities.forum"
+            android:name=".activities.ForumActivity"
             android:exported="false" />
         <activity
             android:name=".ProdukLelang"

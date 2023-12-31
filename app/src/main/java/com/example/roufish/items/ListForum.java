@@ -1,29 +1,41 @@
 package com.example.roufish.items;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class ListForum {
 
+    private String forumText;
+    private String userId;
     private String username;
-    private String timestamp;
-    private String comment;
+    private Date timestamp;
 
-    // Constructor
-    public ListForum(String username, String timestamp, String comment) {
+    public ListForum() {
+        // Required empty constructor for Firestore
+    }
+
+    public ListForum(String forumText,String userId,String username, Date timestamp) {
+        this.forumText = forumText;
         this.username = username;
+        this.userId = userId;
         this.timestamp = timestamp;
-        this.comment = comment;
     }
 
     public String getUsername() {
         return username;
     }
+    public String getForumText() {
+        return forumText;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getUserId() {
+        return userId;
+    }
 
-    public String getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
-
-    public String getComment() {
-        return comment;
-    }
-
-    // Setter methods
-
 }

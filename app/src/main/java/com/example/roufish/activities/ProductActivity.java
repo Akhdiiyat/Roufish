@@ -51,7 +51,7 @@ public class ProductActivity extends AppCompatActivity {
                         return true;
                     } else if (item.getItemId() == R.id.forum) {
                         // Navigate to ForumActivity when Forum is clicked
-                        startActivity(new Intent(ProductActivity.this, forum.class));
+                        startActivity(new Intent(ProductActivity.this, ForumActivity.class));
                         return true;
                     }
                     // Add more conditions for other items if needed

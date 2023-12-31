@@ -23,10 +23,12 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
     private ArrayList<ListProduct> products;
     private Context context;
     private OnItemClickListener itemClickListener;
+    private ArrayList<ListProduct> originalProductList;
 
     public HomepageAdapter(Context context, ArrayList<ListProduct> productList) {
         this.context = context;
         this.products = productList;
+        this.originalProductList = new ArrayList<>(productList);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -97,5 +99,9 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+    }
+    public void filterList(ArrayList<ListProduct> filteredList) {
+        products = filteredList;
+        notifyDataSetChanged();
     }
 }

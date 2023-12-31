@@ -1,29 +1,34 @@
 package com.example.roufish.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.roufish.FirestoreHelper;
 import com.example.roufish.items.ListForum;
 import com.example.roufish.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHolder> {
 
-    private List<ListForum> forumItemList;
+    private List<ListForum> forumList;
     private Context context;
+    private FirebaseFirestore firestore;
 
-    public ForumAdapter(Context context, List<ListForum> forumItemList) {
+    public ForumAdapter(Context context, List<ListForum> forumList) {
         this.context = context;
-        this.forumItemList = forumItemList;
+        this.forumList = forumList;
+        this.firestore = FirebaseFirestore.getInstance();
     }
 
     @NonNull
@@ -35,35 +40,62 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ForumViewHolder holder, int position) {
-        ListForum forumItem = forumItemList.get(position);
-
-        holder.textUserForum.setText(forumItem.getUsername());
-        holder.textWaktuForum.setText(forumItem.getTimestamp());
-        holder.textComForum.setText(forumItem.getComment());
-        // Add more bindings as needed
+        ListForum forum = forumList.get(position);
+        holder.bind(forum);
     }
 
     @Override
     public int getItemCount() {
-        return forumItemList.size();
+        return forumList.size();
     }
 
     public class ForumViewHolder extends RecyclerView.ViewHolder {
-        TextView textUserForum;
-        TextView textWaktuForum;
-        TextView textComForum;
-        Button buttonLikeForm;
-        Button buttonComForm;
-        ImageButton profileForm;
+        private TextView forumTextTextView;
+        private TextView usernameTextView;
+        private TextView timestampTextView;
 
         public ForumViewHolder(@NonNull View itemView) {
             super(itemView);
-            textUserForum = itemView.findViewById(R.id.text_userforum);
-            textWaktuForum = itemView.findViewById(R.id.text_waktuforum);
-            textComForum = itemView.findViewById(R.id.text_comforum);
-            buttonLikeForm = itemView.findViewById(R.id.button_likeform);
-            buttonComForm = itemView.findViewById(R.id.button_comform);
-            profileForm = itemView.findViewById(R.id.profile_form);
+            forumTextTextView = itemView.findViewById(R.id.text_comforum);
+            usernameTextView = itemView.findViewById(R.id.text_userforum);
+            timestampTextView = itemView.findViewById(R.id.text_waktuforum);
+        }
+
+        public void bind(ListForum forum) {
+            forumTextTextView.setText(forum.getForumText());
+            //usernameTextView.setText(forum.getUserId());
+            usernameTextView.setText(forum.getUsername());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+            String formattedDate = sdf.format(forum.getTimestamp());
+            timestampTextView.setText(formattedDate);
+            fetchUsername(forum.getUserId(), usernameTextView);
+        }
+        private void fetchUsername(String userId, TextView usernameTextView) {
+            Log.d("ForumAdapter", "Fetching username for userId: " + userId);
+
+            if (userId != null && !userId.isEmpty()) {
+                firestore.collection("users")
+                        .document(userId)
+                        .get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                String username = documentSnapshot.getString("username");
+                                if (username != null) {
+                                    usernameTextView.setText(username);
+                                } else {
+                                    Log.e("ForumAdapter", "Username is null for userId: " + userId);
+                                }
+                            } else {
+                                Log.e("ForumAdapter", "Document does not exist for userId: " + userId);
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            // Handle the error
+                            Log.e("ForumAdapter", "Error fetching username: " + e.getMessage());
+                        });
+            } else {
+                Log.e("ForumAdapter", "Invalid userId: " + userId);
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.example.roufish.DescriptionProduct;
 import com.example.roufish.PesananSaya;
@@ -33,6 +34,7 @@ public class MainPageBuyer extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private ArrayList<ListProduct> products = new ArrayList<>();
     private HomepageAdapter homepageAdapter;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,21 @@ public class MainPageBuyer extends AppCompatActivity {
         recyclerView.setAdapter(homepageAdapter);
         beli = findViewById(id.beli);
         firestore = FirebaseFirestore.getInstance();
+        searchView = findViewById(id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Perform search when submit button is pressed (optional)
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Perform search as the user types
+                filterProducts(newText);
+                return true;
+            }
+        });
         homepageAdapter.setOnItemClickListener(new HomepageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -100,7 +117,7 @@ public class MainPageBuyer extends AppCompatActivity {
                         return true;
                     } else if (item.getItemId() == R.id.forum) {
                         // Navigate to ForumActivity when Forum is clicked
-                        startActivity(new Intent(MainPageBuyer.this, forum.class));
+                        startActivity(new Intent(MainPageBuyer.this, ForumActivity.class));
                         return true;
                     }
                     // Add more conditions for other items if needed
@@ -142,6 +159,17 @@ public class MainPageBuyer extends AppCompatActivity {
 
         });
 
-    }
 
+    }
+    private void filterProducts(String query) {
+        // Filter the products based on the query
+        ArrayList<ListProduct> filteredProducts = new ArrayList<>();
+
+        for (ListProduct product : products) {
+            if (product.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredProducts.add(product);
+            }
+        }
+        homepageAdapter.filterList(filteredProducts);
+    }
 }

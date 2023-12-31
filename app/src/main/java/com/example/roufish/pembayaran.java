@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RadioGroup;
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.roufish.activities.MainPageBuyer;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -18,18 +20,23 @@ import com.squareup.picasso.Picasso;
 
 public class pembayaran extends AppCompatActivity {
     TextView namaPemesan, harga,hargaTotal;
-    boolean radioGroupEnabled = true;
+    FloatingActionButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembayaran);
-
+        back = findViewById(R.id.backToMain);
         namaPemesan = findViewById(R.id.namaPemesan);
         harga = findViewById(R.id.hargaProduk);
         hargaTotal = findViewById(R.id.Text_harga_barang);
-        RadioGroup radioGroup = findViewById(R.id.radioGroup);
 
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(pembayaran.this, MainPageBuyer.class);
+                startActivity(backIntent);
+            }
+        });
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String productPrice = extras.getString("productPrice");
@@ -38,19 +45,6 @@ public class pembayaran extends AppCompatActivity {
 
         }
         showUserData();
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-
-                if (radioGroupEnabled) {
-                    // Handle the selected radio button here
-                    radioGroupEnabled = false; // Disable the RadioGroup after selection
-                }
-
-            }
-        });
 
     }
 
