@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_theme"
-        tools:context=".activities.Penjualan">
+        tools:context=".activities.RiwayatPenjualanActivity">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_pesanan_penjualan"
@@ -58,7 +58,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_penjualan"
+                android:id="@+id/recyclerPesananPenjualan"
                 android:layout_width="match_parent"
                 android:layout_height="926dp"
                 android:layout_marginVertical="9dp"

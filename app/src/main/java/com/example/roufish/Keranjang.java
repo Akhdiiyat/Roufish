@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,6 +70,27 @@ public class Keranjang extends AppCompatActivity {
                     if (intent.hasExtra("productPrice")) {
                         String productPrice = intent.getStringExtra("productPrice");
                         pesanprodukIntent.putExtra("productPrice", productPrice);
+                    }
+                    if (intent.hasExtra("productName")) {
+                        String productName = intent.getStringExtra("productName");
+                        pesanprodukIntent.putExtra("productName", productName);
+                    }
+                    if (intent.hasExtra("productPrice")) {
+                        String productPrice = intent.getStringExtra("productPrice");
+                        pesanprodukIntent.putExtra("productPrice", productPrice);
+                    }
+                    if (intent.hasExtra("image_url")) {
+                        String imageUrl = intent.getStringExtra("image_url");
+                        pesanprodukIntent.putExtra("productImageUrl", imageUrl);
+
+                    }
+                    if (intent.hasExtra("documentId")) {
+                        String documentId = intent.getStringExtra("documentId");
+                        pesanprodukIntent.putExtra("documentId", documentId);
+                        //Toast.makeText(Keranjang.this, "id ada", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(Keranjang.this, "id tidak ada", Toast.LENGTH_SHORT).show();
                     }
 
                 }

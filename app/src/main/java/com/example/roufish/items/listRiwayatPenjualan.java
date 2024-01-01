@@ -1,23 +1,23 @@
 package com.example.roufish.items;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ListProduct implements Parcelable {
-    private String name;
+public class listRiwayatPenjualan implements Parcelable {
+    private String name, idPenjualan;
     private int price;
     private String deskripsi;
     private String imageResId;
-    private String documentId;
 
-    public ListProduct(String name, String deskripsi, int price, String imageResId, String documentId) {
+    public listRiwayatPenjualan(String name, int price, String deskripsi, String imageResId,String idPenjualan) {
         this.name = name;
-        this.deskripsi = deskripsi;
+        this.idPenjualan = idPenjualan;
         this.price = price;
+        this.deskripsi = deskripsi;
         this.imageResId = imageResId;
-        this.documentId = documentId;
     }
 
-    protected ListProduct(Parcel in) {
+    protected listRiwayatPenjualan(Parcel in) {
         name = in.readString();
         deskripsi = in.readString();
         price = in.readInt();
@@ -35,10 +35,6 @@ public class ListProduct implements Parcelable {
             return new ListProduct[size];
         }
     };
-
-    public String getDocumentId() {
-        return documentId;
-    }
 
     public String getName() {
         return name;

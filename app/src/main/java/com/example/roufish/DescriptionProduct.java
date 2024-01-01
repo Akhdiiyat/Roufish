@@ -51,10 +51,17 @@ public class DescriptionProduct extends AppCompatActivity {
                     if (intent.hasExtra("image_url")) {
                         String imageUrl = intent.getStringExtra("image_url");
                         cartIntent.putExtra("productImageUrl", imageUrl);
+
+                    }
+                    if (intent.hasExtra("documentId")) {
+                        String documentId = intent.getStringExtra("documentId");
+                        cartIntent.putExtra("documentId", documentId);
+                        //Toast.makeText(DescriptionProduct.this, "id ada" + documentId , Toast.LENGTH_SHORT).show();
+
                     }
                 }
 
-                Toast.makeText(DescriptionProduct.this, "Produk Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DescriptionProduct.this, "Produk Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                 startActivity(cartIntent);
             }
         });

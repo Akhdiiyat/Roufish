@@ -70,6 +70,7 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DescriptionProduct.class);
+                intent.putExtra("documentId",product.getDocumentId());
                 intent.putExtra("productName", product.getName());
                 intent.putExtra("productPrice", String.valueOf(product.getPrice()));
                 intent.putExtra("productDescription", product.getDeskripsi());

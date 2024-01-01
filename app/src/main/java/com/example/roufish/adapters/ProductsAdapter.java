@@ -57,6 +57,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             public void onClick(View v) {
                 // Handle image click here, for example, open a new activity with the image
                 Intent intent = new Intent(v.getContext(), DescriptionProduct.class);
+                intent.putExtra("documentId",product.getDocumentId());
                 intent.putExtra("image_url", product.getImageResId());
                 intent.putExtra("productName", product.getName());
                 intent.putExtra("productPrice", String.valueOf(product.getPrice()));

@@ -133,6 +133,7 @@ public class MainPageBuyer extends AppCompatActivity {
             }
             products.clear();
             for (DocumentSnapshot document : value.getDocuments()) {
+                String documentId = document.getId();
                 String name = document.getString("nama");
                 String description = document.getString("deskripsi");
                 String Price = (String) document.get("harga");
@@ -143,12 +144,12 @@ public class MainPageBuyer extends AppCompatActivity {
                         .child("produkjual/" + document.getId() + ".jpg");
 
                 imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                    ListProduct product = new ListProduct(name, description, sellPrice, uri.toString());
+                    ListProduct product = new ListProduct(name, description, sellPrice, uri.toString(),documentId);
                     products.add(product);
                     runOnUiThread(() -> recyclerView.getAdapter().notifyDataSetChanged());
                 }).addOnFailureListener(exception -> {
                     // Handle failure (e.g., set a default image URL)
-                    ListProduct product = new ListProduct(name, description, sellPrice, "Default_image");
+                    ListProduct product = new ListProduct(name, description, sellPrice, "Default_image",documentId);
                     products.add(product);
                     runOnUiThread(() -> recyclerView.getAdapter().notifyDataSetChanged());
                 });

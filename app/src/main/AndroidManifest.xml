@@ -79,6 +79,12 @@
             android:name=".PageLelang"
             android:exported="false" />
         <activity
+            android:name=".PesananLelang"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RiwayatPenjualanActivity"
+            android:exported="false" />
+        <activity
             android:name=".forgetPassword.lupapwd_code"
             android:exported="false" />
         <activity

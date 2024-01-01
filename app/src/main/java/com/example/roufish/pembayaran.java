@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.roufish.activities.MainPageBuyer;
+import com.example.roufish.activities.RiwayatPenjualanActivity;
+import com.example.roufish.items.ListProduct;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -21,14 +25,55 @@ import com.squareup.picasso.Picasso;
 public class pembayaran extends AppCompatActivity {
     TextView namaPemesan, harga,hargaTotal;
     FloatingActionButton back;
+    Button bayar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembayaran);
         back = findViewById(R.id.backToMain);
+        bayar = findViewById(R.id.btn_bayar);
         namaPemesan = findViewById(R.id.namaPemesan);
         harga = findViewById(R.id.hargaProduk);
         hargaTotal = findViewById(R.id.Text_harga_barang);
+        Intent intent = getIntent();
+
+        bayar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent bayarIntent = new Intent(pembayaran.this, RiwayatPenjualanActivity.class);
+                if (intent != null) {
+
+                    if (intent.hasExtra("productPrice")) {
+                        String productPrice = intent.getStringExtra("productPrice");
+                        bayarIntent.putExtra("productPrice", productPrice);
+                    }
+                    if (intent.hasExtra("productName")) {
+                        String productName = intent.getStringExtra("productName");
+                        bayarIntent.putExtra("productName", productName);
+                    }
+                    if (intent.hasExtra("productPrice")) {
+                        String productPrice = intent.getStringExtra("productPrice");
+                        bayarIntent.putExtra("productPrice", productPrice);
+                    }
+                    if (intent.hasExtra("image_url")) {
+                        String imageUrl = intent.getStringExtra("image_url");
+                        bayarIntent.putExtra("productImageUrl", imageUrl);
+
+                    }
+                    if (intent.hasExtra("documentId")) {
+                        String documentId = intent.getStringExtra("documentId");
+                        bayarIntent.putExtra("documentId", documentId);
+                       //Toast.makeText(pembayaran.this, "id ada", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(pembayaran.this, "id tidak ada", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                Toast.makeText(pembayaran.this, "berhasil", Toast.LENGTH_SHORT).show();
+                startActivity(bayarIntent);
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +87,6 @@ public class pembayaran extends AppCompatActivity {
             String productPrice = extras.getString("productPrice");
             harga.setText("Rp."+ String.valueOf(productPrice));
             hargaTotal.setText("Rp."+ String.valueOf(productPrice));
-
         }
         showUserData();
 
