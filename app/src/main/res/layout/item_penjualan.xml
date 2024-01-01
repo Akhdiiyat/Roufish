@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/productAuctionImageView"
+                android:id="@+id/productPenjualanImageView"
                 android:layout_width="725px"
                 android:layout_height="400px"
                 android:layout_marginLeft="11dp"

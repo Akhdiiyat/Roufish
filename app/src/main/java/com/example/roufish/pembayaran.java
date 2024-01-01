@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.roufish.activities.MainPageBuyer;
 import com.example.roufish.activities.RiwayatPenjualanActivity;
 import com.example.roufish.items.ListProduct;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -73,20 +74,20 @@ public class pembayaran extends AppCompatActivity {
         if (extras != null) {
             String productPrice = extras.getString("productPrice");
             String productImageUrl = extras.getString("productImageUrl");
-            //String gambar = Picasso.get().load(productImageUrl).toString();
             harga.setText("Rp."+ String.valueOf(productPrice));
             hargaTotal.setText("Rp."+ String.valueOf(productPrice));
         }
         showUserData();
-
     }
 
     private void saveToFirestore(String productName, String productPrice, String documentId){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         Map<String, Object> purchase = new HashMap<>();
         purchase.put("productName", productName);
         purchase.put("productPrice", productPrice);
         purchase.put("documentId", documentId);
+
 
         db.collection("riwayat_pembelian").add(purchase)
                 .addOnSuccessListener(documentReference -> Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId()))
