@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.AddForum;
+import com.example.roufish.CommentActivity;
 import com.example.roufish.R;
 import com.example.roufish.adapters.ForumAdapter;
 import com.example.roufish.items.ListForum;
@@ -21,13 +23,13 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForumActivity extends AppCompatActivity {
+public class ForumActivity extends AppCompatActivity implements ForumAdapter.OnCommentButtonClickListener{
 
     private FloatingActionButton back, tambah;
     private List<ListForum> forumList;
     private ForumAdapter forumAdapter;
     private FirebaseFirestore firestore; // Declare the FirebaseFirestore object
-
+    private Button comment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,6 @@ public class ForumActivity extends AppCompatActivity {
 
         back = findViewById(R.id.back_forum);
         tambah = findViewById(R.id.buatForum);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +68,7 @@ public class ForumActivity extends AppCompatActivity {
 
         // Initialize and set adapter to RecyclerView
         forumAdapter = new ForumAdapter(this, forumList);
+        forumAdapter.setOnCommentButtonClickListener(this);
         recyclerView.setAdapter(forumAdapter);
 
         // Load forums from Firestore
@@ -82,6 +84,7 @@ public class ForumActivity extends AppCompatActivity {
                         for (DocumentSnapshot document : task.getResult()) {
                             ListForum forum = document.toObject(ListForum.class);
                             if (forum != null) {
+                                forum.setForumId(document.getId());
                                 forumList.add(forum);
                             }
                         }
@@ -112,5 +115,13 @@ public class ForumActivity extends AppCompatActivity {
                     Log.e("ForumActivity", "Error fetching username: " + e.getMessage());
                 });
     }
+    public void onCommentButtonClick(ListForum forum) {
+        // Implement the action to be taken when the comment button is clicked
+        // For example, open CommentActivity with the selected forum
+        Intent commentIntent = new Intent(ForumActivity.this, CommentActivity.class);
+        commentIntent.putExtra("forumId", forum.getForumId());
+        startActivity(commentIntent);
+    }
+
 
 }

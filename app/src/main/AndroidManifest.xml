@@ -25,6 +25,9 @@
             android:name=".AddForum"
             android:exported="false"/>
         <activity
+            android:name=".CommentActivity"
+            android:exported="false"/>
+        <activity
             android:name=".PesananSaya"
             android:exported="false"/>
         <activity

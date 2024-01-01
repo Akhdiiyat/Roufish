@@ -1,16 +1,20 @@
 package com.example.roufish.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.roufish.CommentActivity;
 import com.example.roufish.FirestoreHelper;
+import com.example.roufish.activities.ForumActivity;
 import com.example.roufish.items.ListForum;
 import com.example.roufish.R;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,6 +28,14 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
     private List<ListForum> forumList;
     private Context context;
     private FirebaseFirestore firestore;
+    private Button comment;
+    private OnCommentButtonClickListener commentButtonClickListener;
+    public interface OnCommentButtonClickListener {
+        void onCommentButtonClick(ListForum forum);
+    }
+    public void setOnCommentButtonClickListener(OnCommentButtonClickListener listener) {
+        this.commentButtonClickListener = listener;
+    }
 
     public ForumAdapter(Context context, List<ListForum> forumList) {
         this.context = context;
@@ -42,6 +54,28 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
     public void onBindViewHolder(@NonNull ForumViewHolder holder, int position) {
         ListForum forum = forumList.get(position);
         holder.bind(forum);
+//        holder.buttonComment.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent commentIntent = new Intent(context, CommentActivity.class);
+//
+//                // Pass relevant data to CommentActivity
+//                commentIntent.putExtra("forumText", forum.getForumText());
+//                commentIntent.putExtra("username", forum.getUsername());
+//                commentIntent.putExtra("timestamp", forum.getTimestamp().getTime()); // Pass timestamp as a long
+//
+//                // Start CommentActivity with the prepared Intent
+//                context.startActivity(commentIntent);
+//            }
+        //});
+        holder.buttonComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (commentButtonClickListener != null) {
+                    commentButtonClickListener.onCommentButtonClick(forum);
+                }
+            }
+        });
     }
 
     @Override
@@ -53,12 +87,14 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
         private TextView forumTextTextView;
         private TextView usernameTextView;
         private TextView timestampTextView;
+        private Button buttonComment;
 
         public ForumViewHolder(@NonNull View itemView) {
             super(itemView);
             forumTextTextView = itemView.findViewById(R.id.text_comforum);
             usernameTextView = itemView.findViewById(R.id.text_userforum);
             timestampTextView = itemView.findViewById(R.id.text_waktuforum);
+            buttonComment = itemView.findViewById(R.id.button_comment);
         }
 
         public void bind(ListForum forum) {

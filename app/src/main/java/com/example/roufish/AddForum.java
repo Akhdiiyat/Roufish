@@ -65,8 +65,8 @@ public class AddForum extends AppCompatActivity {
                     return;
                 }
 
-                // Create a forum object
-                ListForum forum = new ListForum(forumText, userId,username, timestamp);
+                String forumId = firestore.collection("forums").document().getId();
+                ListForum forum = new ListForum(forumText, userId, username, timestamp, forumId);
 
                 // Save data to Firestore
                 firestore.collection("forums")
@@ -95,7 +95,8 @@ public class AddForum extends AppCompatActivity {
                         if (username != null) {
                             // Create a forum object with username
                             Date timestamp = new Date();
-                            ListForum forum = new ListForum(forumText, userId, username, timestamp);
+                            String forumId = firestore.collection("forums").document().getId();
+                            ListForum forum = new ListForum(forumText, userId, username, timestamp, forumId);
 
                             // Save data to Firestore
                             saveForumToFirestore(forum);
