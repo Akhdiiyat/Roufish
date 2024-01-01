@@ -86,7 +86,7 @@
 
 
                     <Button
-                        android:id="@+id/button_comform"
+                        android:id="@+id/button_comment2"
                         android:layout_width="250dp"
                         android:layout_height="35dp"
                         android:backgroundTint="@color/app_theme"
