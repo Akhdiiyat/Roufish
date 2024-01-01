@@ -123,18 +123,6 @@
                 android:layout_marginTop="250dp"
                 tools:listitem="@layout/item_comment" />
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/botttom_nav_form"
-                android:layout_width="414dp"
-                android:layout_height="67dp"
-                android:layout_gravity="bottom"
-                android:background="@color/app_theme"
-                android:paddingStart="10dp"
-                android:paddingEnd="15dp"
-                app:itemRippleColor="@color/white"
-                app:menu="@menu/botton_nav_forum">
-
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

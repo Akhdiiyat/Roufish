@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_theme"
-        tools:context=".activities.RiwayatPenjualanActivity">
+        tools:context=".activities.RiwayatPenjualanActivity"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="62dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_pesanan_penjualan"
@@ -25,9 +27,10 @@
             android:layout_height="78dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline_pesanan_penjualan"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.949"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.262"
+            app:layout_constraintVertical_bias="0.416"
             app:srcCompat="@drawable/logo" />
 
         <androidx.cardview.widget.CardView
@@ -42,27 +45,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/text_penjualan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Penjualan"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.099"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.026" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerPesananPenjualan"
                 android:layout_width="match_parent"
-                android:layout_height="926dp"
-                android:layout_marginVertical="9dp"
-                android:layout_marginTop="40dp"
+                android:layout_height="match_parent"
                 tools:listitem="@layout/item_penjualan" />
 
         </androidx.cardview.widget.CardView>
@@ -97,6 +85,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/image_pesanan"
             app:srcCompat="@drawable/arrow_back_icon" />
+
+        <TextView
+            android:id="@+id/text_penjualan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Penjualan"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_pesanan_penjualan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,15 @@
             android:name=".PesananSaya"
             android:exported="false"/>
         <activity
+            android:name=".PesananSaya"
+            android:exported="false" />
+        <activity
+            android:name=".page_keranjang"
+            android:exported="false" />
+        <activity
+            android:name=".keranjang"
+            android:exported="false" />
+        <activity
             android:name=".Rekap_penjualan"
             android:exported="false" />
         <activity
