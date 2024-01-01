@@ -51,6 +51,7 @@ public class DescriptionProduct extends AppCompatActivity {
                     if (intent.hasExtra("image_url")) {
                         String imageUrl = intent.getStringExtra("image_url");
                         cartIntent.putExtra("productImageUrl", imageUrl);
+                        //Toast.makeText(DescriptionProduct.this, "berhasil", Toast.LENGTH_SHORT).show();
 
                     }
                     if (intent.hasExtra("documentId")) {

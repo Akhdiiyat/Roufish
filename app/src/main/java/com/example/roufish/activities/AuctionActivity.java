@@ -82,7 +82,7 @@ public class AuctionActivity extends AppCompatActivity {
             for (DocumentSnapshot document : value.getDocuments()) {
                 String documentId = document.getId();
                 String name = document.getString("nama");
-                String description = document.getString("deskripsi");
+                //String description = document.getString("deskripsi");
                 //int startingPrice = document.getLong("harga").intValue();
                 String Price = (String) document.get("harga");
                 int startingPrice = Integer.parseInt(Price);
@@ -91,12 +91,12 @@ public class AuctionActivity extends AppCompatActivity {
                         .child("produklelang/" + document.getId() + ".jpg");
 
                 imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                    ListLelang lelang = new ListLelang(name, description, startingPrice, uri.toString(),documentId);
+                    ListLelang lelang = new ListLelang(name, startingPrice, uri.toString(),documentId);
                     productList.add(lelang);
                     auctionAdapter.notifyDataSetChanged();
                 }).addOnFailureListener(exception -> {
                     // Handle failure (e.g., set a default image URL)
-                    ListLelang lelang = new ListLelang(name, description, startingPrice, "default_image_url",documentId);
+                    ListLelang lelang = new ListLelang(name, startingPrice, "default_image_url",documentId);
                     productList.add(lelang);
                 });
 

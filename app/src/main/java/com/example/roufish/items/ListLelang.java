@@ -12,7 +12,7 @@ public class ListLelang implements Parcelable {
 
     private String documentId;
 
-    public ListLelang(String itemName, String itemDescription, int startingPrice, String imageUrl, String documentId) {
+    public ListLelang(String itemName, int startingPrice, String imageUrl, String documentId) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.startingPrice = startingPrice;

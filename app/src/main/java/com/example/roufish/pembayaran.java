@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,9 +23,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class pembayaran extends AppCompatActivity {
     TextView namaPemesan, harga,hargaTotal;
     FloatingActionButton back;
+    String productPrice;
+    String productName;
+    String documentId;
     Button bayar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,42 +43,22 @@ public class pembayaran extends AppCompatActivity {
         harga = findViewById(R.id.hargaProduk);
         hargaTotal = findViewById(R.id.Text_harga_barang);
         Intent intent = getIntent();
+        if (intent != null) {
+            productPrice = intent.getStringExtra("productPrice");
+            productName = intent.getStringExtra("productName");
+            documentId = intent.getStringExtra("documentId");
+        }
 
         bayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent bayarIntent = new Intent(pembayaran.this, RiwayatPenjualanActivity.class);
-                if (intent != null) {
-
-                    if (intent.hasExtra("productPrice")) {
-                        String productPrice = intent.getStringExtra("productPrice");
-                        bayarIntent.putExtra("productPrice", productPrice);
-                    }
-                    if (intent.hasExtra("productName")) {
-                        String productName = intent.getStringExtra("productName");
-                        bayarIntent.putExtra("productName", productName);
-                    }
-                    if (intent.hasExtra("productPrice")) {
-                        String productPrice = intent.getStringExtra("productPrice");
-                        bayarIntent.putExtra("productPrice", productPrice);
-                    }
-                    if (intent.hasExtra("image_url")) {
-                        String imageUrl = intent.getStringExtra("image_url");
-                        bayarIntent.putExtra("productImageUrl", imageUrl);
-
-                    }
-                    if (intent.hasExtra("documentId")) {
-                        String documentId = intent.getStringExtra("documentId");
-                        bayarIntent.putExtra("documentId", documentId);
-                       //Toast.makeText(pembayaran.this, "id ada", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(pembayaran.this, "id tidak ada", Toast.LENGTH_SHORT).show();
-                    }
-
+                if (productName != null && productPrice != null && documentId != null) {
+                    saveToFirestore(productName, productPrice, documentId);
+                    Intent bayarIntent = new Intent(pembayaran.this, RiwayatPenjualanActivity.class);
+                    startActivity(bayarIntent);
+                } else {
+                    Toast.makeText(pembayaran.this, "Data produk tidak lengkap", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(pembayaran.this, "berhasil", Toast.LENGTH_SHORT).show();
-                startActivity(bayarIntent);
             }
         });
 
@@ -85,11 +72,25 @@ public class pembayaran extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String productPrice = extras.getString("productPrice");
+            String productImageUrl = extras.getString("productImageUrl");
+            //String gambar = Picasso.get().load(productImageUrl).toString();
             harga.setText("Rp."+ String.valueOf(productPrice));
             hargaTotal.setText("Rp."+ String.valueOf(productPrice));
         }
         showUserData();
 
+    }
+
+    private void saveToFirestore(String productName, String productPrice, String documentId){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> purchase = new HashMap<>();
+        purchase.put("productName", productName);
+        purchase.put("productPrice", productPrice);
+        purchase.put("documentId", documentId);
+
+        db.collection("riwayat_pembelian").add(purchase)
+                .addOnSuccessListener(documentReference -> Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId()))
+                .addOnFailureListener(e -> Log.w("Firebase", "Error adding document", e));
     }
 
     public void showUserData() {

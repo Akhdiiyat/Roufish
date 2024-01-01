@@ -81,8 +81,8 @@ public class Keranjang extends AppCompatActivity {
                     }
                     if (intent.hasExtra("image_url")) {
                         String imageUrl = intent.getStringExtra("image_url");
-                        pesanprodukIntent.putExtra("productImageUrl", imageUrl);
-
+                        pesanprodukIntent.putExtra("image_url", imageUrl);
+                        Toast.makeText(Keranjang.this, "berhasil" + imageUrl, Toast.LENGTH_SHORT).show();
                     }
                     if (intent.hasExtra("documentId")) {
                         String documentId = intent.getStringExtra("documentId");

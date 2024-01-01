@@ -69,7 +69,7 @@ public class AddForum extends AppCompatActivity {
                 ListForum forum = new ListForum(forumText, userId,username, timestamp);
 
                 // Save data to Firestore
-                firestore.collection("forums")
+                firestore.collection("forums" )
                         .add(forum)
                         .addOnSuccessListener(documentReference -> {
                             Toast.makeText(AddForum.this, "Post berhasil!", Toast.LENGTH_SHORT).show();
