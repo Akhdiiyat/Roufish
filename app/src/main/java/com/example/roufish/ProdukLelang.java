@@ -29,19 +29,17 @@ public class ProdukLelang extends AppCompatActivity {
     DatabaseReference reference;
     FirebaseDatabase database;
     FirebaseFirestore firestore;
-
     FirebaseStorage storage;
     StorageReference storageRef;
     private static final int PICK_IMAGE_REQUEST = 1;
     Uri imageUri;
     String produkId;
+    String sellerId;
 
     EditText inputNamaProdukLelang, inputBeratProdukLelang,inputDeskripsiProdukLelang;
     EditText inputHargaProdukLelang, inputKelipatanLelang;
-
     Button inputFoto,uploadProduk;
     StorageReference storageReference;
-
     FloatingActionButton backToMainPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +60,8 @@ public class ProdukLelang extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
-
+        Intent intent = getIntent();
+        sellerId = intent.getStringExtra("sellerId");
         inputFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +114,7 @@ public class ProdukLelang extends AppCompatActivity {
         produk.put("deskripsi", deskripsi);
         produk.put("kelipatan", kelipatan);
         produk.put("berat", berat);
-
+        produk.put("sellerId", sellerId);
         if (imageUri != null) {
             StorageReference fileReference = storageRef.child("produklelang/" + produkId + ".jpg"); // Gunakan ID produk sebagai nama file
             fileReference.putFile(imageUri)

@@ -32,7 +32,7 @@ public class ProdukJual extends AppCompatActivity {
     FloatingActionButton backToMainSeller;
     AppCompatButton inputFoto,uploadProduk;
     FirebaseFirestore firestore;
-
+    String sellerId;
     FirebaseStorage storage;
     StorageReference storageRef;
 
@@ -58,6 +58,8 @@ public class ProdukJual extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+        Intent intent = getIntent();
+        sellerId = intent.getStringExtra("sellerId");
 
         backToMainSeller.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +119,7 @@ public class ProdukJual extends AppCompatActivity {
         produk.put("harga", harga);
         produk.put("deskripsi", deskripsi);
         produk.put("berat", berat);
-
+        produk.put("sellerId", sellerId);
         if (imageUri != null) {
             StorageReference fileReference = storageRef.child("produkjual/" + produkId + ".jpg"); // Gunakan ID produk sebagai nama file
             fileReference.putFile(imageUri)

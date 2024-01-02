@@ -110,9 +110,8 @@ public class RiwayatPenjualanActivity extends AppCompatActivity {
                                 String productName = document.getString("productName");
                                 String productPrice = document.getString("productPrice");
                                 String imageUrl = document.getString("documentId");
-                                long timeStamp = document.getLong("timestamp");
 
-                                listRiwayatPenjualan riwayatPenjualan = new listRiwayatPenjualan(idPenjualan, productName, productPrice, imageUrl,timeStamp);
+                                listRiwayatPenjualan riwayatPenjualan = new listRiwayatPenjualan(idPenjualan, productName, productPrice, imageUrl);
                                 riwayatPenjualanList.add(riwayatPenjualan);
                             }
 
@@ -129,6 +128,37 @@ public class RiwayatPenjualanActivity extends AppCompatActivity {
     }
 }
 
+        /*firestore.collection("riwayat_pembelian")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        ArrayList<listRiwayatPenjualan> riwayatPenjualan = new ArrayList<>();
+
+                        for (DocumentSnapshot document : task.getResult()) {
+                            String idPenjualan = document.getId();
+                            String productName = document.getString("productName"); // Change "productName" to the actual field name in your Firestore document
+                            String productPrice = document.getString("productPrice");
+                            //int sellPrice = Integer.parseInt(productPrice);
+
+
+                            *//*StorageReference imageRef = FirebaseStorage.getInstance().getReference()
+                                    .child("produkjual/" + id + ".jpg");
+
+                            imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                                listRiwayatPenjualan riwayatJual = new listRiwayatPenjualan(id, productName, productPrice,uri.toString());
+                                riwayatPenjualan.add(riwayatJual);
+                            }).addOnFailureListener(exception -> {
+                                // Handle failure (e.g., set a default image URL)
+                                listRiwayatPenjualan riwayatJual = new listRiwayatPenjualan(id, productName, productPrice,"default_Image");
+                                riwayatPenjualan.add(riwayatJual);
+                            });*//*
+                        }
+                       riwayatPenjualanAdapter.notifyDataSetChanged(); // Notify adapter of data changes
+                    } else {
+                        // Handle the error
+                        Toast.makeText(RiwayatPenjualanActivity.this, "Failed to load forums: " + task.getException(), Toast.LENGTH_SHORT).show();
+                    }
+                });*/
 
 
 

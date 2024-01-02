@@ -38,12 +38,8 @@ public class profileBuyer extends AppCompatActivity {
 
     TextView profileUsername, profileEmail, profileName, profilePassword, titleName, titleUsername;
     TextView profileNoHP;
-
-    //Button editProfile;
     String userId;
-
     ImageView profileImg;
-
     StorageReference storageReference;
     StorageReference profileRef;
 
