@@ -15,6 +15,7 @@ import com.example.roufish.activities.MainPageSeller;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -140,6 +141,8 @@ public class ProdukJual extends AppCompatActivity {
 
         // If a photo is selected, upload the photo to Firebase Storage
         StorageReference fileReference = storageRef.child("produkjual/" + produkId + ".jpg");
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String userId = mAuth.getCurrentUser().getUid();
         fileReference.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -154,7 +157,7 @@ public class ProdukJual extends AppCompatActivity {
                                         for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
                                             // Here, document.getId() will give you the document ID of each seller
                                             // You can use this ID as needed
-                                            String sellerId = document.getId();
+                                            String sellerId = userId;
 
                                             // Now you can associate this sellerId with your product
                                             produk.put("sellerId", sellerId);

@@ -44,7 +44,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/productHargaText"
+            android:id="@+id/productNamaSeller"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="186dp"
@@ -58,21 +58,7 @@
             app:layout_constraintTop_toBottomOf="@id/productNameTextView" />
 
         <TextView
-            android:id="@+id/productHargaText2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="186dp"
-            android:layout_marginTop="200dp"
-            android:gravity="end"
-            android:text="Harga"
-            android:textColor="@android:color/black"
-            android:textSize="5.5pt"
-            android:textStyle="bold"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productNameTextView" />
-
-        <TextView
-            android:id="@+id/productPriceTextView"
+            android:id="@+id/productPriceSeller"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="186dp"
