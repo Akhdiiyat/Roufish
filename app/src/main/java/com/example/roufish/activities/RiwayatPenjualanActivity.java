@@ -89,7 +89,7 @@ public class RiwayatPenjualanActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RiwayatPenjualanActivity.this, PesananSaya.class));
+                startActivity(new Intent(RiwayatPenjualanActivity.this, MainPageBuyer.class));
             }
         });
 
