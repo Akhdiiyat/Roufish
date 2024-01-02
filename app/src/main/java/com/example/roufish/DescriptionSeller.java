@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,6 +47,8 @@ public class DescriptionSeller extends AppCompatActivity {
                     // Handle the delete button click
 
                     deleteProductFromFirestore(productId);
+
+                    Toast.makeText(DescriptionSeller.this, "Delete Produk Berhasil", Toast.LENGTH_SHORT).show();
 
                     // Finish the activity after deletion
                     finish();
