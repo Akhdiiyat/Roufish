@@ -95,7 +95,7 @@ public class MainPageBuyer extends AppCompatActivity {
         pesananSaya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cartIntent = new Intent(MainPageBuyer.this, PesananSaya.class);
+                Intent cartIntent = new Intent(MainPageBuyer.this, RiwayatPenjualanActivity.class);
                 startActivity(cartIntent);
             }
         });
