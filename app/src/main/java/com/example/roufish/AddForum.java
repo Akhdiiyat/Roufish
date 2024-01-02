@@ -1,5 +1,6 @@
 package com.example.roufish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.roufish.activities.ForumActivity;
 import com.example.roufish.items.ListForum;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +28,8 @@ public class AddForum extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private FirebaseAuth auth;
 
+    FloatingActionButton backToMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,8 @@ public class AddForum extends AppCompatActivity {
         inputForum = findViewById(R.id.input_forum);
         postButton = findViewById(R.id.post_forum);
 
+        backToMain = findViewById(R.id.back_forum);
+
         // Respond to the "Post" button click
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +52,16 @@ public class AddForum extends AppCompatActivity {
                 postForum();
             }
         });
+
+        backToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backToMainIntent = new Intent(AddForum.this, ForumActivity.class);
+                startActivity(backToMainIntent);
+            }
+        });
+
+
     }
 
     private void postForum() {

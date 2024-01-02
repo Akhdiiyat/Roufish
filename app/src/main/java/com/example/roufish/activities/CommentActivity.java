@@ -1,7 +1,8 @@
-package com.example.roufish;
+package com.example.roufish.activities;
 
 import static com.google.api.ChangeType.ADDED;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,8 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.roufish.Comment;
+import com.example.roufish.R;
 import com.example.roufish.adapters.CommentAdapter;
 import com.example.roufish.fragments.CommentBottomSheetFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,6 +39,8 @@ public class CommentActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private String forumId;
 
+    FloatingActionButton back_forum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +55,7 @@ public class CommentActivity extends AppCompatActivity {
         commentAdapter = new CommentAdapter(this, commentList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(commentAdapter);
+        back_forum = findViewById(R.id.back_forum);
 
         // Retrieve data from Intent extras
         forumId = getIntent().getStringExtra("forumId");
@@ -61,6 +68,14 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showCommentBottomSheet();
+            }
+        });
+
+        back_forum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backForumIntent = new Intent(CommentActivity.this, ForumActivity.class);
+                startActivity(backForumIntent);
             }
         });
     }

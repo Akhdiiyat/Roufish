@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.roufish.activities.MainPageSeller;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -73,6 +74,14 @@ public class ProdukLelang extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 uploadData();
+            }
+        });
+
+        backToMainPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backToMainPageIntent = new Intent(ProdukLelang.this, MainPageSeller.class);
+                startActivity(backToMainPageIntent);
             }
         });
     }

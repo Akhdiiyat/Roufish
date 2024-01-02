@@ -67,7 +67,7 @@
         android:background="@drawable/rounded_button"
         android:textColor="@color/white"
         android:textAllCaps="false"
-        app:cornerRadius="50dp"
+        app:cornerRadius="80dp"
         android:id="@+id/btn_lanjutkan"
         android:text="Lanjutkan"
         android:layout_marginTop="10dp"

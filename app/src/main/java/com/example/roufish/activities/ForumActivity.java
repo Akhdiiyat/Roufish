@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.AddForum;
-import com.example.roufish.CommentActivity;
 import com.example.roufish.R;
 import com.example.roufish.adapters.ForumAdapter;
 import com.example.roufish.items.ListForum;

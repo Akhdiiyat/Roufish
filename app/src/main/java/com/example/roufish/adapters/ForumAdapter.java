@@ -1,7 +1,6 @@
 package com.example.roufish.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.roufish.CommentActivity;
-import com.example.roufish.FirestoreHelper;
-import com.example.roufish.activities.ForumActivity;
 import com.example.roufish.items.ListForum;
 import com.example.roufish.R;
 import com.google.firebase.firestore.FirebaseFirestore;
