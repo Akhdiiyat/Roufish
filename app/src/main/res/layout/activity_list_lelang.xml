@@ -38,7 +38,7 @@
         android:isScrollContainer="false"
         android:src="@drawable/ic_person"
         android:tint="#6E6C6C"
-        app:backgroundTint="#C6C6C6"
+        app:backgroundTint="@color/light_blue"
         app:fabCustomSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
