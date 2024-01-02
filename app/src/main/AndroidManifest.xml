@@ -31,7 +31,7 @@
             android:name=".PesananSaya"
             android:exported="false"/>
         <activity
-            android:name=".PesananSaya"
+            android:name=".DescriptionSeller"
             android:exported="false" />
         <activity
             android:name=".page_keranjang"

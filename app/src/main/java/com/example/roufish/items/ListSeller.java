@@ -6,18 +6,25 @@ public class ListSeller {
     private int productPrice;
     private String productImage;
     private String sellerId;
+    private String productId;
 
-    public ListSeller(String productName, int productPrice, String productImage, String sellerId) {
+    public ListSeller(String productName, int productPrice, String productImage, String sellerId, String productId) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productImage = productImage;
         this.sellerId = sellerId;
+        this.productId = productId;
         // Initialize other properties in the constructor
     }
     public String getSellerId() {
         return sellerId;
     }
-
+    public String getProductId() {
+        return productId;
+    }
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
     public void setSellerId(String sellerId) {
         this.sellerId = sellerId;
     }

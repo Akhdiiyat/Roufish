@@ -24,12 +24,14 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
 
     private List<ListSeller> itemList;
     private Context context;
+    private OnItemClickListener onItemClickListener;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser currentUser = mAuth.getCurrentUser();
 
-    public SellerAdapter(Context context, List<ListSeller> itemList) {
+    public SellerAdapter(Context context, List<ListSeller> itemList,OnItemClickListener onItemClickListener) {
         this.context = context;
         this.itemList = itemList;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -65,6 +67,11 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
             Log.d("ImageViewVisibility", "ImageView hidden for non-logged-in seller's product");
 
         }
+        holder.itemView.setOnClickListener(view -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(item);
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -81,6 +88,9 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
             foto = itemView.findViewById(R.id.productImageView);
             // Initialize other views here
         }
+    }
+    public interface OnItemClickListener {
+        void onItemClick(ListSeller item);
     }
 
 }

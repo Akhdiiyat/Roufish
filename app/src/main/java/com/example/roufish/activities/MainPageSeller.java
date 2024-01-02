@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 
+import com.example.roufish.DescriptionSeller;
 import com.example.roufish.ProdukJual;
 import com.example.roufish.ProdukLelang;
 import com.example.roufish.R;
@@ -42,7 +43,19 @@ public class MainPageSeller extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view_seller);
 
         productList = new ArrayList<>();
-        sellerAdapter = new SellerAdapter(this, productList);
+        sellerAdapter = new SellerAdapter(this, productList, new SellerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListSeller item) {
+                // Handle item click, e.g., start DescriptionSeller activity
+                Intent intent = new Intent(MainPageSeller.this, DescriptionSeller.class);
+                intent.putExtra("productName", item.getProductName());
+                intent.putExtra("productPrice", item.getProductPrice());
+                intent.putExtra("productImage", item.getProductImage());
+                intent.putExtra("sellerId", item.getSellerId());
+                intent.putExtra("id", item.getProductId());
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -104,6 +117,7 @@ public class MainPageSeller extends AppCompatActivity {
                             productList.clear();
 
                             for (DocumentSnapshot productDocument : value.getDocuments()) {
+                                String productId = productDocument.getString("id");
                                 String productName = productDocument.getString("nama");
                                 String productImage = productDocument.getString("productImage");
                                 String productPrice = productDocument.getString("harga");
@@ -113,11 +127,11 @@ public class MainPageSeller extends AppCompatActivity {
                                         .child("produkjual/" + productDocument.getId() + ".jpg");
 
                                 imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                                    ListSeller product = new ListSeller(productName, sellPrice, uri.toString(), productSellerId);
+                                    ListSeller product = new ListSeller(productName, sellPrice, uri.toString(), productSellerId,productId);
                                     productList.add(product);
                                     runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
                                 }).addOnFailureListener(exception -> {
-                                    ListSeller product = new ListSeller(productName, sellPrice, "Default_image", productSellerId);
+                                    ListSeller product = new ListSeller(productName, sellPrice, "Default_image", productSellerId,productId);
                                     productList.add(product);
                                     runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
                                 });
