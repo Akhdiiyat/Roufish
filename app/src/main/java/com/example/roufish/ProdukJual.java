@@ -1,6 +1,5 @@
 package com.example.roufish;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -17,7 +16,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -28,9 +29,9 @@ import java.util.Map;
 public class ProdukJual extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-    EditText namaProduk, deskripsiProduk, beratProduk,hargaProduk;
+    EditText namaProduk, deskripsiProduk, beratProduk, hargaProduk;
     FloatingActionButton backToMainSeller;
-    AppCompatButton inputFoto,uploadProduk;
+    AppCompatButton inputFoto, uploadProduk;
     FirebaseFirestore firestore;
     String sellerId;
     FirebaseStorage storage;
@@ -39,21 +40,20 @@ public class ProdukJual extends AppCompatActivity {
     Uri imageUri;
     String produkId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produk_jual);
 
         namaProduk = findViewById(R.id.inputNamaProduk);
-        beratProduk = findViewById(R.id.inputBeratProduk) ;
+        beratProduk = findViewById(R.id.inputBeratProduk);
         deskripsiProduk = findViewById(R.id.inputDeskripsiProduk);
         hargaProduk = findViewById(R.id.inputHargaProduk);
 
         backToMainSeller = findViewById(R.id.backToMainSeller);
 
         inputFoto = findViewById(R.id.inputFotoJual);
-        uploadProduk= findViewById(R.id.uploadProdukJual);
+        uploadProduk = findViewById(R.id.uploadProdukJual);
 
         firestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -82,7 +82,6 @@ public class ProdukJual extends AppCompatActivity {
                 uploadData();
             }
         });
-
     }
 
     private void openFileChooser() {
@@ -91,68 +90,38 @@ public class ProdukJual extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
-            // Anda bisa menampilkan preview foto jika diinginkan
+            // You can display a preview of the photo if desired
         }
     }
+
     private void uploadData() {
-        // Mengambil data dari input fields
+        // Retrieve data from input fields
         String nama = namaProduk.getText().toString();
-        String berat =beratProduk.getText().toString();
+        String berat = beratProduk.getText().toString();
         String deskripsi = deskripsiProduk.getText().toString();
         String harga = hargaProduk.getText().toString();
 
-
-        // Membuat ID produk unik
+        // Create a unique product ID
         DocumentReference produkRef = firestore.collection("produkJual").document();
-        produkId = produkRef.getId(); // Simpan ID produk
+        produkId = produkRef.getId(); // Save product ID
 
-        // Menyiapkan data untuk disimpan
+        // Prepare data to be saved
         Map<String, Object> produk = new HashMap<>();
         produk.put("id", produkId);
         produk.put("nama", nama);
         produk.put("harga", harga);
         produk.put("deskripsi", deskripsi);
         produk.put("berat", berat);
-        produk.put("sellerId", sellerId);
-        if (imageUri != null) {
-            StorageReference fileReference = storageRef.child("produkjual/" + produkId + ".jpg"); // Gunakan ID produk sebagai nama file
-            fileReference.putFile(imageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // Handle successful upload
-                            produkRef.set(produk)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            // Handle sukses
-                                            Toast.makeText(ProdukJual.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            // Handle kegagalan
-                                            Toast.makeText(ProdukJual.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Handle unsuccessful uploads
-                            Toast.makeText(ProdukJual.this, "Error mengunggah foto", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        } else {
-            // Jika tidak ada foto yang dipilih, langsung simpan data produk
+
+        if (imageUri == null) {
+            // If no photo is selected, save the product data directly
             produkRef.set(produk)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -166,7 +135,66 @@ public class ProdukJual extends AppCompatActivity {
                             Toast.makeText(ProdukJual.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
                         }
                     });
-        };
+            return;  // Exit the method if there is no image
+        }
 
+        // If a photo is selected, upload the photo to Firebase Storage
+        StorageReference fileReference = storageRef.child("produkjual/" + produkId + ".jpg");
+        fileReference.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // Handle successful upload
+                        // Retrieve sellerId based on the documentId from the "seller" collection
+                        firestore.collection("Seller")
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                                            // Here, document.getId() will give you the document ID of each seller
+                                            // You can use this ID as needed
+                                            String sellerId = document.getId();
+
+                                            // Now you can associate this sellerId with your product
+                                            produk.put("sellerId", sellerId);
+
+                                            // Set product data to Firestore
+                                            firestore.collection("produkJual")
+                                                    .document(produkId) // Use produkId as the document ID
+                                                    .set(produk)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Successfully added the product
+                                                            Toast.makeText(ProdukJual.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            // Handle failure
+                                                            Toast.makeText(ProdukJual.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Handle failure to retrieve seller documents
+                                        Toast.makeText(ProdukJual.this, "Error retrieving seller documents", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle unsuccessful uploads
+                        Toast.makeText(ProdukJual.this, "Error mengunggah foto", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
