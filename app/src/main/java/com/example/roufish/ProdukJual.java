@@ -158,29 +158,35 @@ public class ProdukJual extends AppCompatActivity {
                                             // Here, document.getId() will give you the document ID of each seller
                                             // You can use this ID as needed
                                             String sellerId = userId;
+                                            String sellerIdFromFirestore = document.getId();
+                                            if (sellerIdFromFirestore.equals(sellerId)) {
+                                                // Match found, now you can associate this sellerId with your product
+                                                produk.put("sellerId", sellerId);
 
-                                            // Now you can associate this sellerId with your product
-                                            produk.put("sellerId", sellerId);
-
-                                            // Set product data to Firestore
-                                            firestore.collection("produkJual")
-                                                    .document(produkId) // Use produkId as the document ID
-                                                    .set(produk)
-                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                        @Override
-                                                        public void onSuccess(Void aVoid) {
-                                                            // Successfully added the product
-                                                            Toast.makeText(ProdukJual.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    })
-                                                    .addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            // Handle failure
-                                                            Toast.makeText(ProdukJual.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
+                                                // Set product data to Firestore
+                                                firestore.collection("produkJual")
+                                                        .document(produkId) // Use produkId as the document ID
+                                                        .set(produk)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                // Successfully added the product
+                                                                Toast.makeText(ProdukJual.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                // Handle failure
+                                                                Toast.makeText(ProdukJual.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+                                                return;  // Exit the loop once the match is found
+                                            }
                                         }
+
+                                        // If no match is found
+                                        Toast.makeText(ProdukJual.this, "Error: Seller not found", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {

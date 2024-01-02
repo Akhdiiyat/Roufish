@@ -82,4 +82,5 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
             // Initialize other views here
         }
     }
+
 }

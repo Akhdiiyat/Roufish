@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.example.roufish.ProdukJual;
 import com.example.roufish.ProdukLelang;
 import com.example.roufish.R;
 import com.example.roufish.adapters.SellerAdapter;
 import com.example.roufish.items.ListSeller;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,6 +30,7 @@ public class MainPageSeller extends AppCompatActivity {
     RecyclerView recyclerView;
     SellerAdapter sellerAdapter;
     List<ListSeller> productList;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,22 @@ public class MainPageSeller extends AppCompatActivity {
             Intent pelelangan = new Intent(MainPageSeller.this, ProdukLelang.class);
             startActivity(pelelangan);
         });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.botttom_nav_bar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                item -> {
+                    if (item.getItemId() == R.id.home) {
+                        // Navigate to HomeActivity when Home is clicked
+                        startActivity(new Intent(MainPageSeller.this, MainPageSeller.class));
+                        return true;
+                    } else if (item.getItemId() == R.id.forum) {
+                        // Navigate to ForumActivity when Forum is clicked
+                        startActivity(new Intent(MainPageSeller.this, ForumActivity.class));
+                        return true;
+                    }
+                    // Add more conditions for other items if needed
+                    return false;
+                }
+        );
     }
 
     private void fetchProductsBySeller(String sellerId) {
@@ -111,6 +130,7 @@ public class MainPageSeller extends AppCompatActivity {
             Log.e("FirestoreError", "Error getting Seller document: ", e);
         });
     }
+
 }
 
 
