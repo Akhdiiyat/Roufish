@@ -7,18 +7,23 @@ public class listRiwayatPenjualan /*implements Parcelable*/ {
     private String price;
     private String deskripsi;
     private String imageResId;
+    private long timeStamp;
 
     public listRiwayatPenjualan(){
 
     }
 
-    public listRiwayatPenjualan(String idPenjualan,String name, String price, String imageResId) {
+    public listRiwayatPenjualan(String idPenjualan,String name, String price, String imageResId, long timeStamp) {
         this.idPenjualan = idPenjualan;
         this.name = name;
         this.price = price;
         this.imageResId = imageResId;
+        this.timeStamp = timeStamp;
     }
 
+    public long getTimeStamp() {
+        return timeStamp;
+    }
 
     public String getName() {
         return name;

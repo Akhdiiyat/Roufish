@@ -24,7 +24,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class pembayaran extends AppCompatActivity {
@@ -88,6 +91,10 @@ public class pembayaran extends AppCompatActivity {
         purchase.put("productPrice", productPrice);
         purchase.put("documentId", documentId);
 
+        long currentTimeMillis = (long) System.currentTimeMillis();
+        String purchaseTime = getTimeString(currentTimeMillis); // Mengonversi waktu ke string
+
+        purchase.put("timestamp", currentTimeMillis);
 
         db.collection("riwayat_pembelian").add(purchase)
                 .addOnSuccessListener(documentReference -> Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId()))
@@ -109,5 +116,11 @@ public class pembayaran extends AppCompatActivity {
 
             }
         });
+    }
+
+    private String getTimeString(long milliseconds) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+        Date date = new Date(milliseconds);
+        return sdf.format(date);
     }
 }
