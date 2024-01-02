@@ -82,7 +82,6 @@ public class pembayaran extends AppCompatActivity {
         }
         showUserData();
     }
-
     private void saveToFirestore(String productName, String productPrice, String documentId){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -100,7 +99,6 @@ public class pembayaran extends AppCompatActivity {
                 .addOnSuccessListener(documentReference -> Log.d("Firebase", "DocumentSnapshot written with ID: " + documentReference.getId()))
                 .addOnFailureListener(e -> Log.w("Firebase", "Error adding document", e));
     }
-
     public void showUserData() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseFirestore firestore =FirebaseFirestore.getInstance();

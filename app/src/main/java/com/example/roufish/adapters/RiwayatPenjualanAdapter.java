@@ -19,7 +19,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class RiwayatPenjualanAdapter extends RecyclerView.Adapter<RiwayatPenjualanAdapter.ViewHolder> {
     private ArrayList<listRiwayatPenjualan> riwayatPenjualanList;
@@ -55,7 +58,9 @@ public class RiwayatPenjualanAdapter extends RecyclerView.Adapter<RiwayatPenjual
         });
         // Load image using Picasso
         //Picasso.get().load(String.valueOf(imageRef)).into(holder.productImageView);
-
+        long timeStampLong = riwayat.getTimeStamp(); // Ambil timestamp sebagai Long
+        String timeStampString = convertTimestampToDateString(timeStampLong);
+        holder.timeStampView.setText(timeStampString);
         holder.productNameTextView.setText(riwayat.getName());
         holder.productPriceTextView.setText("Rp." + riwayat.getPrice() + "/Kg");
     }
@@ -64,17 +69,25 @@ public class RiwayatPenjualanAdapter extends RecyclerView.Adapter<RiwayatPenjual
     public int getItemCount() {
         return riwayatPenjualanList.size();
     }
+    private String convertTimestampToDateString(long timestamp) {
+        // Ganti sesuai format tanggal yang diinginkan, berikut contohnya:
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+        Date date = new Date(timestamp);
+        return sdf.format(date);
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView productImageView;
         TextView productNameTextView;
         TextView productPriceTextView;
+        TextView timeStampView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             productNameTextView = itemView.findViewById(R.id.productPenjualanName);
             productPriceTextView = itemView.findViewById(R.id.HargaPesanan);
             productImageView = itemView.findViewById(R.id.productPenjualanImageView);
+            timeStampView = itemView.findViewById(R.id.timeStampPembelian);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

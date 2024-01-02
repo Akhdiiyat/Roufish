@@ -110,8 +110,8 @@ public class RiwayatPenjualanActivity extends AppCompatActivity {
                                 String productName = document.getString("productName");
                                 String productPrice = document.getString("productPrice");
                                 String imageUrl = document.getString("documentId");
-
-                                listRiwayatPenjualan riwayatPenjualan = new listRiwayatPenjualan(idPenjualan, productName, productPrice, imageUrl);
+                                long timeStamp = document.getLong("timestamp");
+                                listRiwayatPenjualan riwayatPenjualan = new listRiwayatPenjualan(idPenjualan, productName, productPrice, imageUrl,timeStamp);
                                 riwayatPenjualanList.add(riwayatPenjualan);
                             }
 
