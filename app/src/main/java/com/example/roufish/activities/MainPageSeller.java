@@ -17,7 +17,9 @@ import com.example.roufish.ProdukLelang;
 import com.example.roufish.R;
 import com.example.roufish.adapters.SellerAdapter;
 import com.example.roufish.items.ListSeller;
+import com.example.roufish.profileSeller;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,6 +35,8 @@ public class MainPageSeller extends AppCompatActivity {
     List<ListSeller> productList;
     SearchView searchView;
 
+    FloatingActionButton profile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,16 @@ public class MainPageSeller extends AppCompatActivity {
         tombolLelang = findViewById(R.id.btnLelang);
         tombolJual = findViewById(R.id.btn_jual);
         recyclerView = findViewById(R.id.recycler_view_seller);
+
+        profile = findViewById(R.id.btn_profileSeller);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent profile = new Intent(MainPageSeller.this, profileSeller.class);
+                startActivity(profile);
+
+            }
+        });
 
         productList = new ArrayList<>();
         sellerAdapter = new SellerAdapter(this, productList, new SellerAdapter.OnItemClickListener() {

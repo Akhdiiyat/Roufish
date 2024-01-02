@@ -90,21 +90,7 @@ public class profileBuyer extends AppCompatActivity {
 
         });
 
-        //FloatingActionButton roufish = findViewById(R.id.roufish);
-
         showUserData();
-
-
-        /*logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), login.class);
-                startActivity(intent);
-                finish();
-            }
-        });*/
-
 
 
     }
