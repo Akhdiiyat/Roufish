@@ -16,6 +16,7 @@ import com.example.roufish.ProdukJual;
 import com.example.roufish.ProdukLelang;
 import com.example.roufish.R;
 import com.example.roufish.adapters.SellerAdapter;
+import com.example.roufish.items.ListProduct;
 import com.example.roufish.items.ListSeller;
 import com.example.roufish.profileSeller;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,6 +34,8 @@ public class MainPageSeller extends AppCompatActivity {
     RecyclerView recyclerView;
     SellerAdapter sellerAdapter;
     List<ListSeller> productList;
+    private FirebaseFirestore firestore;
+    private ArrayList<ListProduct> products = new ArrayList<>();
     SearchView searchView;
 
     FloatingActionButton profile;
@@ -41,10 +44,11 @@ public class MainPageSeller extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page_seller);
-
+        firestore = FirebaseFirestore.getInstance();
         tombolLelang = findViewById(R.id.btnLelang);
         tombolJual = findViewById(R.id.btn_jual);
         recyclerView = findViewById(R.id.recycler_view_seller);
+
 
         profile = findViewById(R.id.btn_profileSeller);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +71,7 @@ public class MainPageSeller extends AppCompatActivity {
                 intent.putExtra("productImage", item.getProductImage());
                 intent.putExtra("sellerId", item.getSellerId());
                 intent.putExtra("id", item.getProductId());
+                intent.putExtra("productDescription", item.getProductDescription());
                 startActivity(intent);
             }
         });
@@ -136,16 +141,16 @@ public class MainPageSeller extends AppCompatActivity {
                                 String productImage = productDocument.getString("productImage");
                                 String productPrice = productDocument.getString("harga");
                                 int sellPrice = Integer.parseInt(productPrice);
-
+                                String productDescription = productDocument.getString("deskripsi");
                                 StorageReference imageRef = FirebaseStorage.getInstance().getReference()
                                         .child("produkjual/" + productDocument.getId() + ".jpg");
 
                                 imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                                    ListSeller product = new ListSeller(productName, sellPrice, uri.toString(), productSellerId,productId);
+                                    ListSeller product = new ListSeller(productName, sellPrice, uri.toString(), productSellerId,productId,productDescription);
                                     productList.add(product);
                                     runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
                                 }).addOnFailureListener(exception -> {
-                                    ListSeller product = new ListSeller(productName, sellPrice, "Default_image", productSellerId,productId);
+                                    ListSeller product = new ListSeller(productName, sellPrice, "Default_image", productSellerId,productId,productDescription);
                                     productList.add(product);
                                     runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
                                 });

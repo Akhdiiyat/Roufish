@@ -37,7 +37,7 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_seller, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recommendation, parent, false);
         return new ViewHolder(view);
     }
 
@@ -46,6 +46,7 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
         ListSeller item = itemList.get(position);
         holder.textProductName.setText(item.getProductName());
         holder.textPrice.setText(String.valueOf("Rp." + item.getProductPrice()));;
+        holder.textDescription.setText(item.getProductDescription());
         String loggedInSellerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Log.d("SellerAdapter", "Logged-in Seller ID: " + loggedInSellerId);
         Log.d("SellerAdapter", "Product Seller ID: " + item.getSellerId());
@@ -80,12 +81,14 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textProductName;
         TextView textPrice;
+        TextView textDescription;
         ImageView foto;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textProductName = itemView.findViewById(R.id.productNameTextView);
-            textPrice = itemView.findViewById(R.id.productPriceSeller);
+            textPrice = itemView.findViewById(R.id.productPriceTextView);
             foto = itemView.findViewById(R.id.productImageView);
+            textDescription = itemView.findViewById(R.id.productDescription);
             // Initialize other views here
         }
     }

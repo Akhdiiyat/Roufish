@@ -17,6 +17,8 @@ import com.example.roufish.items.ListProduct;
 import com.example.roufish.R;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHolder> {
 
@@ -56,6 +58,7 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
 
         holder.productNameTextView.setText(product.getName());
         holder.productPriceTextView.setText("Rp." +String.valueOf(product.getPrice())+ "/KG");
+        holder.productDescriptionTextView.setText(product.getDeskripsi());
 
         // Set click listener to handle item clicks
        /* holder.productImageView.setOnClickListener(new View.OnClickListener() {
@@ -89,12 +92,14 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
         ImageView productImageView;
         TextView productNameTextView;
         TextView productPriceTextView;
+        TextView productDescriptionTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
             productImageView = itemView.findViewById(R.id.productImageView);
+            productDescriptionTextView = itemView.findViewById(R.id.productDescription);
         }
     }
 

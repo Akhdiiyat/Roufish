@@ -52,6 +52,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         }
         holder.productNameTextView.setText(product.getName());
         holder.productPriceTextView.setText("Rp." +String.valueOf(product.getPrice()) + "/Kg");
+        holder.productDescriptionTextView.setText(product.getDeskripsi());
         holder.productImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,12 +78,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         ImageView productImageView; // Changed to ImageView
         TextView productNameTextView;
         TextView productPriceTextView;
-
+        TextView productDescriptionTextView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
             productImageView = itemView.findViewById(R.id.productImageView); // Corrected initialization
+            productDescriptionTextView = itemView.findViewById(R.id.productDescriptionTextView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
@@ -97,9 +99,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             });
 
         }
-        public void bind(String name,int price, String imageUrl){
+        public void bind(String name,int price, String imageUrl,String deskripsi){
             productNameTextView.setText(name);
             productPriceTextView.setText(String.valueOf(price));
+            productDescriptionTextView.setText(deskripsi);
             Picasso.get().load(imageUrl).into(productImageView);
         }
     }

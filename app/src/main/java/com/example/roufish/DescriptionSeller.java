@@ -16,6 +16,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 public class DescriptionSeller extends AppCompatActivity {
 
     @Override
@@ -29,7 +31,7 @@ public class DescriptionSeller extends AppCompatActivity {
             String sellerId = intent.getStringExtra("sellerId");
             String productId = intent.getStringExtra("id");
             String productName = intent.getStringExtra("productName");
-
+            String productDescription = intent.getStringExtra("productDescription");
             int productPrice = intent.getIntExtra("productPrice", 0);
             String productImage = intent.getStringExtra("productImage");
             //String sellerId = intent.getStringExtra("sellerId")
@@ -37,9 +39,10 @@ public class DescriptionSeller extends AppCompatActivity {
             TextView productNameTextView = findViewById(R.id.Text_Nama_Produk_Seller);
             TextView productPriceTextView = findViewById(R.id.text_price_Seller);
             ImageView productImageView = findViewById(R.id.Gambar_ikan_Seller);
-
+            TextView productDescriptionTextView = findViewById(R.id.text_desc_Seller);
             productNameTextView.setText(productName);
             productPriceTextView.setText(String.valueOf("Rp." + productPrice));
+            productDescriptionTextView.setText(productDescription);
             Button btnDeleteProduct = findViewById(R.id.btn_delete);
             btnDeleteProduct.setOnClickListener(new View.OnClickListener() {
                 @Override
