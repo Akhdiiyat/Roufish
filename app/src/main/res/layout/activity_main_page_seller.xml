@@ -22,11 +22,21 @@
         app:layout_constraintBottom_toTopOf="@+id/btnLelang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.366"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:shapeAppearance="@style/Widget.Material3.CircularProgressIndicator"
         app:srcCompat="@drawable/ic_person" />
+
+    <ImageView
+        android:layout_width="121dp"
+        android:layout_height="86dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        app:srcCompat="@drawable/logo" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -86,7 +96,7 @@
         android:id="@+id/btn_jual"
         android:layout_width="165dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="110dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/primary_blue"
         android:text="Jual"
@@ -108,6 +118,7 @@
         android:text="Lelang"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:layout_marginTop="45dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.845"
