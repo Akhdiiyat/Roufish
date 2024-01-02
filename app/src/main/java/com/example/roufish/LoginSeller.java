@@ -132,6 +132,7 @@ public class LoginSeller extends AppCompatActivity {
 
                 email = inputUsernameSeller.getText().toString().trim();
                 password = inputPasswordSeller.getText().toString().trim();
+
                 //check empty
                 if(TextUtils.isEmpty(email)){
                     inputUsernameSeller.setError("Masukkan Email");
@@ -152,8 +153,10 @@ public class LoginSeller extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(LoginSeller.this,"Login berhasil",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainPageSeller.class));
+                            Toast.makeText(LoginSeller.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainPageSeller.class);
+                            intent.putExtra("sellerId", mAuth.getCurrentUser().getUid());
+                            startActivity(intent);
                         }else {
                             Toast.makeText(LoginSeller.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             Log.e("LoginError", "onComplete: " + task.getException().getMessage(), task.getException());

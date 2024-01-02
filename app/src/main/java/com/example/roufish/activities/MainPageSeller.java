@@ -29,6 +29,7 @@ public class MainPageSeller extends AppCompatActivity {
     RecyclerView recyclerView;
     SellerAdapter sellerAdapter;
     List<ListSeller> productList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,11 @@ public class MainPageSeller extends AppCompatActivity {
         productList = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference produkJualCollection = db.collection("produkJual");
+        Intent intent = getIntent();
+        if (intent.hasExtra("sellerId")) {
+            String sellerId = intent.getStringExtra("sellerId");
+            fetchProductsBySeller(sellerId);
+        }
         tombolJual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,34 +72,75 @@ public class MainPageSeller extends AppCompatActivity {
                 return;
             }
 
+//            productList.clear();
+//
+//            for (DocumentSnapshot document : value.getDocuments()) {
+//                String productName = document.getString("nama");
+//                String productImage = document.getString("productImage");
+//                String productPrice = (String) document.get("harga");
+//                int sellPrice = Integer.parseInt(productPrice);
+//
+//                // Construct image path using the document ID
+//                StorageReference imageRef = FirebaseStorage.getInstance().getReference()
+//                        .child("produkjual/" + document.getId() + ".jpg");
+//
+//                imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+//                    ListSeller product = new ListSeller(productName, sellPrice, uri.toString());
+//                    productList.add(product);
+//                    runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
+//                }).addOnFailureListener(exception -> {
+//                    // Handle failure (e.g., set a default image URL)
+//                    ListSeller product = new ListSeller(productName, sellPrice, "Default_image");
+//                    productList.add(product);
+//                    runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
+//                });
+//            }
+//        });
+
+            // Inisialisasi tombol dan atur listener seperti sebelumnya
+            tombolLelang = findViewById(R.id.btnLelang);
+            tombolJual = findViewById(R.id.btn_jual);
+        });
+
+    }
+
+
+    private void fetchProductsBySeller(String sellerId) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference produkJualCollection = db.collection("produkJual");
+
+        produkJualCollection.addSnapshotListener(this, (value, error) -> {
+            if (error != null) {
+                Log.e("FirestoreError", "Error getting documents: ", error);
+                return;
+            }
+
             productList.clear();
 
             for (DocumentSnapshot document : value.getDocuments()) {
-                String productName = document.getString("nama");
-                String productImage = document.getString("productImage");
-                String productPrice = (String) document.get("harga");
-                int sellPrice = Integer.parseInt(productPrice);
+                String documentSellerId = document.getString("sellerId");
+                if (sellerId.equals(documentSellerId)) {
+                    String productName = document.getString("nama");
+                    String productImage = document.getString("productImage");
+                    String productPrice = document.getString("harga");
+                    int sellPrice = Integer.parseInt(productPrice);
 
-                // Construct image path using the document ID
-                StorageReference imageRef = FirebaseStorage.getInstance().getReference()
-                        .child("produkjual/" + document.getId() + ".jpg");
+                    // Construct image path using the document ID
+                    StorageReference imageRef = FirebaseStorage.getInstance().getReference()
+                            .child("produkjual/" + document.getId() + ".jpg");
 
-                imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                    ListSeller product = new ListSeller(productName, sellPrice, uri.toString());
-                    productList.add(product);
-                    runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
-                }).addOnFailureListener(exception -> {
-                    // Handle failure (e.g., set a default image URL)
-                    ListSeller product = new ListSeller(productName, sellPrice, "Default_image");
-                    productList.add(product);
-                    runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
-                });
+                    imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        ListSeller product = new ListSeller(productName, sellPrice, uri.toString(), documentSellerId);
+                        productList.add(product);
+                        runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
+                    }).addOnFailureListener(exception -> {
+                        // Handle failure (e.g., set a default image URL)
+                        ListSeller product = new ListSeller(productName, sellPrice, "Default_image", documentSellerId);
+                        productList.add(product);
+                        runOnUiThread(() -> sellerAdapter.notifyDataSetChanged());
+                    });
+                }
             }
         });
-
-        // Inisialisasi tombol dan atur listener seperti sebelumnya
-        tombolLelang = findViewById(R.id.btnLelang);
-        tombolJual = findViewById(R.id.btn_jual);
     }
-
 }

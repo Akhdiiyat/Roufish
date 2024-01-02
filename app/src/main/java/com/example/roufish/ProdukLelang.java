@@ -106,7 +106,6 @@ public class ProdukLelang extends AppCompatActivity {
         DocumentReference produkRef = firestore.collection("produkLelang").document();
         produkId = produkRef.getId(); // Simpan ID produk
 
-        // Menyiapkan data untuk disimpan
         Map<String, Object> produk = new HashMap<>();
         produk.put("id", produkId);
         produk.put("nama", nama);

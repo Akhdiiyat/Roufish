@@ -5,14 +5,22 @@ public class ListSeller {
     private String productName;
     private int productPrice;
     private String productImage;
+    private String sellerId;
 
-    public ListSeller(String productName, int productPrice, String productImage) {
+    public ListSeller(String productName, int productPrice, String productImage, String sellerId) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productImage = productImage;
+        this.sellerId = sellerId;
         // Initialize other properties in the constructor
     }
+    public String getSellerId() {
+        return sellerId;
+    }
 
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
+    }
     public String getProductName() {
         return productName;
     }

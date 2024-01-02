@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roufish.R;
 import com.example.roufish.items.ListSeller;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,6 +22,9 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
 
     private List<ListSeller> itemList;
     private Context context;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseUser currentUser = mAuth.getCurrentUser();
+
     public SellerAdapter(Context context, List<ListSeller> itemList) {
         this.context = context;
         this.itemList = itemList;
@@ -37,8 +42,14 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
         ListSeller item = itemList.get(position);
         holder.textProductName.setText(item.getProductName());
         holder.textPrice.setText(String.valueOf(item.getProductPrice()));;
-
-        Picasso.get().load(item.getProductImage()).into(holder.foto);
+        String loggedInSellerId = currentUser.getUid();
+        if (item.getSellerId().equals(loggedInSellerId)) {
+            Picasso.get().load(item.getProductImage()).into(holder.foto);
+        } else {
+            // Handle the case where the product doesn't belong to the logged-in seller
+            // For example, set a default image or hide the ImageView
+            holder.foto.setVisibility(View.GONE);
+        }
     }
     @Override
     public int getItemCount() {
