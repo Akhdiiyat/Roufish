@@ -18,12 +18,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHolder> {
-
-
     private ArrayList<ListLelang> productList;
-
     private static OnProductClickListener onProductClickListener;
-
     /*public AuctionAdapter(ArrayList<ListLelang> productList) {
         this.productList = productList;
     }*/
@@ -54,12 +50,10 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
            holder.productAuctionImageView.setImageResource(R.drawable.logo);
         }
 
-        // Menetapkan teks pada TextView berdasarkan data produk
         holder.productAuctionNameTextView.setText(product.getItemName());
         holder.productStartingPriceTextView.setText("Rp." + String.valueOf(product.getStartingPrice()));
         holder.productDescriptionTextView.setText(product.getItemDescription());
 
-        // Menambahkan onClickListener untuk setiap item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,8 +75,8 @@ public class AuctionAdapter extends RecyclerView.Adapter<AuctionAdapter.ViewHold
         TextView productAuctionNameTextView;
         TextView productStartingPriceTextView;
         TextView productDescriptionTextView;
-        TextView productWeightTextView; // TextView baru untuk berat
-        TextView productIncrementTextView; // TextView baru untuk kelipatan
+       // TextView productWeightTextView; // TextView baru untuk berat
+        //TextView productIncrementTextView; // TextView baru untuk kelipatan
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

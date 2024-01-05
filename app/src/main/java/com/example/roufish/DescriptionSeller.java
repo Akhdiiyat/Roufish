@@ -25,7 +25,6 @@ public class DescriptionSeller extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_description);
 
-        // Get data from Intent
         Intent intent = getIntent();
         if (intent != null) {
             String sellerId = intent.getStringExtra("sellerId");
@@ -35,7 +34,6 @@ public class DescriptionSeller extends AppCompatActivity {
             int productPrice = intent.getIntExtra("productPrice", 0);
             String productImage = intent.getStringExtra("productImage");
             //String sellerId = intent.getStringExtra("sellerId")
-            // Use the data as needed, e.g., set text views, load images, etc.
             TextView productNameTextView = findViewById(R.id.Text_Nama_Produk_Seller);
             TextView productPriceTextView = findViewById(R.id.text_price_Seller);
             ImageView productImageView = findViewById(R.id.Gambar_ikan_Seller);
@@ -47,15 +45,9 @@ public class DescriptionSeller extends AppCompatActivity {
             btnDeleteProduct.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Handle the delete button click
-
                     deleteProductFromFirestore(productId);
-
                     Toast.makeText(DescriptionSeller.this, "Delete Produk Berhasil", Toast.LENGTH_SHORT).show();
-
-                    // Finish the activity after deletion
                     finish();
-
                 }
             });
             Picasso.get().load(productImage).into(productImageView, new Callback() {
@@ -74,7 +66,6 @@ public class DescriptionSeller extends AppCompatActivity {
     }
 
     public void deleteProduct(View view) {
-        // Get data from Intent
         Intent intent = getIntent();
         if (intent != null) {
             String sellerId = intent.getStringExtra("sellerId");
@@ -82,14 +73,11 @@ public class DescriptionSeller extends AppCompatActivity {
 
             deleteProductFromFirestore(productId);
 
-            // Finish the activity after deletion
             finish();
         }
     }
     private void deleteProductFromFirestore(String productId) {
-
         Log.d("FirestoreDelete", "Deleting product with ID: " + productId);
-        // Example code (Make sure to replace it with your actual implementation):
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("produkJual")
                 .document(productId)

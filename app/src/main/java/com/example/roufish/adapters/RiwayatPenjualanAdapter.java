@@ -51,12 +51,10 @@ public class RiwayatPenjualanAdapter extends RecyclerView.Adapter<RiwayatPenjual
                 .child("produkjual/" + riwayat.getImageResId() + ".jpg");
 
         imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-            // Load image menggunakan Picasso
             Picasso.get().load(uri.toString()).into(holder.productImageView);
         }).addOnFailureListener(exception -> {
 
         });
-        // Load image using Picasso
         //Picasso.get().load(String.valueOf(imageRef)).into(holder.productImageView);
         long timeStampLong = riwayat.getTimeStamp(); // Ambil timestamp sebagai Long
         String timeStampString = convertTimestampToDateString(timeStampLong);
@@ -70,7 +68,6 @@ public class RiwayatPenjualanAdapter extends RecyclerView.Adapter<RiwayatPenjual
         return riwayatPenjualanList.size();
     }
     private String convertTimestampToDateString(long timestamp) {
-        // Ganti sesuai format tanggal yang diinginkan, berikut contohnya:
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
         Date date = new Date(timestamp);
         return sdf.format(date);
@@ -92,7 +89,7 @@ public class RiwayatPenjualanAdapter extends RecyclerView.Adapter<RiwayatPenjual
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Handle item click if needed
+
                 }
             });
         }

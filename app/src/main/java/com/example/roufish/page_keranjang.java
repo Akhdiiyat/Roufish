@@ -10,10 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class page_keranjang extends AppCompatActivity {
-
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.activity_page_keranjang, container, false);
     }
 }

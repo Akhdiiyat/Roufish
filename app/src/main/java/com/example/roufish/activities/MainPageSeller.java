@@ -56,7 +56,6 @@ public class MainPageSeller extends AppCompatActivity {
             public void onClick(View view) {
                 Intent profile = new Intent(MainPageSeller.this, profileSeller.class);
                 startActivity(profile);
-
             }
         });
 
@@ -114,13 +113,11 @@ public class MainPageSeller extends AppCompatActivity {
                 }
         );
     }
-
     private void fetchProductsBySeller(String sellerId) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference sellerCollection = db.collection("Seller");
         CollectionReference produkJualCollection = db.collection("produkJual");
 
-        // Fetch data from "Seller" collection based on document ID
         sellerCollection.document(sellerId).get().addOnSuccessListener(sellerDocument -> {
             if (sellerDocument.exists()) {
                 String productSellerId = sellerDocument.getId();

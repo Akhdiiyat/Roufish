@@ -33,12 +33,9 @@ public class Beli_Langsung extends AppCompatActivity {
             @SuppressLint("NonConstantResourceId")
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Handle the selected radio button
                 if (checkedId == R.id.Ambilditempat) {
-                    // Update your TextView in the main activity
                     BelumAdaPilihan.setText("Ambil di tempat");
                 } else if (checkedId == R.id.Diantarkerumah) {
-                    // Update your TextView in the main activity
                     BelumAdaPilihan.setText("Diantar ke rumah");
                 }
             }
@@ -53,13 +50,7 @@ public class Beli_Langsung extends AppCompatActivity {
         textzero = findViewById(R.id.btn_zero);
         Button plus = findViewById(R.id.btn_plus);
         Button minus = findViewById(R.id.btn_minus);
-
-
-
         FloatingActionButton backToMain = findViewById(R.id.backToMain);
-
-
-
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

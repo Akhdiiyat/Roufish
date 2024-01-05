@@ -33,8 +33,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EditProfile extends AppCompatActivity {
-
-    //@SuppressLint("MissingInflatedId")
     EditText editUsername, editEmail, editNoHp;
     ImageView editImage;
     Button saveEditProfile;
@@ -47,10 +45,6 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-
-
-
-
 
         editUsername = findViewById(R.id.profileEditUsername);
         editEmail = findViewById(R.id.profileEditEmail);
@@ -76,7 +70,6 @@ public class EditProfile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGallery, 1000);
-
             }
         });
 
@@ -113,10 +106,6 @@ public class EditProfile extends AppCompatActivity {
                         Toast.makeText(EditProfile.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
-
-
             }
         });
 
@@ -130,7 +119,6 @@ public class EditProfile extends AppCompatActivity {
         editNoHp.setText(noHP);
 
         Log.d(TAG, "onCreate: " + username + " " + email + " " + noHP);
-
     }
 
     @Override
@@ -140,7 +128,6 @@ public class EditProfile extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
                 //profileImg.setImageURI(imageUri);
-
                 uploadImagerToFirebase(imageUri);
             }
         }

@@ -12,7 +12,6 @@ import com.example.roufish.activities.LoginBuyer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LoginPage extends AppCompatActivity {
-
     Button buttonPembeli,buttonPenjual;
     FloatingActionButton back;
     TextView register;

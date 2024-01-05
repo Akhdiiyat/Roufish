@@ -37,7 +37,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterBuyer extends Activity {
-
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     EditText inputPassword, inputAlamat, inputNoHP ;
@@ -45,11 +44,8 @@ public class RegisterBuyer extends Activity {
     EditText inputEmail;
     Button btnDaftar ;
     FloatingActionButton backToMain ;
-    //Button daftar ;
     DatabaseReference reference;
-
     FirebaseDatabase database;
-
     private String userID;
 
     @Override
@@ -82,15 +78,11 @@ public class RegisterBuyer extends Activity {
             }
         });
 
-
-        //hide password yang diinputkan
         inputPassword.setOnTouchListener(new View.OnTouchListener() {
             boolean passwordView = false;
-
             @Override
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 final int Right = 2;
-
                 if (motionEvent.getAction() == motionEvent.ACTION_UP) {
                     if (motionEvent.getRawX() >= inputPassword.getRight() - inputPassword.getCompoundDrawables()[Right].getBounds().width()) {
                         int selection = inputPassword.getSelectionEnd();
@@ -107,12 +99,10 @@ public class RegisterBuyer extends Activity {
                         return true;
                     }
                 }
-
                 return false;
             }
         });
 
-        //pendaftaran akun
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,68 +128,56 @@ public class RegisterBuyer extends Activity {
                     inputUsername.setError("Masukkan username");
                     return;
                 }
-
                 if (password.length() < 6) {
                     inputPassword.setError("password harus lebih dari 6 karakter");
                     return;
                 }
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(RegisterBuyer.this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show();
 
-                    //masukkan data ke firebase
+                            userID = mAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = firestore.collection("users").document(userID);
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("username", username);
+                            user.put("email", email);
+                            user.put("alamat", alamat);
+                            user.put("noHP", noHp);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d(TAG, "onSuccess : user profile created for " + userID);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d(TAG, "onFailure " + e.toString());
+                                }
+                            });
+                            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterBuyer.this);
+                            builder.setTitle("Pendaftaran Berhasil");
+                            builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                    Intent registerIntent = new Intent(RegisterBuyer.this, LoginBuyer.class);
 
-                    mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(RegisterBuyer.this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show();
-
-                                userID = mAuth.getCurrentUser().getUid();
-                                DocumentReference documentReference = firestore.collection("users").document(userID);
-                                Map<String, Object> user = new HashMap<>();
-                                user.put("username", username);
-                                user.put("email", email);
-                                user.put("alamat", alamat);
-                                user.put("noHP", noHp);
-                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Log.d(TAG, "onSuccess : user profile created for " + userID);
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d(TAG, "onFailure " + e.toString());
-                                    }
-                                });
-
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterBuyer.this);
-                                builder.setTitle("Pendaftaran Berhasil");
-                                builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                        Intent registerIntent = new Intent(RegisterBuyer.this, LoginBuyer.class);
-
-                                        startActivity(registerIntent);
-                                    }
-                                }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        finish();
-                                    }
-                                }).create().show();
-                            } else {
-                                Toast.makeText(RegisterBuyer.this, "Pendaftaran Gagal" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
-                            }
-
+                                    startActivity(registerIntent);
+                                }
+                            }).setNegativeButton("Keluar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            }).create().show();
+                        } else {
+                            Toast.makeText(RegisterBuyer.this, "Pendaftaran Gagal" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
-
-
-                }
-            });
-
-            ;
-
-        };
+                    }
+                });
+            }
+        });
     }
+}

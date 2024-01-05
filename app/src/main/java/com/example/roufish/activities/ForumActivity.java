@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +16,10 @@ import com.example.roufish.AddForum;
 import com.example.roufish.R;
 import com.example.roufish.adapters.ForumAdapter;
 import com.example.roufish.items.ListForum;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore; // Import the necessary class
 import com.google.firebase.firestore.DocumentSnapshot;
 
@@ -34,18 +38,9 @@ public class ForumActivity extends AppCompatActivity implements ForumAdapter.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
 
-        // Initialize the FirebaseFirestore object
         firestore = FirebaseFirestore.getInstance();
 
-        back = findViewById(R.id.back_forum);
         tambah = findViewById(R.id.buatForum);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backIntent = new Intent(ForumActivity.this, MainPageBuyer.class);
-                startActivity(backIntent);
-            }
-        });
 
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,8 +89,6 @@ public class ForumActivity extends AppCompatActivity implements ForumAdapter.OnC
                     }
                 });
     }
-
-
     private void fetchAndSetUsername(ListForum forum) {
         firestore.collection("users")
                 .document(forum.getUserId())
@@ -121,6 +114,4 @@ public class ForumActivity extends AppCompatActivity implements ForumAdapter.OnC
         commentIntent.putExtra("forumId", forum.getForumId());
         startActivity(commentIntent);
     }
-
-
 }

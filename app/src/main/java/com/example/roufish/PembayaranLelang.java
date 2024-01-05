@@ -31,28 +31,19 @@ public class PembayaranLelang extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-
                 if (radioGroupEnabled) {
-                    // Handle the selected radio button here
-                    radioGroupEnabled = false; // Disable the RadioGroup after selection
+                    radioGroupEnabled = false;
                 }
-
             }
         });
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String productPrice = extras.getString("harga");
             penawaran.setText(String.valueOf(productPrice));
             totalHarga.setText(String.valueOf(productPrice));
             totkeseluruhan.setText(String.valueOf(productPrice));
-
         }
-
         showUserData();
-
-
     }
 
     public void showUserData() {
@@ -67,7 +58,6 @@ public class PembayaranLelang extends AppCompatActivity {
                 if (value != null && value.exists()) {
                     namaPelelang.setText(value.getString("username"));
                 }
-
             }
         });
     }

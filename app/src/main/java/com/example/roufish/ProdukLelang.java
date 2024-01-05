@@ -36,7 +36,6 @@ public class ProdukLelang extends AppCompatActivity {
     Uri imageUri;
     String produkId;
     String sellerId;
-
     EditText inputNamaProdukLelang, inputBeratProdukLelang,inputDeskripsiProdukLelang;
     EditText inputHargaProdukLelang, inputKelipatanLelang;
     Button inputFoto,uploadProduk;
@@ -56,8 +55,6 @@ public class ProdukLelang extends AppCompatActivity {
         inputFoto = findViewById(R.id.inputFotoLelang);
         uploadProduk = findViewById(R.id.uploadProdukLelang);
 
-        backToMainPage = findViewById(R.id.floatingActionButton2);
-
         firestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
@@ -76,14 +73,6 @@ public class ProdukLelang extends AppCompatActivity {
                 uploadData();
             }
         });
-
-        backToMainPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backToMainPageIntent = new Intent(ProdukLelang.this, MainPageSeller.class);
-                startActivity(backToMainPageIntent);
-            }
-        });
     }
 
     private void openFileChooser() {
@@ -96,24 +85,20 @@ public class ProdukLelang extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
-            // Anda bisa menampilkan preview foto jika diinginkan
         }
     }
 
     private void uploadData() {
-        // Mengambil data dari input fields
         String nama = inputNamaProdukLelang.getText().toString();
         String harga = inputHargaProdukLelang.getText().toString();
         String deskripsi = inputDeskripsiProdukLelang.getText().toString();
         String kelipatan = inputKelipatanLelang.getText().toString();
         String berat = inputBeratProdukLelang.getText().toString();
 
-        // Membuat ID produk unik
         DocumentReference produkRef = firestore.collection("produkLelang").document();
-        produkId = produkRef.getId(); // Simpan ID produk
+        produkId = produkRef.getId();
 
         Map<String, Object> produk = new HashMap<>();
         produk.put("id", produkId);
@@ -129,19 +114,16 @@ public class ProdukLelang extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // Handle successful upload
                             produkRef.set(produk)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            // Handle sukses
                                             Toast.makeText(ProdukLelang.this, "Produk berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            // Handle kegagalan
                                             Toast.makeText(ProdukLelang.this, "Error menambahkan produk", Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -150,12 +132,10 @@ public class ProdukLelang extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            // Handle unsuccessful uploads
                             Toast.makeText(ProdukLelang.this, "Error mengunggah foto", Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
-            // Jika tidak ada foto yang dipilih, langsung simpan data produk
             produkRef.set(produk)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

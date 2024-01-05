@@ -38,14 +38,12 @@ import java.util.Map;
 public class RegisterSeller extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference reference;
-
     FirebaseDatabase database;
     FirebaseFirestore firestore;
     EditText inputPassword, inputAlamat, inputNoHP ;
     EditText inputSellerId;
     EditText inputEmail;
     Button btnDaftar ;
-
     FloatingActionButton backTomain ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +71,9 @@ public class RegisterSeller extends AppCompatActivity {
 
         inputPassword.setOnTouchListener(new View.OnTouchListener() {
             boolean passwordView = false;
-
             @Override
             public boolean onTouch(View v, MotionEvent motionEvent) {
                 final int Right = 2;
-
                 if (motionEvent.getAction() == motionEvent.ACTION_UP) {
                     if (motionEvent.getRawX() >= inputPassword.getRight() - inputPassword.getCompoundDrawables()[Right].getBounds().width()) {
                         int selection = inputPassword.getSelectionEnd();
@@ -94,7 +90,6 @@ public class RegisterSeller extends AppCompatActivity {
                         return true;
                     }
                 }
-
                 return false;
             }
         });
@@ -113,7 +108,6 @@ public class RegisterSeller extends AppCompatActivity {
                 password = inputPassword.getText().toString().trim();
                 alamat = inputAlamat.getText().toString();
                 noHp = inputNoHP.getText().toString();
-                //check empty
                 if (TextUtils.isEmpty(email)) {
                     inputEmail.setError("Masukkan Email");
                     return;
@@ -124,13 +118,10 @@ public class RegisterSeller extends AppCompatActivity {
                     inputSellerId.setError("Masukkan username");
                     return;
                 }
-
                 if (password.length() < 6) {
                     inputPassword.setError("password harus lebih dari 6 karakter");
                     return;
                 }
-
-                //masukkan data ke firebase
 
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     private String userID;
@@ -177,15 +168,11 @@ public class RegisterSeller extends AppCompatActivity {
                             }).create().show();
                         } else {
                             Toast.makeText(RegisterSeller.this, "Pendaftaran Gagal" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
 
                     }
                 });
-
-
             }
         });
-
     }
 }

@@ -55,33 +55,26 @@ public class RiwayatPenjualanActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerPesananPenjualan);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
         ArrayList<listRiwayatPenjualan> riwayatPenjualan = new ArrayList<>();
         riwayatPenjualanAdapter = new RiwayatPenjualanAdapter(riwayatPenjualan);
         recyclerView.setAdapter(riwayatPenjualanAdapter);
 
-        //RiwayatPenjualanAdapter RiwayatPenjualanAdapter = new RiwayatPenjualanAdapter(riwayatPenjualan);
         loadRiwayatBeli();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.botttom_nav_form);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 item -> {
                     if (item.getItemId() == R.id.home) {
-                        // Navigate to HomeActivity when Home is clicked
                         startActivity(new Intent(RiwayatPenjualanActivity.this, MainPageBuyer.class));
                         return true;
                     } else if (item.getItemId() == R.id.forum) {
-                        // Navigate to ForumActivity when Forum is clicked
                         startActivity(new Intent(RiwayatPenjualanActivity.this, ForumActivity.class));
                         return true;
                     }
                     else if (item.getItemId() == R.id.profile) {
-                        // Navigate to ForumActivity when Forum is clicked
                         startActivity(new Intent(RiwayatPenjualanActivity.this, profileBuyer.class));
                         return true;
                     }
-                    // Add more conditions for other items if needed
                     return false;
                 }
         );
@@ -92,12 +85,8 @@ public class RiwayatPenjualanActivity extends AppCompatActivity {
                 startActivity(new Intent(RiwayatPenjualanActivity.this, MainPageBuyer.class));
             }
         });
-
-
     }
-
     private void loadRiwayatBeli() {
-
         firestore.collection("riwayat_pembelian")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<com.google.firebase.firestore.QuerySnapshot>() {
@@ -114,12 +103,9 @@ public class RiwayatPenjualanActivity extends AppCompatActivity {
                                 listRiwayatPenjualan riwayatPenjualan = new listRiwayatPenjualan(idPenjualan, productName, productPrice, imageUrl,timeStamp);
                                 riwayatPenjualanList.add(riwayatPenjualan);
                             }
-
-                            // Update data in adapter and RecyclerView
                             riwayatPenjualanAdapter.setRiwayatPenjualanList(riwayatPenjualanList);
                             riwayatPenjualanAdapter.notifyDataSetChanged();
                         } else {
-                            // Handle error
                             Log.e("Firestore", "Error getting documents: ", task.getException());
                             Toast.makeText(RiwayatPenjualanActivity.this, "Failed to load data", Toast.LENGTH_SHORT).show();
                         }

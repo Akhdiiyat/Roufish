@@ -55,7 +55,6 @@ public class CommentActivity extends AppCompatActivity {
         commentAdapter = new CommentAdapter(this, commentList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(commentAdapter);
-        back_forum = findViewById(R.id.back_forum);
 
         // Retrieve data from Intent extras
         forumId = getIntent().getStringExtra("forumId");
@@ -68,14 +67,6 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showCommentBottomSheet();
-            }
-        });
-
-        back_forum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backForumIntent = new Intent(CommentActivity.this, ForumActivity.class);
-                startActivity(backForumIntent);
             }
         });
     }

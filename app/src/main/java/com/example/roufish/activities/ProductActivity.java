@@ -33,7 +33,6 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_product);
 
-
         firestore = FirebaseFirestore.getInstance();
         RecyclerView recyclerView = findViewById(R.id.recycler_view_beli);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,15 +45,12 @@ public class ProductActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 item -> {
                     if (item.getItemId() == R.id.home) {
-                        // Navigate to HomeActivity when Home is clicked
                         startActivity(new Intent(ProductActivity.this, MainPageBuyer.class));
                         return true;
                     } else if (item.getItemId() == R.id.forum) {
-                        // Navigate to ForumActivity when Forum is clicked
                         startActivity(new Intent(ProductActivity.this, ForumActivity.class));
                         return true;
                     }
-                    // Add more conditions for other items if needed
                     return false;
                 }
         );
@@ -75,7 +71,6 @@ public class ProductActivity extends AppCompatActivity {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         Query query = database.collection("produkJual");
 
-
         query.addSnapshotListener(this, (value, error) -> {
             if (error != null) {
                 return;
@@ -88,7 +83,7 @@ public class ProductActivity extends AppCompatActivity {
                 //int startingPrice = document.getLong("harga").intValue();
                 String Price = (String) document.get("harga");
                 int sellPrice = Integer.parseInt(Price);
-                // Construct image path using the document ID
+
                 StorageReference imageRef = FirebaseStorage.getInstance().getReference()
                         .child("produkjual/" + document.getId() + ".jpg");
 
@@ -101,11 +96,8 @@ public class ProductActivity extends AppCompatActivity {
                     ListProduct product = new ListProduct(name, description, sellPrice, "Default_image",documentId);
                     products.add(product);
                 });
-
-
             }
             runOnUiThread(() -> productsAdapter.notifyDataSetChanged());
-
         });
 
     }

@@ -45,29 +45,21 @@ public class PageLelang extends AppCompatActivity {
     private TextView Text_Waktu;
     private String namaUser;
     EditText detailLelang;
-
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    // Membuat ID produk unik
     DocumentReference produkRef = firestore.collection("produkLelang").document();
-    String produkId ; // Simpan ID produk
+    String produkId ;
     String startingPrice;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_lelang);
         Text_Waktu = findViewById(R.id.Text_Waktu);
-
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra("image_url");
         String itemName = intent.getStringExtra("item_name");
         startingPrice = String.valueOf(intent.getIntExtra("starting_price",0));
-        //String itemDescription = intent.getStringExtra("item_description");
         produkId = intent.getStringExtra("document_id");
-
         ImageView imageView = findViewById(R.id.Gambar_ikan);
         TextView name = findViewById(R.id.Text_Nama_Produk);
         detailLelang = findViewById(R.id.detailLelang);
@@ -84,7 +76,6 @@ public class PageLelang extends AppCompatActivity {
             }
         });
         DocumentReference produkRef = firestore.collection("produkLelang").document(produkId);
-
         produkRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
@@ -92,12 +83,8 @@ public class PageLelang extends AppCompatActivity {
                     Log.w(TAG, "Listen failed.", e);
                     return;
                 }
-
                 if (snapshot != null && snapshot.exists()) {
-                    // Ambil harga terbaru dari snapshot
                     String hargaBaru = snapshot.getString("harga");
-
-                    // Update tampilan dengan harga baru
                     updateDetailLelang(namaUser, hargaBaru);
                 } else {
                     Log.d(TAG, "Current data: null");
@@ -110,7 +97,6 @@ public class PageLelang extends AppCompatActivity {
                 showBottomSheetDialog();
             }
         });
-
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,8 +105,6 @@ public class PageLelang extends AppCompatActivity {
             }
         });
         showUserData();
-        //updateDetailLelang(namaUser, startingPrice);
-
     }
 
     private void showBottomSheetDialog() {
@@ -136,72 +120,53 @@ public class PageLelang extends AppCompatActivity {
                     Toast.makeText(PageLelang.this, "Masukkan harga baru", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 int hargaBaru = Integer.parseInt(harga);
                 int hargaSebelumnya = Integer.parseInt(startingPrice);
-
                 if (hargaBaru <= hargaSebelumnya) {
                     Toast.makeText(PageLelang.this, "Harga baru harus lebih besar dari harga sebelumnya", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-
-                // Update harga di Firebase
                 updateHargaDiFirebase(harga);
-
                 Intent intent = new Intent(PageLelang.this, PembayaranLelang.class);
                 intent.putExtra("harga", harga);
                 startActivity(intent);
-
                 bottomSheetDialog.dismiss();
             }
         });
         bottomSheetDialog.show();
     }
 
-
-
     private void updateHargaDiFirebase(String harga) {
-
         if (produkId == null) {
             Toast.makeText(this, "Produk ID tidak ditemukan", Toast.LENGTH_SHORT).show();
             return;
         }
-
         DocumentReference produkRef = firestore.collection("produkLelang").document(produkId);
         Map<String, Object> updates = new HashMap<>();
         updates.put("harga", harga);
 
-        // Update the document in Firestore
         produkRef.update(updates)
                 .addOnSuccessListener(aVoid ->
                         Toast.makeText(PageLelang.this, "Harga berhasil diperbarui", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e ->
                         Toast.makeText(PageLelang.this, "Gagal memperbarui harga: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
-
-
     private void updateDetailLelang(String namaUser, String harga) {
-
         String detail = namaUser +" " + "dengan harga"+ " " +"Rp."+ harga;
         detailLelang.setText(detail);
     }
-
 
     public void showUserData() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
-
-
         DocumentReference documentReference = firestore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (value != null && value.exists()) {
-                    namaUser = value.getString("username"); // Memperbarui variabel kelas namaUser
-                    // Memperbarui detail lelang dengan nama pengguna dan harga default 0
+                    namaUser = value.getString("username");
                     updateDetailLelang(namaUser, startingPrice);
                 }
 

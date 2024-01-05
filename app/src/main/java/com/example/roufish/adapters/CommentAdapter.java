@@ -19,7 +19,6 @@
     import java.util.Locale;
 
     public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
-
         private List<Comment> comments;
         private Context context;
         private FirebaseFirestore firestore;

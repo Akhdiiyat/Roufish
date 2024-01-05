@@ -21,7 +21,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder> {
-
     private List<ListSeller> itemList;
     private Context context;
     private OnItemClickListener onItemClickListener;
@@ -62,8 +61,6 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
             }
         });
         } else {
-            // Handle the case where the product doesn't belong to the logged-in seller
-            // For example, set a default image or hide the ImageView
             holder.foto.setVisibility(View.GONE);
             Log.d("ImageViewVisibility", "ImageView hidden for non-logged-in seller's product");
 
@@ -89,7 +86,6 @@ public class SellerAdapter extends RecyclerView.Adapter<SellerAdapter.ViewHolder
             textPrice = itemView.findViewById(R.id.productPriceTextView);
             foto = itemView.findViewById(R.id.productImageView);
             textDescription = itemView.findViewById(R.id.productDescription);
-            // Initialize other views here
         }
     }
     public interface OnItemClickListener {

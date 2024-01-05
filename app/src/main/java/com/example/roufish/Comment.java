@@ -3,17 +3,13 @@ package com.example.roufish;
 import java.util.Date;
 
 public class Comment {
-
     private String commentText;
     private String userId;
     private String username;
     private Date timestamp;
     private String forumId;
 
-    public Comment() {
-        // Required empty constructor for Firestore
-    }
-
+    public Comment() {}
 
     public Comment(String commentText, String userId, String forumId, Date timestamp) {
         this.commentText = commentText;

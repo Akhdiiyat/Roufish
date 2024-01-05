@@ -18,7 +18,6 @@ public class PesananSaya extends AppCompatActivity {
 
         btnLelang = findViewById(R.id.button_penawaran);
         btnJual = findViewById(R.id.button_penjualan);
-
         btnJual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,7 +25,6 @@ public class PesananSaya extends AppCompatActivity {
                 startActivity(Pesan_penjualan);
             }
         });
-
         btnLelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,5 +33,4 @@ public class PesananSaya extends AppCompatActivity {
             }
         });
     }
-
 }

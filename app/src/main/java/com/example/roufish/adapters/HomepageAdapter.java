@@ -47,12 +47,9 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ListProduct product = products.get(position);
-
-        // Load the image from Firebase Storage URL using Picasso library
         if (product.getImageResId() != null && !product.getImageResId().isEmpty()) {
             Picasso.get().load(product.getImageResId()).into(holder.productImageView);
         } else {
-            // Set a default image in case URL is null or empty
             holder.productImageView.setImageResource(R.drawable.logo);
         }
 

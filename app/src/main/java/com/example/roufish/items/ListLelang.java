@@ -1,6 +1,5 @@
 package com.example.roufish.items;
 
-// ListLelang.java
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,9 +8,7 @@ public class ListLelang implements Parcelable {
     private int startingPrice;
     private String itemDescription;
     private String imageUrl;
-
     private String documentId;
-
 
     public ListLelang(String itemName, int startingPrice, String imageUrl, String documentId,String itemDescription) {
         this.itemName = itemName;
@@ -40,7 +37,6 @@ public class ListLelang implements Parcelable {
         return startingPrice;
     }
 
-    // Parcelable implementation
     protected ListLelang(Parcel in) {
         itemName = in.readString();
         startingPrice = in.readInt();

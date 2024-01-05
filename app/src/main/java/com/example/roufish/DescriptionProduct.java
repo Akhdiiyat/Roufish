@@ -21,7 +21,6 @@ public class DescriptionProduct extends AppCompatActivity {
     TextView nama, berat, deskripsi, harga;
     ImageView foto;
     private FirebaseFirestore firestore;
-    //String produkId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,6 @@ public class DescriptionProduct extends AppCompatActivity {
                         String documentId = intent.getStringExtra("documentId");
                         cartIntent.putExtra("documentId", documentId);
                         //Toast.makeText(DescriptionProduct.this, "id ada" + documentId , Toast.LENGTH_SHORT).show();
-
                     }
                 }
 

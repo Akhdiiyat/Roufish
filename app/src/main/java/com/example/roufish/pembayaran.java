@@ -52,7 +52,6 @@ public class pembayaran extends AppCompatActivity {
             productName = intent.getStringExtra("productName");
             documentId = intent.getStringExtra("documentId");
         }
-
         bayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +64,6 @@ public class pembayaran extends AppCompatActivity {
                 }
             }
         });
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

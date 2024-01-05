@@ -12,9 +12,7 @@ public class ListForum {
     private String username;
     private Date timestamp;
 
-    public ListForum() {
-        // Required empty constructor for Firestore
-    }
+    public ListForum() {}
 
     public ListForum(String forumText,String userId,String username, Date timestamp, String forumId) {
         this.forumText = forumText;

@@ -9,9 +9,7 @@ public class listRiwayatPenjualan /*implements Parcelable*/ {
     private String imageResId;
     private long timeStamp;
 
-    public listRiwayatPenjualan(){
-
-    }
+    public listRiwayatPenjualan(){}
 
     public listRiwayatPenjualan(String idPenjualan,String name, String price, String imageResId, long timeStamp) {
         this.idPenjualan = idPenjualan;

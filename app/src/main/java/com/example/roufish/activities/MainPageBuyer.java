@@ -57,7 +57,6 @@ public class MainPageBuyer extends AppCompatActivity {
                 // Perform search when submit button is pressed (optional)
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 // Perform search as the user types
@@ -75,7 +74,6 @@ public class MainPageBuyer extends AppCompatActivity {
             }
         });
         //getDataFromFirestore();
-
         beli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,14 +151,9 @@ public class MainPageBuyer extends AppCompatActivity {
                     products.add(product);
                     runOnUiThread(() -> recyclerView.getAdapter().notifyDataSetChanged());
                 });
-
-
             }
             //runOnUiThread(() -> HomepageAdapter.notifyDataSetChanged());
-
         });
-
-
     }
     private void filterProducts(String query) {
         // Filter the products based on the query

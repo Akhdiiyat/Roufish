@@ -32,7 +32,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginBuyer extends AppCompatActivity {
-
     FirebaseAuth mAuth;
     FloatingActionButton backToMain ;
     EditText editTextUsername ;

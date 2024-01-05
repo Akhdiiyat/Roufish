@@ -50,20 +50,6 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
     public void onBindViewHolder(@NonNull ForumViewHolder holder, int position) {
         ListForum forum = forumList.get(position);
         holder.bind(forum);
-//        holder.buttonComment.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent commentIntent = new Intent(context, CommentActivity.class);
-//
-//                // Pass relevant data to CommentActivity
-//                commentIntent.putExtra("forumText", forum.getForumText());
-//                commentIntent.putExtra("username", forum.getUsername());
-//                commentIntent.putExtra("timestamp", forum.getTimestamp().getTime()); // Pass timestamp as a long
-//
-//                // Start CommentActivity with the prepared Intent
-//                context.startActivity(commentIntent);
-//            }
-        //});
         holder.buttonComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +81,6 @@ public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHol
 
         public void bind(ListForum forum) {
             forumTextTextView.setText(forum.getForumText());
-            //usernameTextView.setText(forum.getUserId());
             usernameTextView.setText(forum.getUsername());
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
             String formattedDate = sdf.format(forum.getTimestamp());

@@ -16,7 +16,6 @@ public class ListSeller {
         this.productImage = productImage;
         this.sellerId = sellerId;
         this.productId = productId;
-        // Initialize other properties in the constructor
         this.productDescription = productDescription;
     }
     public String getProductDescription(){return  productDescription;}
@@ -57,5 +56,4 @@ public class ListSeller {
         this.productImage = productImage;
     }
 
-    // Add getter and setter methods for other properties
 }

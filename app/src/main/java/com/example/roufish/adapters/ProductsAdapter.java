@@ -18,7 +18,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
-
     private ArrayList<ListProduct> products;
     private OnItemClickListener listener;
 
@@ -41,13 +40,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ListProduct product = products.get(position);
-        // Load the image from Firebase Storage URL
         if (product.getImageResId() != null && !product.getImageResId().isEmpty()) {
             Picasso.get()
                     .load(product.getImageResId())
                     .into(holder.productImageView);
         } else {
-            // Set a default image in case URL is null or empty
             holder.productImageView.setImageResource(R.drawable.logo);
         }
         holder.productNameTextView.setText(product.getName());
@@ -56,14 +53,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         holder.productImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle image click here, for example, open a new activity with the image
                 Intent intent = new Intent(v.getContext(), DescriptionProduct.class);
                 intent.putExtra("documentId",product.getDocumentId());
                 intent.putExtra("image_url", product.getImageResId());
                 intent.putExtra("productName", product.getName());
                 intent.putExtra("productPrice", String.valueOf(product.getPrice()));
                 intent.putExtra("productDescription", product.getDeskripsi());
-                // Pass the image URL to the next activity
                 v.getContext().startActivity(intent);
             }
         });
@@ -75,7 +70,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView productImageView; // Changed to ImageView
+        ImageView productImageView;
         TextView productNameTextView;
         TextView productPriceTextView;
         TextView productDescriptionTextView;
@@ -95,9 +90,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                         }
                     }
                 }
-
             });
-
         }
         public void bind(String name,int price, String imageUrl,String deskripsi){
             productNameTextView.setText(name);

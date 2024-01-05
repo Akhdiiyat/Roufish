@@ -14,11 +14,9 @@ import com.example.roufish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class lupapwd extends AppCompatActivity {
-
     Button buttonSend;
     EditText emailInput ;;
     //TextInputEditText emailTextInput = findViewById(R.id.emailTextInput);;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +38,11 @@ public class lupapwd extends AppCompatActivity {
                 String email ;
                 email = String.valueOf(emailInput.getText());
                 if (TextUtils.isEmpty(email)) {
-                    // Email field is empty, show an error message
                     Toast.makeText(lupapwd.this,"Masukkan username",Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                    // Proceed with sending the code
                     Intent sendIntent = new Intent(lupapwd.this, lupapwd_code.class);
                     startActivity(sendIntent);
-
             }
         });
 

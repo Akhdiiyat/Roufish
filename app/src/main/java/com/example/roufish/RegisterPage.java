@@ -52,6 +52,5 @@ public class RegisterPage extends AppCompatActivity {
                 startActivity(logIntent);
             }
         });
-
     }
 }

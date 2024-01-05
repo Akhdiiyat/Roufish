@@ -38,8 +38,6 @@ public class Homepage extends AppCompatActivity {
                 startActivity(loginIntent);
             }
         });
-
-
     }
 }
 

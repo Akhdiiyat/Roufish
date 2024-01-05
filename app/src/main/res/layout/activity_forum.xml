@@ -29,7 +29,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_forum"
             android:layout_width="match_parent"
-            android:layout_height="926dp"
+            android:layout_height="match_parent"
             android:layout_marginVertical="9dp"
             android:layout_marginTop="40dp"
             tools:listitem="@layout/item_forum" />
@@ -69,19 +69,6 @@
         app:layout_constraintVertical_bias="0.024"
         app:srcCompat="@drawable/logo" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/back_forum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/arrow_back_icon"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/cardview_forum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
 
 
 

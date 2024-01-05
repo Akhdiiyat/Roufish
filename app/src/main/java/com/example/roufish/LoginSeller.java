@@ -29,21 +29,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginSeller extends AppCompatActivity {
-
     FloatingActionButton btnBack;
     CheckBox tampilPassword;
-
     EditText inputPasswordSeller, inputUsernameSeller;
-
     AppCompatButton loginSeller;
-
     FirebaseAuth mAuth;
     TextView lupaPassword;
-
-
-
-
-    //@SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,9 +67,6 @@ public class LoginSeller extends AppCompatActivity {
                 }
             }
         });
-
-
-
         lupaPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,43 +75,31 @@ public class LoginSeller extends AppCompatActivity {
                 passwordResetDialog.setTitle("Reset Password");
                 passwordResetDialog.setMessage("Enter Your Email To Received Link");
                 passwordResetDialog.setView(resetMail);
-
                 passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                         String mail =resetMail.getText().toString();
                         mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(LoginSeller.this,"Reset Link Sent to Your Mail",Toast.LENGTH_SHORT).show();
-
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(LoginSeller.this,"Eror ! Reset Link is Not Sent" + e.getMessage(),Toast.LENGTH_SHORT).show();
-
                             }
                         });
-
                         passwordResetDialog.create().show();
-
                         passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
                             }
                         });
                     }
                 });
-
-
-
-
             };
         });
-
         loginSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,7 +109,6 @@ public class LoginSeller extends AppCompatActivity {
                 email = inputUsernameSeller.getText().toString().trim();
                 password = inputPasswordSeller.getText().toString().trim();
 
-                //check empty
                 if(TextUtils.isEmpty(email)){
                     inputUsernameSeller.setError("Masukkan Email");
                     return;
@@ -141,13 +116,10 @@ public class LoginSeller extends AppCompatActivity {
                     inputPasswordSeller.setError("Masukkan password");
                     return;
                 }
-
                 if(password.length() < 6) {
                     inputPasswordSeller.setError("password harus lebih dari 6 karakter");
                     return;
                 }
-
-                //sign in process
 
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -160,30 +132,10 @@ public class LoginSeller extends AppCompatActivity {
                         }else {
                             Toast.makeText(LoginSeller.this,"Login Gagal" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             Log.e("LoginError", "onComplete: " + task.getException().getMessage(), task.getException());
-
                         }
                     }
                 });
             }
-
-
         });
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
+}

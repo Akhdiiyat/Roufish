@@ -3,12 +3,14 @@ package com.example.roufish;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.roufish.activities.MainPageBuyer;
@@ -26,23 +28,16 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class profileBuyer extends AppCompatActivity {
-
-
     Button logout, editProfile;
     FloatingActionButton back;
     FirebaseFirestore firestore;
-
     FirebaseAuth mAuth;
-
-    FirebaseUser user;
-
     TextView profileUsername, profileEmail, profileName, profilePassword, titleName, titleUsername;
     TextView profileNoHP;
     String userId;
     ImageView profileImg;
     StorageReference storageReference;
     StorageReference profileRef;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +52,12 @@ public class profileBuyer extends AppCompatActivity {
             }
         });
         logout = findViewById(R.id.btn_logout);
-
-
         profileEmail = (TextView) findViewById(R.id.profileEmail);
         profileUsername = (TextView) findViewById(R.id.profileUsername);
         titleName =  (TextView) findViewById(R.id.titleName);
         titleUsername = (TextView) findViewById(R.id.titleUsername);
         profileNoHP = (TextView) findViewById(R.id.profileNoHP);
         profileImg = (ImageView) findViewById(R.id.profileImg);
-
         editProfile = (Button) findViewById(R.id.editProfile);
         mAuth =FirebaseAuth.getInstance();
         firestore =FirebaseFirestore.getInstance();
@@ -79,25 +71,21 @@ public class profileBuyer extends AppCompatActivity {
                 Picasso.get().load(uri).into(profileImg);
             }
         });
-
+        profileImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showImagePopup();
+            }
+        });
         editProfile.setOnClickListener((v) ->{
-
             Intent i = new Intent(v.getContext(),EditProfile.class);
             i.putExtra("username", profileUsername.getText().toString());
             i.putExtra("email", profileEmail.getText().toString());
             i.putExtra("noHP", profileNoHP.getText().toString());
             startActivity(i);
-
         });
-
         showUserData();
-
-
     }
-
-
-
-
 
     public  void logOut(View view){
         mAuth.getInstance().signOut();
@@ -106,7 +94,6 @@ public class profileBuyer extends AppCompatActivity {
     }
 
     public void showUserData() {
-
         DocumentReference documentReference = firestore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -117,13 +104,28 @@ public class profileBuyer extends AppCompatActivity {
                     profileEmail.setText(value.getString("email"));
                     profileNoHP.setText(value.getString("noHP"));
                 }
-
             }
         });
     }
+    private void showImagePopup() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        LayoutInflater inflater = getLayoutInflater();
 
+        View dialogView = inflater.inflate(R.layout.image_popup_layout, null);
 
+        ImageView popupImageView = dialogView.findViewById(R.id.popupImageView);
+
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(popupImageView);
+            }
+        });
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }
 
 

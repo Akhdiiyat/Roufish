@@ -28,12 +28,9 @@ import com.squareup.picasso.Picasso;
 
 public class profileSeller extends Activity {
     FirebaseFirestore firestore;
-
     FirebaseAuth mAuth;
-
     FirebaseUser user;
     FloatingActionButton back;
-
     Button logout;
     TextView profileUsername, profileEmail, profileName, profilePassword, titleName, titleUsername;
     TextView profileNoHP;
@@ -41,8 +38,6 @@ public class profileSeller extends Activity {
     ImageView profileImg;
     StorageReference storageReference;
     StorageReference profileRef;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +53,6 @@ public class profileSeller extends Activity {
         });
 
         logout = findViewById(R.id.btn_logout_seller);
-
         profileEmail = (TextView) findViewById(R.id.profileEmail_seller);
         profileUsername = (TextView) findViewById(R.id.profileUsername_seller);
         titleName =  (TextView) findViewById(R.id.titleName);
@@ -80,7 +74,6 @@ public class profileSeller extends Activity {
             }
         });
         showUserData();
-
     }
 
     public  void logOut(View view){
@@ -90,7 +83,6 @@ public class profileSeller extends Activity {
     }
 
     public void showUserData() {
-
         DocumentReference documentReference = firestore.collection("Seller").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -101,7 +93,6 @@ public class profileSeller extends Activity {
                     profileEmail.setText(value.getString("email"));
                     profileNoHP.setText(value.getString("noHP"));
                 }
-
             }
         });
     }

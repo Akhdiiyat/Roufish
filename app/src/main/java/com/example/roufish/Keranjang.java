@@ -66,7 +66,6 @@ public class Keranjang extends AppCompatActivity {
             public void onClick(View view) {
                 Intent pesanprodukIntent = new Intent(Keranjang.this,pembayaran.class);
                 if (intent != null) {
-
                     if (intent.hasExtra("productPrice")) {
                         String productPrice = intent.getStringExtra("productPrice");
                         pesanprodukIntent.putExtra("productPrice", productPrice);
@@ -92,7 +91,6 @@ public class Keranjang extends AppCompatActivity {
                     else {
                         Toast.makeText(Keranjang.this, "id tidak ada", Toast.LENGTH_SHORT).show();
                     }
-
                 }
                 startActivity(pesanprodukIntent);
             }
@@ -109,12 +107,9 @@ public class Keranjang extends AppCompatActivity {
         ubah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Panggil metode showBottomSheetDialog()
                 showBottomSheetDialog();
             }
         });
-
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String productName = extras.getString("productName");
@@ -126,7 +121,6 @@ public class Keranjang extends AppCompatActivity {
             totHarga.setText("Rp." + String.valueOf(productPrice));
             Picasso.get().load(productImageUrl).into(gambar);
         }
-
         backTomain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,33 +128,22 @@ public class Keranjang extends AppCompatActivity {
                 startActivity(backIntent);
             }
         });
-
         showUserData();
     }
-
     private void showBottomSheetDialog() {
-        // Create the bottom sheet dialog
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
 
-        // Set the content view of the bottom sheet
         bottomSheetDialog.setContentView(R.layout.activity_page_keranjang);
 
-        // Find the RadioGroup and Button in the bottom sheet layout
         RadioGroup radioGroup = bottomSheetDialog.findViewById(R.id.radiogroup);
         Button btnLanjutkan = bottomSheetDialog.findViewById(R.id.btn_lanjutkan);
 
-        // Set a listener for radio button changes
         radioButtonTextMap.put(R.id.Ambilditempat, "Ambil di tempat");
         radioButtonTextMap.put(R.id.Diantarkerumah, "Diantar ke rumah");
-
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Handle the selected radio button using the SparseArray
                 String selectedOption = radioButtonTextMap.get(checkedId, "");
-
-                // Check the selected option and hide/show elements
                 if ("Ambil di tempat".equals(selectedOption)) {
                     jam.setVisibility(View.VISIBLE);
                     jamKeranjang.setVisibility(View.VISIBLE);
@@ -168,30 +151,24 @@ public class Keranjang extends AppCompatActivity {
                     jam.setVisibility(View.GONE);
                     jamKeranjang.setVisibility(View.GONE);
                 } else {
-                    // Handle other cases if needed
+
                 }
-
-                // Update the text of BelumAdaPilihan
                 BelumAdaPilihan.setText(selectedOption);
-
             }
         });
 
-        // Set a listener for the "Save" button click
         btnLanjutkan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Do any additional actions when the "Save" button is clicked
-                bottomSheetDialog.dismiss(); // Dismiss the bottom sheet
+                bottomSheetDialog.dismiss();
             }
         });
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR_OF_DAY, 2); // Menambahkan 2 jam pada waktu saat ini
+        calendar.add(Calendar.HOUR_OF_DAY, 2);
         String currentTime = sdf.format(calendar.getTime());
         jam.setText(currentTime);
 
-        // Show the bottom sheet dialog
         bottomSheetDialog.show();
     }
 
@@ -200,7 +177,6 @@ public class Keranjang extends AppCompatActivity {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
-
 
         DocumentReference documentReference = firestore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {

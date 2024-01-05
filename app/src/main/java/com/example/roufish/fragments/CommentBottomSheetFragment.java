@@ -28,9 +28,7 @@ public class CommentBottomSheetFragment extends BottomSheetDialogFragment {
     private FirebaseFirestore firestore;
     private String forumId;
 
-    public CommentBottomSheetFragment() {
-        // Required empty public constructor
-    }
+    public CommentBottomSheetFragment() {}
 
     public CommentBottomSheetFragment(String forumId) {
         this.forumId = forumId;
@@ -49,12 +47,10 @@ public class CommentBottomSheetFragment extends BottomSheetDialogFragment {
         buttonSubmitComment = view.findViewById(R.id.post_komen);
 
         buttonSubmitComment.setOnClickListener(v -> {
-            // Implement your logic for saving comments to Firestore or other actions here
             String commentText = editTextComment.getText().toString().trim();
             if (!commentText.isEmpty()) {
-                // Add your logic to save the comment
                 saveCommentToFirestore(commentText);
-                dismiss(); // Close the bottom sheet after submitting the comment
+                dismiss();
             }
         });
 
@@ -62,36 +58,28 @@ public class CommentBottomSheetFragment extends BottomSheetDialogFragment {
     }
 
     private void saveCommentToFirestore(String commentText) {
-        // Create a map to represent the comment data
         if (forumId != null && !forumId.isEmpty()) {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             if (currentUser != null) {
                 String userId = currentUser.getUid();
 
-                // Create a map to represent the comment data
                 Map<String, Object> commentData = new HashMap<>();
                 commentData.put("commentText", commentText);
                 commentData.put("forumId", forumId);
                 commentData.put("userId", userId); // Tambahkan userId
                 commentData.put("timestamp", new Date());
 
-                // Access the "comments" collection in Firestore and add the comment data
                 firestore.collection("comments")
                         .add(commentData)
                         .addOnSuccessListener(documentReference -> {
-                            // Handle success (comment added successfully)
-                            // You can add additional logic here if needed
                         })
                         .addOnFailureListener(e -> {
                             // Handle failure (comment addition failed)
-                            // You can add additional error handling logic here if needed
                         });
             } else {
-                // Tangani kasus ketika currentUser null
                 Toast.makeText(getContext(), "User not logged in.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            // Tangani kasus ketika forumId null atau kosong
             Toast.makeText(getContext(), "ForumId is null or empty.", Toast.LENGTH_SHORT).show();
         }
     }

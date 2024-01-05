@@ -14,7 +14,6 @@ import com.example.roufish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class lupapwd_code extends AppCompatActivity {
-
     private EditText editTextCode;
     private Button buttonVerif;
 
@@ -23,7 +22,7 @@ public class lupapwd_code extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lupapwd_code);
 
-        editTextCode = findViewById(R.id.editTextText6); // Update with the correct ID
+        editTextCode = findViewById(R.id.editTextText6);
         buttonVerif = findViewById(R.id.btn_verifikasi);
 
         FloatingActionButton backToMain = findViewById(R.id.backToMainREG);
@@ -56,7 +55,6 @@ public class lupapwd_code extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                // Check the length of the entered text and allow only 4 characters
                 if (editable.length() == 4) {
                     editTextCode.setError(null);
                     buttonVerif.setEnabled(true);
